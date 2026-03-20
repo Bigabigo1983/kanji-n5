@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>古 — Kanji N5</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#faf3e1;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:20px}
+h1{font-size:120px;color:#2b3261;margin:10px 0;line-height:1}
+.info{color:#2b3261;font-size:16px;margin:6px 0;text-align:center}
+.info span{font-size:14px;opacity:.7}
+.btn{margin:14px 6px;padding:12px 28px;border:none;border-radius:8px;font-size:16px;cursor:pointer;background:#2b3261;color:#faf3e1}
+.btn:active{opacity:.8}
+#canvas-wrap{margin:10px 0}
+canvas{border:2px solid #2b3261;border-radius:10px;background:#faf3e1}
+.examples{margin-top:16px;width:100%;max-width:380px}
+.ex{background:#f0e8d0;border-radius:8px;padding:10px 14px;margin:6px 0}
+.ex .kanji{font-size:22px;color:#2b3261;font-weight:bold}
+.ex .rom{font-size:13px;color:#7a6b20;margin-top:2px}
+.ex .th{font-size:13px;color:#2b3261;margin-top:2px}
+.back{margin-top:20px;color:#2b3261;font-size:13px;opacity:.6}
+</style>
+</head>
+<body>
+<h1>古</h1>
+<div class="info">音読み <b>コ</b> &nbsp;|&nbsp; 訓読み <b>ふるい</b></div>
+<div class="info"><span>ความหมาย: </span><b>เก่า</b></div>
+<div id="canvas-wrap"><canvas id="c" width="280" height="280"></canvas></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+  <button class="btn" onclick="playAnim()">▶ ดู Stroke Order</button>
+  <button class="btn" onclick="speakJP()">🔊 ฟังเสียง</button>
+</div>
+<div class="examples">
+  <div class="ex">
+    <div class="kanji">古い</div>
+    <div class="rom">furui</div>
+    <div class="th">เก่า</div>
+  </div>
+  <div class="ex">
+    <div class="kanji">古典</div>
+    <div class="rom">koten</div>
+    <div class="th">คลาสสิก</div>
+  </div>
+</div>
+<div class="back">JLPT N5 Kanji Writing Practice</div>
+<script>
+const strokes=[[[11.25, 43.25, 14.0, 43.87, 16.79, 44.08, 20.78, 43.75], [20.78, 43.75, 44.63, 41.75, 70.25, 39.63, 88.13, 39.0], [88.13, 39.0, 92.15, 38.86, 95.0, 39.0, 97.25, 39.5]], [[52.41, 12.5, 53.83, 13.92, 54.54, 15.75, 54.54, 17.56], [54.54, 17.56, 54.54, 34.61, 54.4, 56.87, 54.4, 66.5]], [[31.0, 67.77, 32.12, 68.89, 33.0, 70.5, 33.24, 72.25], [33.24, 72.25, 33.85, 76.68, 35.11, 84.37, 36.46, 93.18], [36.46, 93.18, 36.66, 94.49, 36.85, 95.77, 37.03, 97.01]], [[33.77, 69.3, 45.74, 68.13, 70.17, 65.91, 76.76, 65.49], [76.76, 65.49, 80.5, 65.25, 81.87, 66.88, 81.02, 70.2], [81.02, 70.2, 79.84, 74.83, 77.21, 83.8, 75.79, 90.26]], [[37.88, 94.42, 45.69, 94.06, 61.87, 92.54, 73.02, 91.77], [73.02, 91.77, 74.89, 91.64, 76.63, 91.53, 78.2, 91.45]]];
+const W=280,SCALE=W*0.82/109,OX=W*0.09,OY=W*0.09;
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');
+
+function tx(x){return OX+x*SCALE}
+function ty(y){return OY+(109-y)*SCALE}
+
+function drawSegs(segs,alpha,lw){
+  ctx.strokeStyle=`rgba(43,50,97,${alpha})`;
+  ctx.lineWidth=lw;ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.beginPath();
+  for(const s of segs){
+    ctx.moveTo(tx(s[0]),ty(s[1]));
+    ctx.bezierCurveTo(tx(s[2]),ty(s[3]),tx(s[4]),ty(s[5]),tx(s[6]),ty(s[7]));
+  }
+  ctx.stroke();
+}
+
+function drawAll(upTo,highlightLast){
+  ctx.clearRect(0,0,W,W);
+  for(let i=0;i<upTo-1;i++) drawSegs(strokes[i],0.25,3);
+  if(upTo>0) drawSegs(strokes[upTo-1],1.0, highlightLast?5:3);
+}
+
+let frame=0,timer=null;
+function playAnim(){
+  clearInterval(timer);frame=0;
+  timer=setInterval(()=>{
+    frame++;drawAll(frame,true);
+    if(frame>=strokes.length)clearInterval(timer);
+  },600);
+}
+
+function speakJP(){
+  const u=new SpeechSynthesisUtterance('古');
+  u.lang='ja-JP';u.rate=0.8;
+  speechSynthesis.speak(u);
+}
+
+// draw complete on load
+drawAll(strokes.length,false);
+</script>
+</body>
+</html>

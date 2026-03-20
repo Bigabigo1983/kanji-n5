@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>長 — Kanji N5</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#faf3e1;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:20px}
+h1{font-size:120px;color:#2b3261;margin:10px 0;line-height:1}
+.info{color:#2b3261;font-size:16px;margin:6px 0;text-align:center}
+.info span{font-size:14px;opacity:.7}
+.btn{margin:14px 6px;padding:12px 28px;border:none;border-radius:8px;font-size:16px;cursor:pointer;background:#2b3261;color:#faf3e1}
+.btn:active{opacity:.8}
+#canvas-wrap{margin:10px 0}
+canvas{border:2px solid #2b3261;border-radius:10px;background:#faf3e1}
+.examples{margin-top:16px;width:100%;max-width:380px}
+.ex{background:#f0e8d0;border-radius:8px;padding:10px 14px;margin:6px 0}
+.ex .kanji{font-size:22px;color:#2b3261;font-weight:bold}
+.ex .rom{font-size:13px;color:#7a6b20;margin-top:2px}
+.ex .th{font-size:13px;color:#2b3261;margin-top:2px}
+.back{margin-top:20px;color:#2b3261;font-size:13px;opacity:.6}
+</style>
+</head>
+<body>
+<h1>長</h1>
+<div class="info">音読み <b>チョウ</b> &nbsp;|&nbsp; 訓読み <b>ながい</b></div>
+<div class="info"><span>ความหมาย: </span><b>ยาว</b></div>
+<div id="canvas-wrap"><canvas id="c" width="280" height="280"></canvas></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+  <button class="btn" onclick="playAnim()">▶ ดู Stroke Order</button>
+  <button class="btn" onclick="speakJP()">🔊 ฟังเสียง</button>
+</div>
+<div class="examples">
+  <div class="ex">
+    <div class="kanji">長い</div>
+    <div class="rom">nagai</div>
+    <div class="th">ยาว</div>
+  </div>
+  <div class="ex">
+    <div class="kanji">社長</div>
+    <div class="rom">shachou</div>
+    <div class="th">ประธาน</div>
+  </div>
+</div>
+<div class="back">JLPT N5 Kanji Writing Practice</div>
+<script>
+const strokes=[[[34.0, 14.75, 35.25, 16.0, 36.0, 18.0, 36.0, 19.5], [36.0, 19.5, 36.0, 21.0, 36.0, 53.0, 36.0, 55.25]], [[37.75, 16.0, 47.35, 15.85, 59.48, 12.74, 64.38, 11.8], [64.38, 11.8, 66.35, 11.42, 68.28, 11.39, 70.25, 11.86]], [[37.25, 29.5, 48.12, 28.25, 57.0, 27.0, 64.0, 25.72], [64.0, 25.72, 65.96, 25.36, 67.76, 25.47, 69.25, 25.78]], [[37.5, 42.5, 46.38, 41.64, 59.12, 39.88, 64.25, 38.97], [64.25, 38.97, 66.22, 38.62, 68.13, 38.65, 70.0, 38.97]], [[10.88, 58.23, 14.02, 59.09, 17.32, 58.91, 20.5, 58.52], [20.5, 58.52, 40.23, 56.17, 65.36, 52.42, 85.5, 50.91], [85.5, 50.91, 88.47, 50.69, 91.2, 50.83, 94.13, 51.31]], [[31.25, 60.25, 32.19, 61.19, 32.64, 62.63, 32.64, 64.25], [32.64, 64.25, 32.64, 76.07, 31.94, 92.44, 31.94, 94.44], [31.94, 94.44, 31.94, 96.44, 33.59, 97.58, 35.68, 96.08], [35.68, 96.08, 37.77, 94.58, 52.93, 84.99, 55.71, 83.49]], [[76.52, 55.25, 76.75, 56.5, 76.19, 57.7, 75.47, 58.66], [75.47, 58.66, 73.5, 61.25, 69.62, 65.0, 64.62, 68.75]], [[46.5, 62.25, 54.71, 62.25, 81.02, 88.15, 90.78, 91.75], [90.78, 91.75, 93.12, 92.61, 94.51, 93.0, 97.0, 93.5]]];
+const W=280,SCALE=W*0.82/109,OX=W*0.09,OY=W*0.09;
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');
+
+function tx(x){return OX+x*SCALE}
+function ty(y){return OY+(109-y)*SCALE}
+
+function drawSegs(segs,alpha,lw){
+  ctx.strokeStyle=`rgba(43,50,97,${alpha})`;
+  ctx.lineWidth=lw;ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.beginPath();
+  for(const s of segs){
+    ctx.moveTo(tx(s[0]),ty(s[1]));
+    ctx.bezierCurveTo(tx(s[2]),ty(s[3]),tx(s[4]),ty(s[5]),tx(s[6]),ty(s[7]));
+  }
+  ctx.stroke();
+}
+
+function drawAll(upTo,highlightLast){
+  ctx.clearRect(0,0,W,W);
+  for(let i=0;i<upTo-1;i++) drawSegs(strokes[i],0.25,3);
+  if(upTo>0) drawSegs(strokes[upTo-1],1.0, highlightLast?5:3);
+}
+
+let frame=0,timer=null;
+function playAnim(){
+  clearInterval(timer);frame=0;
+  timer=setInterval(()=>{
+    frame++;drawAll(frame,true);
+    if(frame>=strokes.length)clearInterval(timer);
+  },600);
+}
+
+function speakJP(){
+  const u=new SpeechSynthesisUtterance('長');
+  u.lang='ja-JP';u.rate=0.8;
+  speechSynthesis.speak(u);
+}
+
+// draw complete on load
+drawAll(strokes.length,false);
+</script>
+</body>
+</html>

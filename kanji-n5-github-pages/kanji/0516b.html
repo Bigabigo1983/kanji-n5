@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>八 — Kanji N5</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#faf3e1;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:20px}
+h1{font-size:120px;color:#2b3261;margin:10px 0;line-height:1}
+.info{color:#2b3261;font-size:16px;margin:6px 0;text-align:center}
+.info span{font-size:14px;opacity:.7}
+.btn{margin:14px 6px;padding:12px 28px;border:none;border-radius:8px;font-size:16px;cursor:pointer;background:#2b3261;color:#faf3e1}
+.btn:active{opacity:.8}
+#canvas-wrap{margin:10px 0}
+canvas{border:2px solid #2b3261;border-radius:10px;background:#faf3e1}
+.examples{margin-top:16px;width:100%;max-width:380px}
+.ex{background:#f0e8d0;border-radius:8px;padding:10px 14px;margin:6px 0}
+.ex .kanji{font-size:22px;color:#2b3261;font-weight:bold}
+.ex .rom{font-size:13px;color:#7a6b20;margin-top:2px}
+.ex .th{font-size:13px;color:#2b3261;margin-top:2px}
+.back{margin-top:20px;color:#2b3261;font-size:13px;opacity:.6}
+</style>
+</head>
+<body>
+<h1>八</h1>
+<div class="info">音読み <b>ハチ</b> &nbsp;|&nbsp; 訓読み <b>やっつ</b></div>
+<div class="info"><span>ความหมาย: </span><b>แปด</b></div>
+<div id="canvas-wrap"><canvas id="c" width="280" height="280"></canvas></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+  <button class="btn" onclick="playAnim()">▶ ดู Stroke Order</button>
+  <button class="btn" onclick="speakJP()">🔊 ฟังเสียง</button>
+</div>
+<div class="examples">
+  <div class="ex">
+    <div class="kanji">八つ</div>
+    <div class="rom">yattsu</div>
+    <div class="th">แปดอัน</div>
+  </div>
+  <div class="ex">
+    <div class="kanji">八月</div>
+    <div class="rom">hachigatsu</div>
+    <div class="th">สิงหาคม</div>
+  </div>
+</div>
+<div class="back">JLPT N5 Kanji Writing Practice</div>
+<script>
+const strokes=[[[37.22, 45.0, 37.5, 46.5, 37.42, 48.21, 36.36, 50.48], [36.36, 50.48, 32.13, 59.5, 24.88, 70.88, 12.26, 82.5]], [[48.0, 27.25, 57.38, 27.5, 69.12, 57.25, 85.27, 72.97], [85.27, 72.97, 89.06, 76.66, 92.0, 78.63, 95.25, 80.0]]];
+const W=280,SCALE=W*0.82/109,OX=W*0.09,OY=W*0.09;
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');
+
+function tx(x){return OX+x*SCALE}
+function ty(y){return OY+(109-y)*SCALE}
+
+function drawSegs(segs,alpha,lw){
+  ctx.strokeStyle=`rgba(43,50,97,${alpha})`;
+  ctx.lineWidth=lw;ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.beginPath();
+  for(const s of segs){
+    ctx.moveTo(tx(s[0]),ty(s[1]));
+    ctx.bezierCurveTo(tx(s[2]),ty(s[3]),tx(s[4]),ty(s[5]),tx(s[6]),ty(s[7]));
+  }
+  ctx.stroke();
+}
+
+function drawAll(upTo,highlightLast){
+  ctx.clearRect(0,0,W,W);
+  for(let i=0;i<upTo-1;i++) drawSegs(strokes[i],0.25,3);
+  if(upTo>0) drawSegs(strokes[upTo-1],1.0, highlightLast?5:3);
+}
+
+let frame=0,timer=null;
+function playAnim(){
+  clearInterval(timer);frame=0;
+  timer=setInterval(()=>{
+    frame++;drawAll(frame,true);
+    if(frame>=strokes.length)clearInterval(timer);
+  },600);
+}
+
+function speakJP(){
+  const u=new SpeechSynthesisUtterance('八');
+  u.lang='ja-JP';u.rate=0.8;
+  speechSynthesis.speak(u);
+}
+
+// draw complete on load
+drawAll(strokes.length,false);
+</script>
+</body>
+</html>

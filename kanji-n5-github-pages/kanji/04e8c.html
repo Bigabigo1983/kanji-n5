@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>二 — Kanji N5</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#faf3e1;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:20px}
+h1{font-size:120px;color:#2b3261;margin:10px 0;line-height:1}
+.info{color:#2b3261;font-size:16px;margin:6px 0;text-align:center}
+.info span{font-size:14px;opacity:.7}
+.btn{margin:14px 6px;padding:12px 28px;border:none;border-radius:8px;font-size:16px;cursor:pointer;background:#2b3261;color:#faf3e1}
+.btn:active{opacity:.8}
+#canvas-wrap{margin:10px 0}
+canvas{border:2px solid #2b3261;border-radius:10px;background:#faf3e1}
+.examples{margin-top:16px;width:100%;max-width:380px}
+.ex{background:#f0e8d0;border-radius:8px;padding:10px 14px;margin:6px 0}
+.ex .kanji{font-size:22px;color:#2b3261;font-weight:bold}
+.ex .rom{font-size:13px;color:#7a6b20;margin-top:2px}
+.ex .th{font-size:13px;color:#2b3261;margin-top:2px}
+.back{margin-top:20px;color:#2b3261;font-size:13px;opacity:.6}
+</style>
+</head>
+<body>
+<h1>二</h1>
+<div class="info">音読み <b>ニ</b> &nbsp;|&nbsp; 訓読み <b>ふた</b></div>
+<div class="info"><span>ความหมาย: </span><b>สอง</b></div>
+<div id="canvas-wrap"><canvas id="c" width="280" height="280"></canvas></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+  <button class="btn" onclick="playAnim()">▶ ดู Stroke Order</button>
+  <button class="btn" onclick="speakJP()">🔊 ฟังเสียง</button>
+</div>
+<div class="examples">
+  <div class="ex">
+    <div class="kanji">二つ</div>
+    <div class="rom">futatsu</div>
+    <div class="th">สองอัน</div>
+  </div>
+  <div class="ex">
+    <div class="kanji">二月</div>
+    <div class="rom">nigatsu</div>
+    <div class="th">กุมภาพันธ์</div>
+  </div>
+</div>
+<div class="back">JLPT N5 Kanji Writing Practice</div>
+<script>
+const strokes=[[[25.25, 32.4, 27.02, 32.77, 30.03, 32.96, 31.8, 32.77], [31.8, 32.77, 42.62, 31.62, 60.62, 29.37, 73.04, 29.01], [73.04, 29.01, 75.99, 28.92, 77.77, 29.19, 79.25, 29.37]], [[12.0, 80.75, 14.37, 81.25, 18.73, 81.42, 21.09, 81.25], [21.09, 81.25, 44.88, 79.5, 66.13, 77.13, 88.58, 76.51], [88.58, 76.51, 92.53, 76.4, 94.9, 76.75, 96.88, 77.0]]];
+const W=280,SCALE=W*0.82/109,OX=W*0.09,OY=W*0.09;
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');
+
+function tx(x){return OX+x*SCALE}
+function ty(y){return OY+(109-y)*SCALE}
+
+function drawSegs(segs,alpha,lw){
+  ctx.strokeStyle=`rgba(43,50,97,${alpha})`;
+  ctx.lineWidth=lw;ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.beginPath();
+  for(const s of segs){
+    ctx.moveTo(tx(s[0]),ty(s[1]));
+    ctx.bezierCurveTo(tx(s[2]),ty(s[3]),tx(s[4]),ty(s[5]),tx(s[6]),ty(s[7]));
+  }
+  ctx.stroke();
+}
+
+function drawAll(upTo,highlightLast){
+  ctx.clearRect(0,0,W,W);
+  for(let i=0;i<upTo-1;i++) drawSegs(strokes[i],0.25,3);
+  if(upTo>0) drawSegs(strokes[upTo-1],1.0, highlightLast?5:3);
+}
+
+let frame=0,timer=null;
+function playAnim(){
+  clearInterval(timer);frame=0;
+  timer=setInterval(()=>{
+    frame++;drawAll(frame,true);
+    if(frame>=strokes.length)clearInterval(timer);
+  },600);
+}
+
+function speakJP(){
+  const u=new SpeechSynthesisUtterance('二');
+  u.lang='ja-JP';u.rate=0.8;
+  speechSynthesis.speak(u);
+}
+
+// draw complete on load
+drawAll(strokes.length,false);
+</script>
+</body>
+</html>

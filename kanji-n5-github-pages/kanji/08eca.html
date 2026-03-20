@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>車 — Kanji N5</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#faf3e1;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:20px}
+h1{font-size:120px;color:#2b3261;margin:10px 0;line-height:1}
+.info{color:#2b3261;font-size:16px;margin:6px 0;text-align:center}
+.info span{font-size:14px;opacity:.7}
+.btn{margin:14px 6px;padding:12px 28px;border:none;border-radius:8px;font-size:16px;cursor:pointer;background:#2b3261;color:#faf3e1}
+.btn:active{opacity:.8}
+#canvas-wrap{margin:10px 0}
+canvas{border:2px solid #2b3261;border-radius:10px;background:#faf3e1}
+.examples{margin-top:16px;width:100%;max-width:380px}
+.ex{background:#f0e8d0;border-radius:8px;padding:10px 14px;margin:6px 0}
+.ex .kanji{font-size:22px;color:#2b3261;font-weight:bold}
+.ex .rom{font-size:13px;color:#7a6b20;margin-top:2px}
+.ex .th{font-size:13px;color:#2b3261;margin-top:2px}
+.back{margin-top:20px;color:#2b3261;font-size:13px;opacity:.6}
+</style>
+</head>
+<body>
+<h1>車</h1>
+<div class="info">音読み <b>シャ</b> &nbsp;|&nbsp; 訓読み <b>くるま</b></div>
+<div class="info"><span>ความหมาย: </span><b>รถ</b></div>
+<div id="canvas-wrap"><canvas id="c" width="280" height="280"></canvas></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+  <button class="btn" onclick="playAnim()">▶ ดู Stroke Order</button>
+  <button class="btn" onclick="speakJP()">🔊 ฟังเสียง</button>
+</div>
+<div class="examples">
+  <div class="ex">
+    <div class="kanji">電車</div>
+    <div class="rom">densha</div>
+    <div class="th">รถไฟ</div>
+  </div>
+  <div class="ex">
+    <div class="kanji">自動車</div>
+    <div class="rom">jidousha</div>
+    <div class="th">รถยนต์</div>
+  </div>
+</div>
+<div class="back">JLPT N5 Kanji Writing Practice</div>
+<script>
+const strokes=[[[26.0, 26.0, 28.85, 26.69, 32.1, 26.14, 34.98, 25.9], [34.98, 25.9, 46.07, 24.97, 60.78, 23.26, 73.87, 22.39], [73.87, 22.39, 76.55, 22.21, 79.09, 22.23, 81.75, 22.62]], [[27.5, 37.92, 28.31, 38.42, 29.33, 40.31, 29.48, 40.97], [29.48, 40.97, 30.33, 44.7, 31.31, 52.28, 32.43, 59.51], [32.43, 59.51, 32.75, 61.6, 32.84, 62.71, 33.18, 64.75]], [[30.36, 39.49, 44.88, 37.88, 66.5, 35.38, 77.99, 34.99], [77.99, 34.99, 81.45, 34.87, 82.16, 36.56, 82.02, 38.07], [82.02, 38.07, 81.6, 42.39, 80.01, 51.88, 78.52, 58.26], [78.52, 58.26, 78.31, 59.15, 78.01, 60.13, 77.76, 61.26]], [[32.5, 51.25, 46.25, 49.75, 66.75, 47.5, 79.5, 47.0]], [[34.25, 63.25, 46.0, 61.62, 65.0, 59.75, 77.0, 59.25]], [[16.0, 77.86, 19.62, 78.75, 23.38, 78.63, 26.63, 78.25], [26.63, 78.25, 45.14, 76.11, 66.48, 73.7, 83.75, 72.8], [83.75, 72.8, 86.8, 72.64, 90.25, 72.75, 93.25, 73.43]], [[52.5, 11.51, 53.86, 12.87, 54.56, 14.29, 54.64, 17.53], [54.64, 17.53, 54.67, 18.6, 54.57, 66.32, 54.45, 88.23], [54.45, 88.23, 54.43, 92.5, 54.4, 95.59, 54.38, 96.88]]];
+const W=280,SCALE=W*0.82/109,OX=W*0.09,OY=W*0.09;
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');
+
+function tx(x){return OX+x*SCALE}
+function ty(y){return OY+(109-y)*SCALE}
+
+function drawSegs(segs,alpha,lw){
+  ctx.strokeStyle=`rgba(43,50,97,${alpha})`;
+  ctx.lineWidth=lw;ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.beginPath();
+  for(const s of segs){
+    ctx.moveTo(tx(s[0]),ty(s[1]));
+    ctx.bezierCurveTo(tx(s[2]),ty(s[3]),tx(s[4]),ty(s[5]),tx(s[6]),ty(s[7]));
+  }
+  ctx.stroke();
+}
+
+function drawAll(upTo,highlightLast){
+  ctx.clearRect(0,0,W,W);
+  for(let i=0;i<upTo-1;i++) drawSegs(strokes[i],0.25,3);
+  if(upTo>0) drawSegs(strokes[upTo-1],1.0, highlightLast?5:3);
+}
+
+let frame=0,timer=null;
+function playAnim(){
+  clearInterval(timer);frame=0;
+  timer=setInterval(()=>{
+    frame++;drawAll(frame,true);
+    if(frame>=strokes.length)clearInterval(timer);
+  },600);
+}
+
+function speakJP(){
+  const u=new SpeechSynthesisUtterance('車');
+  u.lang='ja-JP';u.rate=0.8;
+  speechSynthesis.speak(u);
+}
+
+// draw complete on load
+drawAll(strokes.length,false);
+</script>
+</body>
+</html>

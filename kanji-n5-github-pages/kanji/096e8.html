@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>雨 — Kanji N5</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#faf3e1;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:20px}
+h1{font-size:120px;color:#2b3261;margin:10px 0;line-height:1}
+.info{color:#2b3261;font-size:16px;margin:6px 0;text-align:center}
+.info span{font-size:14px;opacity:.7}
+.btn{margin:14px 6px;padding:12px 28px;border:none;border-radius:8px;font-size:16px;cursor:pointer;background:#2b3261;color:#faf3e1}
+.btn:active{opacity:.8}
+#canvas-wrap{margin:10px 0}
+canvas{border:2px solid #2b3261;border-radius:10px;background:#faf3e1}
+.examples{margin-top:16px;width:100%;max-width:380px}
+.ex{background:#f0e8d0;border-radius:8px;padding:10px 14px;margin:6px 0}
+.ex .kanji{font-size:22px;color:#2b3261;font-weight:bold}
+.ex .rom{font-size:13px;color:#7a6b20;margin-top:2px}
+.ex .th{font-size:13px;color:#2b3261;margin-top:2px}
+.back{margin-top:20px;color:#2b3261;font-size:13px;opacity:.6}
+</style>
+</head>
+<body>
+<h1>雨</h1>
+<div class="info">音読み <b>ウ</b> &nbsp;|&nbsp; 訓読み <b>あめ</b></div>
+<div class="info"><span>ความหมาย: </span><b>ฝน</b></div>
+<div id="canvas-wrap"><canvas id="c" width="280" height="280"></canvas></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+  <button class="btn" onclick="playAnim()">▶ ดู Stroke Order</button>
+  <button class="btn" onclick="speakJP()">🔊 ฟังเสียง</button>
+</div>
+<div class="examples">
+  <div class="ex">
+    <div class="kanji">大雨</div>
+    <div class="rom">ooame</div>
+    <div class="th">ฝนหนัก</div>
+  </div>
+  <div class="ex">
+    <div class="kanji">雨の日</div>
+    <div class="rom">amenohi</div>
+    <div class="th">วันฝนตก</div>
+  </div>
+</div>
+<div class="back">JLPT N5 Kanji Writing Practice</div>
+<script>
+const strokes=[[[25.75, 22.37, 27.62, 22.77, 30.22, 22.99, 32.07, 22.77], [32.07, 22.77, 43.75, 21.38, 60.35, 19.0, 73.32, 18.13], [73.32, 18.13, 75.81, 17.96, 77.69, 18.01, 80.5, 18.41]], [[15.5, 41.25, 16.75, 42.75, 17.16, 44.51, 17.39, 46.44], [17.39, 46.44, 18.63, 57.13, 19.58, 73.05, 20.05, 82.75], [20.05, 82.75, 20.18, 85.45, 20.25, 87.75, 20.25, 88.75]], [[18.25, 44.25, 19.67, 44.16, 81.01, 38.92, 87.75, 38.25], [87.75, 38.25, 90.25, 38.0, 92.36, 39.25, 92.25, 42.0], [92.25, 42.0, 91.75, 54.75, 90.48, 70.11, 86.25, 86.75], [86.25, 86.75, 84.37, 94.13, 80.87, 88.63, 77.75, 85.5]], [[52.25, 23.5, 53.31, 24.56, 54.0, 26.25, 54.0, 28.0], [54.0, 28.0, 54.0, 28.82, 53.75, 65.8, 53.57, 81.0], [53.57, 81.0, 53.53, 84.43, 53.5, 86.74, 53.5, 87.25]], [[31.0, 53.5, 35.21, 54.74, 39.95, 57.44, 42.25, 59.5]], [[30.5, 68.75, 34.3, 70.01, 40.18, 74.64, 42.25, 76.75]], [[66.88, 48.88, 71.86, 50.87, 77.51, 54.85, 79.5, 56.5]], [[67.25, 66.5, 70.0, 67.5, 76.25, 72.0, 78.25, 74.25]]];
+const W=280,SCALE=W*0.82/109,OX=W*0.09,OY=W*0.09;
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');
+
+function tx(x){return OX+x*SCALE}
+function ty(y){return OY+(109-y)*SCALE}
+
+function drawSegs(segs,alpha,lw){
+  ctx.strokeStyle=`rgba(43,50,97,${alpha})`;
+  ctx.lineWidth=lw;ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.beginPath();
+  for(const s of segs){
+    ctx.moveTo(tx(s[0]),ty(s[1]));
+    ctx.bezierCurveTo(tx(s[2]),ty(s[3]),tx(s[4]),ty(s[5]),tx(s[6]),ty(s[7]));
+  }
+  ctx.stroke();
+}
+
+function drawAll(upTo,highlightLast){
+  ctx.clearRect(0,0,W,W);
+  for(let i=0;i<upTo-1;i++) drawSegs(strokes[i],0.25,3);
+  if(upTo>0) drawSegs(strokes[upTo-1],1.0, highlightLast?5:3);
+}
+
+let frame=0,timer=null;
+function playAnim(){
+  clearInterval(timer);frame=0;
+  timer=setInterval(()=>{
+    frame++;drawAll(frame,true);
+    if(frame>=strokes.length)clearInterval(timer);
+  },600);
+}
+
+function speakJP(){
+  const u=new SpeechSynthesisUtterance('雨');
+  u.lang='ja-JP';u.rate=0.8;
+  speechSynthesis.speak(u);
+}
+
+// draw complete on load
+drawAll(strokes.length,false);
+</script>
+</body>
+</html>

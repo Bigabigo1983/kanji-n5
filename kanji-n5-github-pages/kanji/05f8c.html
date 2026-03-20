@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>後 — Kanji N5</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#faf3e1;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:20px}
+h1{font-size:120px;color:#2b3261;margin:10px 0;line-height:1}
+.info{color:#2b3261;font-size:16px;margin:6px 0;text-align:center}
+.info span{font-size:14px;opacity:.7}
+.btn{margin:14px 6px;padding:12px 28px;border:none;border-radius:8px;font-size:16px;cursor:pointer;background:#2b3261;color:#faf3e1}
+.btn:active{opacity:.8}
+#canvas-wrap{margin:10px 0}
+canvas{border:2px solid #2b3261;border-radius:10px;background:#faf3e1}
+.examples{margin-top:16px;width:100%;max-width:380px}
+.ex{background:#f0e8d0;border-radius:8px;padding:10px 14px;margin:6px 0}
+.ex .kanji{font-size:22px;color:#2b3261;font-weight:bold}
+.ex .rom{font-size:13px;color:#7a6b20;margin-top:2px}
+.ex .th{font-size:13px;color:#2b3261;margin-top:2px}
+.back{margin-top:20px;color:#2b3261;font-size:13px;opacity:.6}
+</style>
+</head>
+<body>
+<h1>後</h1>
+<div class="info">音読み <b>ゴ</b> &nbsp;|&nbsp; 訓読み <b>あと</b></div>
+<div class="info"><span>ความหมาย: </span><b>หลัง</b></div>
+<div id="canvas-wrap"><canvas id="c" width="280" height="280"></canvas></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+  <button class="btn" onclick="playAnim()">▶ ดู Stroke Order</button>
+  <button class="btn" onclick="speakJP()">🔊 ฟังเสียง</button>
+</div>
+<div class="examples">
+  <div class="ex">
+    <div class="kanji">午後</div>
+    <div class="rom">gogo</div>
+    <div class="th">บ่าย</div>
+  </div>
+  <div class="ex">
+    <div class="kanji">後で</div>
+    <div class="rom">atode</div>
+    <div class="th">ทีหลัง</div>
+  </div>
+</div>
+<div class="back">JLPT N5 Kanji Writing Practice</div>
+<script>
+const strokes=[[[34.25, 18.38, 34.25, 19.68, 34.01, 20.64, 33.32, 21.43], [33.32, 21.43, 29.75, 25.5, 24.38, 30.13, 17.41, 34.82]], [[38.75, 36.62, 38.89, 37.94, 38.33, 39.29, 37.62, 40.41], [37.62, 40.41, 34.17, 45.81, 26.19, 54.58, 15.25, 63.12]], [[28.4, 54.36, 29.21, 55.17, 29.78, 56.38, 29.78, 57.64], [29.78, 57.64, 29.78, 58.32, 29.81, 83.21, 29.71, 93.5], [29.71, 93.5, 29.69, 95.24, 29.67, 96.55, 29.66, 97.25]], [[61.16, 12.62, 61.45, 13.69, 61.37, 15.05, 60.77, 16.16], [60.77, 16.16, 58.25, 20.76, 54.67, 25.17, 50.89, 29.09], [50.89, 29.09, 49.88, 30.14, 49.63, 31.26, 50.89, 31.77], [50.89, 31.77, 53.85, 32.96, 57.19, 34.88, 59.77, 36.84]], [[76.35, 20.12, 76.62, 21.37, 76.05, 22.68, 75.35, 23.43], [75.35, 23.43, 67.75, 31.62, 58.75, 40.0, 48.74, 48.75], [48.74, 48.75, 47.49, 49.85, 48.0, 50.51, 49.48, 50.16], [49.48, 50.16, 55.72, 48.69, 74.5, 44.4, 82.5, 43.0]], [[77.88, 36.25, 81.54, 38.46, 87.34, 45.32, 88.26, 48.75]], [[57.75, 53.0, 57.84, 54.13, 57.77, 55.27, 57.35, 56.33], [57.35, 56.33, 55.15, 61.84, 50.27, 69.55, 41.75, 77.25]], [[59.31, 59.82, 60.48, 59.95, 61.62, 59.84, 62.6, 59.73], [62.6, 59.73, 65.25, 59.44, 72.44, 58.34, 76.22, 57.44], [76.22, 57.44, 78.81, 56.82, 79.46, 58.12, 78.89, 59.84], [78.89, 59.84, 75.25, 70.75, 59.25, 88.88, 43.02, 96.5]], [[54.75, 67.5, 57.27, 67.5, 74.25, 83.25, 85.92, 91.73], [85.92, 91.73, 88.23, 93.41, 90.66, 95.11, 93.5, 95.74]]];
+const W=280,SCALE=W*0.82/109,OX=W*0.09,OY=W*0.09;
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');
+
+function tx(x){return OX+x*SCALE}
+function ty(y){return OY+(109-y)*SCALE}
+
+function drawSegs(segs,alpha,lw){
+  ctx.strokeStyle=`rgba(43,50,97,${alpha})`;
+  ctx.lineWidth=lw;ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.beginPath();
+  for(const s of segs){
+    ctx.moveTo(tx(s[0]),ty(s[1]));
+    ctx.bezierCurveTo(tx(s[2]),ty(s[3]),tx(s[4]),ty(s[5]),tx(s[6]),ty(s[7]));
+  }
+  ctx.stroke();
+}
+
+function drawAll(upTo,highlightLast){
+  ctx.clearRect(0,0,W,W);
+  for(let i=0;i<upTo-1;i++) drawSegs(strokes[i],0.25,3);
+  if(upTo>0) drawSegs(strokes[upTo-1],1.0, highlightLast?5:3);
+}
+
+let frame=0,timer=null;
+function playAnim(){
+  clearInterval(timer);frame=0;
+  timer=setInterval(()=>{
+    frame++;drawAll(frame,true);
+    if(frame>=strokes.length)clearInterval(timer);
+  },600);
+}
+
+function speakJP(){
+  const u=new SpeechSynthesisUtterance('後');
+  u.lang='ja-JP';u.rate=0.8;
+  speechSynthesis.speak(u);
+}
+
+// draw complete on load
+drawAll(strokes.length,false);
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>年 — Kanji N5</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#faf3e1;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:20px}
+h1{font-size:120px;color:#2b3261;margin:10px 0;line-height:1}
+.info{color:#2b3261;font-size:16px;margin:6px 0;text-align:center}
+.info span{font-size:14px;opacity:.7}
+.btn{margin:14px 6px;padding:12px 28px;border:none;border-radius:8px;font-size:16px;cursor:pointer;background:#2b3261;color:#faf3e1}
+.btn:active{opacity:.8}
+#canvas-wrap{margin:10px 0}
+canvas{border:2px solid #2b3261;border-radius:10px;background:#faf3e1}
+.examples{margin-top:16px;width:100%;max-width:380px}
+.ex{background:#f0e8d0;border-radius:8px;padding:10px 14px;margin:6px 0}
+.ex .kanji{font-size:22px;color:#2b3261;font-weight:bold}
+.ex .rom{font-size:13px;color:#7a6b20;margin-top:2px}
+.ex .th{font-size:13px;color:#2b3261;margin-top:2px}
+.back{margin-top:20px;color:#2b3261;font-size:13px;opacity:.6}
+</style>
+</head>
+<body>
+<h1>年</h1>
+<div class="info">音読み <b>ネン</b> &nbsp;|&nbsp; 訓読み <b>とし</b></div>
+<div class="info"><span>ความหมาย: </span><b>ปี</b></div>
+<div id="canvas-wrap"><canvas id="c" width="280" height="280"></canvas></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+  <button class="btn" onclick="playAnim()">▶ ดู Stroke Order</button>
+  <button class="btn" onclick="speakJP()">🔊 ฟังเสียง</button>
+</div>
+<div class="examples">
+  <div class="ex">
+    <div class="kanji">今年</div>
+    <div class="rom">kotoshi</div>
+    <div class="th">ปีนี้</div>
+  </div>
+  <div class="ex">
+    <div class="kanji">来年</div>
+    <div class="rom">rainen</div>
+    <div class="th">ปีหน้า</div>
+  </div>
+</div>
+<div class="back">JLPT N5 Kanji Writing Practice</div>
+<script>
+const strokes=[[[40.01, 11.89, 40.25, 13.5, 40.0, 14.75, 39.17, 16.35], [39.17, 16.35, 36.64, 21.19, 32.26, 27.75, 23.31, 35.97]], [[39.13, 23.62, 41.38, 24.0, 43.53, 23.8, 44.92, 23.65], [44.92, 23.65, 56.62, 22.38, 66.25, 20.75, 78.14, 19.58], [78.14, 19.58, 80.44, 19.35, 82.34, 19.58, 83.49, 19.84]], [[30.13, 43.59, 31.49, 43.92, 34.0, 44.05, 35.34, 43.92], [35.34, 43.92, 46.25, 42.87, 63.87, 40.5, 76.12, 39.66], [76.12, 39.66, 78.38, 39.51, 79.75, 39.82, 80.88, 39.98]], [[33.75, 44.5, 34.75, 45.75, 34.75, 46.47, 34.76, 48.0], [34.76, 48.0, 34.8, 52.33, 35.0, 65.29, 35.0, 66.25]], [[13.88, 67.74, 15.85, 68.21, 19.49, 68.4, 21.45, 68.21], [21.45, 68.21, 41.66, 66.18, 57.8, 63.59, 88.1, 62.9], [88.1, 62.9, 91.39, 62.82, 93.36, 63.12, 95.01, 63.36]], [[56.56, 25.46, 57.68, 26.58, 58.35, 29.0, 58.35, 30.4], [58.35, 30.4, 58.35, 31.29, 58.3, 74.66, 58.22, 92.0], [58.22, 92.0, 58.21, 95.12, 58.19, 97.39, 58.17, 98.38]]];
+const W=280,SCALE=W*0.82/109,OX=W*0.09,OY=W*0.09;
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');
+
+function tx(x){return OX+x*SCALE}
+function ty(y){return OY+(109-y)*SCALE}
+
+function drawSegs(segs,alpha,lw){
+  ctx.strokeStyle=`rgba(43,50,97,${alpha})`;
+  ctx.lineWidth=lw;ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.beginPath();
+  for(const s of segs){
+    ctx.moveTo(tx(s[0]),ty(s[1]));
+    ctx.bezierCurveTo(tx(s[2]),ty(s[3]),tx(s[4]),ty(s[5]),tx(s[6]),ty(s[7]));
+  }
+  ctx.stroke();
+}
+
+function drawAll(upTo,highlightLast){
+  ctx.clearRect(0,0,W,W);
+  for(let i=0;i<upTo-1;i++) drawSegs(strokes[i],0.25,3);
+  if(upTo>0) drawSegs(strokes[upTo-1],1.0, highlightLast?5:3);
+}
+
+let frame=0,timer=null;
+function playAnim(){
+  clearInterval(timer);frame=0;
+  timer=setInterval(()=>{
+    frame++;drawAll(frame,true);
+    if(frame>=strokes.length)clearInterval(timer);
+  },600);
+}
+
+function speakJP(){
+  const u=new SpeechSynthesisUtterance('年');
+  u.lang='ja-JP';u.rate=0.8;
+  speechSynthesis.speak(u);
+}
+
+// draw complete on load
+drawAll(strokes.length,false);
+</script>
+</body>
+</html>

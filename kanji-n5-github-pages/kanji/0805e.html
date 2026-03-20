@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>聞 — Kanji N5</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#faf3e1;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:20px}
+h1{font-size:120px;color:#2b3261;margin:10px 0;line-height:1}
+.info{color:#2b3261;font-size:16px;margin:6px 0;text-align:center}
+.info span{font-size:14px;opacity:.7}
+.btn{margin:14px 6px;padding:12px 28px;border:none;border-radius:8px;font-size:16px;cursor:pointer;background:#2b3261;color:#faf3e1}
+.btn:active{opacity:.8}
+#canvas-wrap{margin:10px 0}
+canvas{border:2px solid #2b3261;border-radius:10px;background:#faf3e1}
+.examples{margin-top:16px;width:100%;max-width:380px}
+.ex{background:#f0e8d0;border-radius:8px;padding:10px 14px;margin:6px 0}
+.ex .kanji{font-size:22px;color:#2b3261;font-weight:bold}
+.ex .rom{font-size:13px;color:#7a6b20;margin-top:2px}
+.ex .th{font-size:13px;color:#2b3261;margin-top:2px}
+.back{margin-top:20px;color:#2b3261;font-size:13px;opacity:.6}
+</style>
+</head>
+<body>
+<h1>聞</h1>
+<div class="info">音読み <b>モン</b> &nbsp;|&nbsp; 訓読み <b>きく</b></div>
+<div class="info"><span>ความหมาย: </span><b>ฟัง</b></div>
+<div id="canvas-wrap"><canvas id="c" width="280" height="280"></canvas></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+  <button class="btn" onclick="playAnim()">▶ ดู Stroke Order</button>
+  <button class="btn" onclick="speakJP()">🔊 ฟังเสียง</button>
+</div>
+<div class="examples">
+  <div class="ex">
+    <div class="kanji">聞く</div>
+    <div class="rom">kiku</div>
+    <div class="th">ฟัง</div>
+  </div>
+  <div class="ex">
+    <div class="kanji">新聞</div>
+    <div class="rom">shinbun</div>
+    <div class="th">หนังสือพิมพ์</div>
+  </div>
+</div>
+<div class="back">JLPT N5 Kanji Writing Practice</div>
+<script>
+const strokes=[[[16.14, 17.97, 17.08, 18.91, 17.65, 20.13, 17.65, 21.22], [17.65, 21.22, 17.65, 21.99, 17.62, 69.67, 17.47, 87.51], [17.47, 87.51, 17.44, 90.67, 17.42, 92.88, 17.4, 93.72]], [[19.01, 19.6, 25.87, 18.38, 37.5, 16.5, 40.09, 16.21], [40.09, 16.21, 41.99, 16.0, 43.12, 17.0, 43.09, 18.67], [43.09, 18.67, 43.05, 20.51, 42.5, 29.13, 41.65, 38.69], [41.65, 38.69, 41.56, 39.73, 41.5, 40.69, 41.5, 41.38]], [[18.81, 30.43, 25.75, 29.38, 34.63, 27.88, 41.22, 27.53]], [[17.86, 42.57, 26.25, 41.25, 33.0, 40.0, 40.42, 39.4]], [[66.21, 14.22, 66.87, 14.88, 67.38, 16.0, 67.38, 17.15], [67.38, 17.15, 67.38, 17.71, 67.5, 30.34, 67.55, 36.25], [67.55, 36.25, 67.57, 37.96, 67.58, 39.08, 67.58, 39.16]], [[68.51, 16.1, 75.4, 15.0, 87.79, 12.84, 89.68, 12.74], [89.68, 12.74, 91.64, 12.64, 93.25, 14.12, 93.25, 15.72], [93.25, 15.72, 93.25, 34.5, 92.99, 76.0, 92.99, 89.61], [92.99, 89.61, 92.99, 100.74, 86.62, 91.74, 84.78, 89.86]], [[68.59, 25.94, 73.75, 25.25, 86.75, 23.5, 91.59, 23.23]], [[69.13, 36.75, 75.5, 36.0, 84.25, 34.75, 91.28, 34.22]], [[33.5, 51.24, 35.21, 51.55, 37.52, 51.49, 39.21, 51.3], [39.21, 51.3, 48.81, 50.25, 59.42, 48.25, 69.87, 47.25], [69.87, 47.25, 72.7, 46.98, 74.44, 47.15, 75.87, 47.3]], [[42.71, 53.0, 43.6, 53.89, 44.01, 55.26, 44.01, 56.51], [44.01, 56.51, 44.01, 57.76, 44.0, 79.31, 44.0, 83.84]], [[45.13, 61.43, 49.62, 61.0, 58.87, 59.38, 64.91, 59.07]], [[44.81, 71.67, 50.53, 71.0, 57.12, 69.75, 64.93, 68.72]], [[32.51, 85.14, 33.5, 86.0, 34.71, 86.37, 35.76, 86.06], [35.76, 86.06, 40.63, 84.63, 63.96, 78.23, 70.52, 76.67]], [[64.84, 49.66, 65.46, 50.29, 65.89, 51.37, 65.89, 52.65], [65.89, 52.65, 65.89, 53.31, 66.01, 80.2, 66.04, 91.75], [66.04, 91.75, 66.05, 93.63, 66.05, 95.11, 66.05, 96.0]]];
+const W=280,SCALE=W*0.82/109,OX=W*0.09,OY=W*0.09;
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');
+
+function tx(x){return OX+x*SCALE}
+function ty(y){return OY+(109-y)*SCALE}
+
+function drawSegs(segs,alpha,lw){
+  ctx.strokeStyle=`rgba(43,50,97,${alpha})`;
+  ctx.lineWidth=lw;ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.beginPath();
+  for(const s of segs){
+    ctx.moveTo(tx(s[0]),ty(s[1]));
+    ctx.bezierCurveTo(tx(s[2]),ty(s[3]),tx(s[4]),ty(s[5]),tx(s[6]),ty(s[7]));
+  }
+  ctx.stroke();
+}
+
+function drawAll(upTo,highlightLast){
+  ctx.clearRect(0,0,W,W);
+  for(let i=0;i<upTo-1;i++) drawSegs(strokes[i],0.25,3);
+  if(upTo>0) drawSegs(strokes[upTo-1],1.0, highlightLast?5:3);
+}
+
+let frame=0,timer=null;
+function playAnim(){
+  clearInterval(timer);frame=0;
+  timer=setInterval(()=>{
+    frame++;drawAll(frame,true);
+    if(frame>=strokes.length)clearInterval(timer);
+  },600);
+}
+
+function speakJP(){
+  const u=new SpeechSynthesisUtterance('聞');
+  u.lang='ja-JP';u.rate=0.8;
+  speechSynthesis.speak(u);
+}
+
+// draw complete on load
+drawAll(strokes.length,false);
+</script>
+</body>
+</html>
