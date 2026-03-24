@@ -2,90 +2,128 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>書 — Kanji N5</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>書 — JLPT N5</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#faf3e1;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:20px}
-h1{font-size:120px;color:#2b3261;margin:10px 0;line-height:1}
-.info{color:#2b3261;font-size:16px;margin:6px 0;text-align:center}
-.info span{font-size:14px;opacity:.7}
-.btn{margin:14px 6px;padding:12px 28px;border:none;border-radius:8px;font-size:16px;cursor:pointer;background:#2b3261;color:#faf3e1}
-.btn:active{opacity:.8}
-#canvas-wrap{margin:10px 0}
-canvas{border:2px solid #2b3261;border-radius:10px;background:#faf3e1}
-.examples{margin-top:16px;width:100%;max-width:380px}
-.ex{background:#f0e8d0;border-radius:8px;padding:10px 14px;margin:6px 0}
-.ex .kanji{font-size:22px;color:#2b3261;font-weight:bold}
-.ex .rom{font-size:13px;color:#7a6b20;margin-top:2px}
-.ex .th{font-size:13px;color:#2b3261;margin-top:2px}
-.back{margin-top:20px;color:#2b3261;font-size:13px;opacity:.6}
+body{background:#FFF6E9;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;color:#2B3261;min-height:100vh;padding-bottom:32px}
+.hd{background:#2B3261;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.hd-k{font-size:52px;color:#FFF6E9;line-height:1}
+.hd-r{text-align:right}
+.hd-m{font-size:20px;font-weight:700;color:#FFF6E9}
+.hd-s{font-size:11px;color:#8892B8;margin-top:2px}
+.vs{background:#1A2850;padding:14px 16px;text-align:center}
+.vs-lbl{color:#8892B8;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:block;margin:0 auto}
+.vc{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.vb{padding:7px 16px;border:1.5px solid #8892B8;border-radius:20px;background:transparent;color:#FFF6E9;font-size:12px;cursor:pointer;font-weight:500}
+.vb:active{background:#2B3261}
+.cards{padding:12px 12px 0}
+.card{border-radius:12px;padding:12px 14px;margin-bottom:10px;border:1px solid #D1C9BE;background:#FAF3E1}
+.card.on{border-left:4px solid #2B3261}
+.card.kun{border-left:4px solid #C72E1A}
+.ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.ct{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9B8E7A;margin-bottom:3px}
+.cv{font-size:24px;font-weight:800;color:#1A1F40;line-height:1.1}
+.cr{font-size:12px;color:#806B50;margin-top:2px}
+.bs{padding:8px 14px;border:none;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+.card.on .bs{background:#2B3261;color:#FFF6E9}
+.card.kun .bs{background:#C72E1A;color:#FFF6E9}
+.bs:active{opacity:0.8}
+.ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:8px;padding:6px 10px;cursor:pointer;min-width:72px}
+.wc:active{background:#EDE5D5}
+.wj{font-size:15px;font-weight:700;color:#1A1F40}
+.wr{font-size:10px;color:#806B50;margin-top:1px}
+.we{font-size:10px;color:#555580}
+.sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer}
+.sb:active{background:#E0D5C2}
+.sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
+.sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
+.sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
+.sen{font-size:11px;color:#555580;margin-top:2px}
+.sh{font-size:9px;color:#B3ADA5;margin-top:4px}
+.ft{text-align:center;padding:20px 16px 0;font-size:10px;color:#B3ADA5}
 </style>
 </head>
 <body>
-<h1>書</h1>
-<div class="info">音読み <b>ショ</b> &nbsp;|&nbsp; 訓読み <b>かく</b></div>
-<div class="info"><span>ความหมาย: </span><b>เขียน</b></div>
-<div id="canvas-wrap"><canvas id="c" width="280" height="280"></canvas></div>
-<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
-  <button class="btn" onclick="playAnim()">▶ ดู Stroke Order</button>
-  <button class="btn" onclick="speakJP()">🔊 ฟังเสียง</button>
-</div>
-<div class="examples">
-  <div class="ex">
-    <div class="kanji">書く</div>
-    <div class="rom">kaku</div>
-    <div class="th">เขียน</div>
-  </div>
-  <div class="ex">
-    <div class="kanji">教科書</div>
-    <div class="rom">kyoukasho</div>
-    <div class="th">ตำรา</div>
+
+<div class="hd">
+  <div class="hd-k">書</div>
+  <div class="hd-r">
+    <div class="hd-m">write</div>
+    <div class="hd-s">10 strokes &nbsp;·&nbsp; JLPT N5</div>
   </div>
 </div>
-<div class="back">JLPT N5 Kanji Writing Practice</div>
+
+<div class="vs">
+  <div class="vs-lbl">✏ Stroke Order</div>
+  <video id="vid" src="../../kanji_videos/066f8_書_final.mp4" playsinline loop muted autoplay></video>
+  <div class="vc">
+    <button class="vb" onclick="document.getElementById('vid').play()">&#9654; Play</button>
+    <button class="vb" onclick="document.getElementById('vid').pause()">&#9646;&#9646; Pause</button>
+    <button class="vb" onclick="var v=document.getElementById('vid');v.currentTime=0;v.play()">&#8635; Replay</button>
+  </div>
+</div>
+
+<div class="cards">
+
+  <div class="card on">
+    <div class="ch">
+      <div>
+        <div class="ct">&#38899;&#35501;&#12415; &middot; On Reading</div>
+        <div class="cv">ショ</div>
+        <div class="cr">(sho)</div>
+      </div>
+      <button class="bs" onclick="speak('ショ','on')">&#128266; Listen</button>
+    </div>
+    <div class="ws">
+      <div class="wc" onclick="speak('書く','word')">
+        <div class="wj">書く</div>
+        <div class="wr">kaku</div>
+        <div class="we">to write</div>
+      </div>
+    </div>
+    <div class="sb" onclick="speak('作文を書いてください。','sent')"><div class="sl">&#128221; Example sentence</div><div class="sj">作文を書いてください。</div><div class="sro">Sakubun wo kaite kudasai.</div><div class="sen">Please write a composition.</div><div class="sh">tap to hear</div></div>
+  </div>
+
+  <div class="card kun">
+    <div class="ch">
+      <div>
+        <div class="ct">&#35613;&#35501;&#12415; &middot; Kun Reading</div>
+        <div class="cv">かく</div>
+        <div class="cr">(kaku)</div>
+      </div>
+      <button class="bs" onclick="speak('かく','kun')">&#128266; Listen</button>
+    </div>
+    <div class="ws">
+      <div class="wc" onclick="speak('教科書','word')">
+        <div class="wj">教科書</div>
+        <div class="wr">kyoukasho</div>
+        <div class="we">textbook</div>
+      </div>
+    </div>
+    <div class="sb" onclick="speak('手紙を書きました。','sent')"><div class="sl">&#128221; Example sentence</div><div class="sj">手紙を書きました。</div><div class="sro">Tegami wo kakimashita.</div><div class="sen">I wrote a letter.</div><div class="sh">tap to hear</div></div>
+  </div>
+
+</div>
+
+<div class="ft">JLPT N5 Kanji Writing Practice &nbsp;&middot;&nbsp; Between Line Studio<br>Stroke data: KanjiVG &copy; Ulrich Apel (CC BY-SA 3.0)</div>
+
 <script>
-const strokes=[[[30.74, 20.63, 32.75, 21.12, 34.58, 21.21, 36.65, 21.02], [36.65, 21.02, 46.1, 20.13, 65.19, 18.05, 74.19, 17.38], [74.19, 17.38, 77.11, 17.16, 78.37, 18.62, 77.85, 20.93], [77.85, 20.93, 77.45, 22.69, 75.29, 30.55, 73.97, 37.49]], [[11.89, 32.34, 15.06, 33.0, 17.76, 32.81, 21.47, 32.53], [21.47, 32.53, 41.63, 31.01, 69.88, 28.63, 89.38, 27.89], [89.38, 27.89, 93.46, 27.73, 96.45, 28.15, 98.29, 28.48]], [[29.86, 41.38, 31.5, 41.87, 33.25, 41.9, 34.7, 41.82], [34.7, 41.82, 44.37, 41.25, 62.25, 39.75, 72.13, 38.97], [72.13, 38.97, 74.06, 38.82, 75.27, 38.89, 76.72, 39.04]], [[30.04, 52.06, 31.51, 52.32, 33.69, 52.6, 35.16, 52.49], [35.16, 52.49, 47.5, 51.51, 60.75, 50.26, 71.94, 49.18], [71.94, 49.18, 74.37, 48.95, 76.35, 48.99, 77.57, 49.11]], [[17.0, 63.44, 19.0, 64.02, 22.67, 64.01, 24.66, 63.85], [24.66, 63.85, 45.44, 62.15, 67.58, 59.92, 85.75, 59.37], [85.75, 59.37, 89.08, 59.27, 91.08, 59.52, 92.74, 59.79]], [[52.69, 9.52, 54.02, 10.85, 54.64, 12.5, 54.64, 14.23], [54.64, 14.23, 54.64, 19.9, 54.86, 47.95, 54.95, 60.0]], [[31.25, 71.75, 31.68, 72.21, 32.49, 73.19, 32.68, 74.45], [32.68, 74.45, 33.79, 81.87, 34.9, 88.78, 35.86, 95.19], [35.86, 95.19, 36.04, 96.39, 36.2, 97.57, 36.35, 98.76]], [[33.75, 73.75, 48.73, 71.7, 69.85, 70.04, 78.16, 69.49], [78.16, 69.49, 81.49, 69.27, 83.25, 71.25, 82.76, 73.82], [82.76, 73.82, 81.77, 79.04, 80.75, 85.37, 78.95, 93.23], [78.95, 93.23, 78.65, 94.54, 78.21, 95.78, 77.8, 96.95]], [[35.5, 83.75, 46.79, 83.03, 65.75, 81.5, 80.25, 81.0]], [[37.25, 95.25, 47.95, 94.57, 63.75, 93.87, 77.75, 93.25]]];
-const W=280,SCALE=W*0.82/109,OX=W*0.09,OY=W*0.09;
-const cv=document.getElementById('c'),ctx=cv.getContext('2d');
-
-function tx(x){return OX+x*SCALE}
-function ty(y){return OY+(109-y)*SCALE}
-
-function drawSegs(segs,alpha,lw){
-  ctx.strokeStyle=`rgba(43,50,97,${alpha})`;
-  ctx.lineWidth=lw;ctx.lineCap='round';ctx.lineJoin='round';
-  ctx.beginPath();
-  for(const s of segs){
-    ctx.moveTo(tx(s[0]),ty(s[1]));
-    ctx.bezierCurveTo(tx(s[2]),ty(s[3]),tx(s[4]),ty(s[5]),tx(s[6]),ty(s[7]));
-  }
-  ctx.stroke();
-}
-
-function drawAll(upTo,highlightLast){
-  ctx.clearRect(0,0,W,W);
-  for(let i=0;i<upTo-1;i++) drawSegs(strokes[i],0.25,3);
-  if(upTo>0) drawSegs(strokes[upTo-1],1.0, highlightLast?5:3);
-}
-
-let frame=0,timer=null;
-function playAnim(){
-  clearInterval(timer);frame=0;
-  timer=setInterval(()=>{
-    frame++;drawAll(frame,true);
-    if(frame>=strokes.length)clearInterval(timer);
-  },600);
-}
-
-function speakJP(){
-  const u=new SpeechSynthesisUtterance('書');
-  u.lang='ja-JP';u.rate=0.8;
+function speak(text,type){
+  if(!text||!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang='ja-JP';
+  u.rate=type==='sent'?0.82:0.95;
+  u.pitch=1.0;
+  var voices=speechSynthesis.getVoices();
+  var jp=voices.find(function(v){return v.lang.startsWith('ja')});
+  if(jp)u.voice=jp;
   speechSynthesis.speak(u);
 }
-
-// draw complete on load
-drawAll(strokes.length,false);
+window.speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices()};
 </script>
 </body>
 </html>

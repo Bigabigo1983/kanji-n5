@@ -2,90 +2,128 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>赤 — Kanji N5</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>赤 — JLPT N5</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#faf3e1;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:20px}
-h1{font-size:120px;color:#2b3261;margin:10px 0;line-height:1}
-.info{color:#2b3261;font-size:16px;margin:6px 0;text-align:center}
-.info span{font-size:14px;opacity:.7}
-.btn{margin:14px 6px;padding:12px 28px;border:none;border-radius:8px;font-size:16px;cursor:pointer;background:#2b3261;color:#faf3e1}
-.btn:active{opacity:.8}
-#canvas-wrap{margin:10px 0}
-canvas{border:2px solid #2b3261;border-radius:10px;background:#faf3e1}
-.examples{margin-top:16px;width:100%;max-width:380px}
-.ex{background:#f0e8d0;border-radius:8px;padding:10px 14px;margin:6px 0}
-.ex .kanji{font-size:22px;color:#2b3261;font-weight:bold}
-.ex .rom{font-size:13px;color:#7a6b20;margin-top:2px}
-.ex .th{font-size:13px;color:#2b3261;margin-top:2px}
-.back{margin-top:20px;color:#2b3261;font-size:13px;opacity:.6}
+body{background:#FFF6E9;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;color:#2B3261;min-height:100vh;padding-bottom:32px}
+.hd{background:#2B3261;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.hd-k{font-size:52px;color:#FFF6E9;line-height:1}
+.hd-r{text-align:right}
+.hd-m{font-size:20px;font-weight:700;color:#FFF6E9}
+.hd-s{font-size:11px;color:#8892B8;margin-top:2px}
+.vs{background:#1A2850;padding:14px 16px;text-align:center}
+.vs-lbl{color:#8892B8;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:block;margin:0 auto}
+.vc{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.vb{padding:7px 16px;border:1.5px solid #8892B8;border-radius:20px;background:transparent;color:#FFF6E9;font-size:12px;cursor:pointer;font-weight:500}
+.vb:active{background:#2B3261}
+.cards{padding:12px 12px 0}
+.card{border-radius:12px;padding:12px 14px;margin-bottom:10px;border:1px solid #D1C9BE;background:#FAF3E1}
+.card.on{border-left:4px solid #2B3261}
+.card.kun{border-left:4px solid #C72E1A}
+.ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.ct{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9B8E7A;margin-bottom:3px}
+.cv{font-size:24px;font-weight:800;color:#1A1F40;line-height:1.1}
+.cr{font-size:12px;color:#806B50;margin-top:2px}
+.bs{padding:8px 14px;border:none;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+.card.on .bs{background:#2B3261;color:#FFF6E9}
+.card.kun .bs{background:#C72E1A;color:#FFF6E9}
+.bs:active{opacity:0.8}
+.ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:8px;padding:6px 10px;cursor:pointer;min-width:72px}
+.wc:active{background:#EDE5D5}
+.wj{font-size:15px;font-weight:700;color:#1A1F40}
+.wr{font-size:10px;color:#806B50;margin-top:1px}
+.we{font-size:10px;color:#555580}
+.sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer}
+.sb:active{background:#E0D5C2}
+.sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
+.sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
+.sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
+.sen{font-size:11px;color:#555580;margin-top:2px}
+.sh{font-size:9px;color:#B3ADA5;margin-top:4px}
+.ft{text-align:center;padding:20px 16px 0;font-size:10px;color:#B3ADA5}
 </style>
 </head>
 <body>
-<h1>赤</h1>
-<div class="info">音読み <b>セキ</b> &nbsp;|&nbsp; 訓読み <b>あか</b></div>
-<div class="info"><span>ความหมาย: </span><b>แดง</b></div>
-<div id="canvas-wrap"><canvas id="c" width="280" height="280"></canvas></div>
-<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
-  <button class="btn" onclick="playAnim()">▶ ดู Stroke Order</button>
-  <button class="btn" onclick="speakJP()">🔊 ฟังเสียง</button>
-</div>
-<div class="examples">
-  <div class="ex">
-    <div class="kanji">赤い</div>
-    <div class="rom">akai</div>
-    <div class="th">สีแดง</div>
-  </div>
-  <div class="ex">
-    <div class="kanji">赤ちゃん</div>
-    <div class="rom">akachan</div>
-    <div class="th">ทารก</div>
+
+<div class="hd">
+  <div class="hd-k">赤</div>
+  <div class="hd-r">
+    <div class="hd-m">red</div>
+    <div class="hd-s">7 strokes &nbsp;·&nbsp; JLPT N5</div>
   </div>
 </div>
-<div class="back">JLPT N5 Kanji Writing Practice</div>
+
+<div class="vs">
+  <div class="vs-lbl">✏ Stroke Order</div>
+  <video id="vid" src="../../kanji_videos/08d64_赤_final.mp4" playsinline loop muted autoplay></video>
+  <div class="vc">
+    <button class="vb" onclick="document.getElementById('vid').play()">&#9654; Play</button>
+    <button class="vb" onclick="document.getElementById('vid').pause()">&#9646;&#9646; Pause</button>
+    <button class="vb" onclick="var v=document.getElementById('vid');v.currentTime=0;v.play()">&#8635; Replay</button>
+  </div>
+</div>
+
+<div class="cards">
+
+  <div class="card on">
+    <div class="ch">
+      <div>
+        <div class="ct">&#38899;&#35501;&#12415; &middot; On Reading</div>
+        <div class="cv">セキ</div>
+        <div class="cr">(seki)</div>
+      </div>
+      <button class="bs" onclick="speak('セキ','on')">&#128266; Listen</button>
+    </div>
+    <div class="ws">
+      <div class="wc" onclick="speak('赤い','word')">
+        <div class="wj">赤い</div>
+        <div class="wr">akai</div>
+        <div class="we">red</div>
+      </div>
+    </div>
+    <div class="sb" onclick="speak('赤信号で止まってください。','sent')"><div class="sl">&#128221; Example sentence</div><div class="sj">赤信号で止まってください。</div><div class="sro">Akashingou de tomatte kudasai.</div><div class="sen">Please stop at the red light.</div><div class="sh">tap to hear</div></div>
+  </div>
+
+  <div class="card kun">
+    <div class="ch">
+      <div>
+        <div class="ct">&#35613;&#35501;&#12415; &middot; Kun Reading</div>
+        <div class="cv">あか</div>
+        <div class="cr">(aka)</div>
+      </div>
+      <button class="bs" onclick="speak('あか','kun')">&#128266; Listen</button>
+    </div>
+    <div class="ws">
+      <div class="wc" onclick="speak('赤ちゃん','word')">
+        <div class="wj">赤ちゃん</div>
+        <div class="wr">akachan</div>
+        <div class="we">baby</div>
+      </div>
+    </div>
+    <div class="sb" onclick="speak('赤いりんごが好きです。','sent')"><div class="sl">&#128221; Example sentence</div><div class="sj">赤いりんごが好きです。</div><div class="sro">Akai ringo ga suki desu.</div><div class="sen">I like red apples.</div><div class="sh">tap to hear</div></div>
+  </div>
+
+</div>
+
+<div class="ft">JLPT N5 Kanji Writing Practice &nbsp;&middot;&nbsp; Between Line Studio<br>Stroke data: KanjiVG &copy; Ulrich Apel (CC BY-SA 3.0)</div>
+
 <script>
-const strokes=[[[30.13, 29.42, 32.68, 30.06, 35.31, 29.9, 37.89, 29.57], [37.89, 29.57, 47.42, 28.34, 61.03, 25.7, 69.5, 25.05], [69.5, 25.05, 72.01, 24.86, 74.4, 24.92, 76.88, 25.3]], [[52.24, 12.45, 53.77, 13.98, 54.25, 16.0, 54.25, 17.5], [54.25, 17.5, 54.25, 20.83, 54.29, 42.7, 54.25, 43.75]], [[14.38, 49.17, 17.02, 49.75, 19.36, 50.08, 24.5, 49.3], [24.5, 49.3, 43.0, 46.5, 64.79, 43.3, 82.74, 41.83], [82.74, 41.83, 86.07, 41.56, 89.53, 41.17, 92.87, 41.53]], [[42.78, 49.89, 43.75, 51.12, 44.0, 52.98, 43.98, 54.42], [43.98, 54.42, 43.76, 70.24, 44.13, 80.49, 35.26, 92.24]], [[61.02, 46.83, 62.41, 48.22, 63.03, 49.75, 63.03, 51.85], [63.03, 51.85, 63.03, 65.37, 62.97, 82.29, 62.97, 87.25], [62.97, 87.25, 62.97, 99.5, 59.26, 93.0, 56.26, 90.0]], [[28.53, 63.89, 28.88, 65.12, 28.78, 66.2, 28.51, 67.07], [28.51, 67.07, 26.88, 72.5, 24.09, 77.0, 19.25, 83.0]], [[78.77, 63.83, 82.63, 67.75, 87.88, 76.75, 89.75, 83.0]]];
-const W=280,SCALE=W*0.82/109,OX=W*0.09,OY=W*0.09;
-const cv=document.getElementById('c'),ctx=cv.getContext('2d');
-
-function tx(x){return OX+x*SCALE}
-function ty(y){return OY+(109-y)*SCALE}
-
-function drawSegs(segs,alpha,lw){
-  ctx.strokeStyle=`rgba(43,50,97,${alpha})`;
-  ctx.lineWidth=lw;ctx.lineCap='round';ctx.lineJoin='round';
-  ctx.beginPath();
-  for(const s of segs){
-    ctx.moveTo(tx(s[0]),ty(s[1]));
-    ctx.bezierCurveTo(tx(s[2]),ty(s[3]),tx(s[4]),ty(s[5]),tx(s[6]),ty(s[7]));
-  }
-  ctx.stroke();
-}
-
-function drawAll(upTo,highlightLast){
-  ctx.clearRect(0,0,W,W);
-  for(let i=0;i<upTo-1;i++) drawSegs(strokes[i],0.25,3);
-  if(upTo>0) drawSegs(strokes[upTo-1],1.0, highlightLast?5:3);
-}
-
-let frame=0,timer=null;
-function playAnim(){
-  clearInterval(timer);frame=0;
-  timer=setInterval(()=>{
-    frame++;drawAll(frame,true);
-    if(frame>=strokes.length)clearInterval(timer);
-  },600);
-}
-
-function speakJP(){
-  const u=new SpeechSynthesisUtterance('赤');
-  u.lang='ja-JP';u.rate=0.8;
+function speak(text,type){
+  if(!text||!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang='ja-JP';
+  u.rate=type==='sent'?0.82:0.95;
+  u.pitch=1.0;
+  var voices=speechSynthesis.getVoices();
+  var jp=voices.find(function(v){return v.lang.startsWith('ja')});
+  if(jp)u.voice=jp;
   speechSynthesis.speak(u);
 }
-
-// draw complete on load
-drawAll(strokes.length,false);
+window.speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices()};
 </script>
 </body>
 </html>
