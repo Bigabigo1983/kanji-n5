@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<html lang="ja"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>木 — JLPT N5</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#FFF6E9;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;color:#2B3261;min-height:100vh;padding-bottom:32px}
+body{background:#FFF6E9;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;color:#2B3261;padding-bottom:32px}
 .hd{background:#2B3261;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
 .hd-k{font-size:52px;color:#FFF6E9;line-height:1}
-.hd-r{text-align:right}
 .hd-m{font-size:20px;font-weight:700;color:#FFF6E9}
 .hd-s{font-size:11px;color:#8892B8;margin-top:2px}
 .vs{background:#1A2850;padding:14px 16px;text-align:center}
@@ -22,6 +19,7 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .card{border-radius:12px;padding:12px 14px;margin-bottom:10px;border:1px solid #D1C9BE;background:#FAF3E1}
 .card.on{border-left:4px solid #2B3261}
 .card.kun{border-left:4px solid #C72E1A}
+.card.more{border-left:4px solid #806B50}
 .ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .ct{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9B8E7A;margin-bottom:3px}
 .cv{font-size:24px;font-weight:800;color:#1A1F40;line-height:1.1}
@@ -29,14 +27,14 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .bs{padding:8px 14px;border:none;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
 .card.on .bs{background:#2B3261;color:#FFF6E9}
 .card.kun .bs{background:#C72E1A;color:#FFF6E9}
-.bs:active{opacity:0.8}
+.bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:8px;padding:6px 10px;cursor:pointer;min-width:72px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:15px;font-weight:700;color:#1A1F40}
 .wr{font-size:10px;color:#806B50;margin-top:1px}
 .we{font-size:10px;color:#555580}
-.sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer}
+.sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
@@ -44,86 +42,29 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .sen{font-size:11px;color:#555580;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .ft{text-align:center;padding:20px 16px 0;font-size:10px;color:#B3ADA5}
-</style>
-</head>
-<body>
-
-<div class="hd">
-  <div class="hd-k">木</div>
-  <div class="hd-r">
-    <div class="hd-m">tree</div>
-    <div class="hd-s">4 strokes &nbsp;·&nbsp; JLPT N5</div>
-  </div>
-</div>
-
-<div class="vs">
-  <div class="vs-lbl">✏ Stroke Order</div>
-  <video id="vid" src="../kanji_videos/06728_木_final.mp4" playsinline loop muted autoplay></video>
-  <div class="vc">
-    <button class="vb" onclick="document.getElementById('vid').play()">&#9654; Play</button>
-    <button class="vb" onclick="document.getElementById('vid').pause()">&#9646;&#9646; Pause</button>
-    <button class="vb" onclick="var v=document.getElementById('vid');v.currentTime=0;v.play()">&#8635; Replay</button>
-  </div>
-</div>
-
+</style></head><body>
+<div class="hd"><div class="hd-k">木</div><div><div class="hd-m">tree</div><div class="hd-s">4 strokes &nbsp;&middot;&nbsp; JLPT N5</div></div></div>
+<div class="vs"><div class="vs-lbl">&#9998; Stroke Order</div>
+<video id="vid" src="../kanji_videos/06728_木_final.mp4" playsinline loop muted autoplay></video>
+<div class="vc">
+<button class="vb" onclick="document.getElementById('vid').play()">&#9654; Play</button>
+<button class="vb" onclick="document.getElementById('vid').pause()">&#9646;&#9646; Pause</button>
+<button class="vb" onclick="var v=document.getElementById('vid');v.currentTime=0;v.play()">&#8635; Replay</button>
+</div></div>
 <div class="cards">
-
   <div class="card on">
-    <div class="ch">
-      <div>
-        <div class="ct">&#38899;&#35501;&#12415; &middot; On Reading</div>
-        <div class="cv">モク</div>
-        <div class="cr">(moku)</div>
-      </div>
-      <button class="bs" onclick="speak('モク','on')">&#128266; Listen</button>
-    </div>
-    <div class="ws">
-      <div class="wc" onclick="speak('木曜日','word')">
-        <div class="wj">木曜日</div>
-        <div class="wr">mokuyoubi</div>
-        <div class="we">Thursday</div>
-      </div>
-    </div>
+    <div class="ch"><div><div class="ct">&#38899;&#35501;&#12415; &middot; On Reading</div><div class="cv">モク</div><div class="cr">(moku)</div></div><button class="bs" onclick="speak('モク','on')">&#128266; Listen</button></div>
+    <div class="ws"><div class="wc" onclick="speak('木曜日','word')"><div class="wj">木曜日</div><div class="wr">mokuyoubi</div><div class="we">Thursday</div></div></div>
     <div class="sb" onclick="speak('木曜日は早く帰ります。','sent')"><div class="sl">&#128221; Example sentence</div><div class="sj">木曜日は早く帰ります。</div><div class="sro">Mokuyoubi wa hayaku kaerimasu.</div><div class="sen">I go home early on Thursday.</div><div class="sh">tap to hear</div></div>
   </div>
-
   <div class="card kun">
-    <div class="ch">
-      <div>
-        <div class="ct">&#35613;&#35501;&#12415; &middot; Kun Reading</div>
-        <div class="cv">き</div>
-        <div class="cr">(ki)</div>
-      </div>
-      <button class="bs" onclick="speak('き','kun')">&#128266; Listen</button>
-    </div>
-    <div class="ws">
-      <div class="wc" onclick="speak('木村','word')">
-        <div class="wj">木村</div>
-        <div class="wr">kimura</div>
-        <div class="we">Kimura (name)</div>
-      </div>
-    </div>
+    <div class="ch"><div><div class="ct">&#35613;&#35501;&#12415; &middot; Kun Reading</div><div class="cv">き</div><div class="cr">(ki)</div></div><button class="bs" onclick="speak('き','kun')">&#128266; Listen</button></div>
+    <div class="ws"><div class="wc" onclick="speak('木','word')"><div class="wj">木</div><div class="wr">ki</div><div class="we">tree</div></div></div>
     <div class="sb" onclick="speak('公園に大きい木があります。','sent')"><div class="sl">&#128221; Example sentence</div><div class="sj">公園に大きい木があります。</div><div class="sro">Kouen ni ookii ki ga arimasu.</div><div class="sen">There is a big tree in the park.</div><div class="sh">tap to hear</div></div>
   </div>
-
 </div>
-
 <div class="ft">JLPT N5 Kanji Writing Practice &nbsp;&middot;&nbsp; Between Line Studio<br>Stroke data: KanjiVG &copy; Ulrich Apel (CC BY-SA 3.0)</div>
-
 <script>
-function speak(text,type){
-  if(!text||!window.speechSynthesis)return;
-  window.speechSynthesis.cancel();
-  var u=new SpeechSynthesisUtterance(text);
-  u.lang='ja-JP';
-  u.rate=type==='sent'?0.82:0.95;
-  u.pitch=1.0;
-  var voices=speechSynthesis.getVoices();
-  var jp=voices.find(function(v){return v.lang.startsWith('ja')});
-  if(jp)u.voice=jp;
-  speechSynthesis.speak(u);
-}
+function speak(t,type){if(!t||!window.speechSynthesis)return;window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='ja-JP';u.rate=type==='sent'?0.82:0.95;var v=speechSynthesis.getVoices();var jp=v.find(function(x){return x.lang.startsWith('ja')});if(jp)u.voice=jp;speechSynthesis.speak(u);}
 window.speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices()};
-</script>
-</body>
-</html>
+</script></body></html>
