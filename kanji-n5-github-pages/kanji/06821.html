@@ -65,6 +65,6 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 </div>
 <div class="ft">JLPT N5 Kanji Writing Practice &nbsp;&middot;&nbsp; Between Line Studio<br>Stroke data: KanjiVG &copy; Ulrich Apel (CC BY-SA 3.0)</div>
 <script>
-function speak(t,type){if(!t||!window.speechSynthesis)return;window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='ja-JP';u.rate=type==='sent'?0.82:0.95;var v=speechSynthesis.getVoices();var jp=v.find(function(x){return x.lang.startsWith('ja')});if(jp)u.voice=jp;speechSynthesis.speak(u);}
+function speak(t,type){if(!t||!window.speechSynthesis)return;window.speechSynthesis.cancel();setTimeout(function(){var u=new SpeechSynthesisUtterance(t);u.lang='ja-JP';u.rate=type==='sent'?0.82:0.95;u.pitch=1.0;var v=speechSynthesis.getVoices();var jp=v.find(function(x){return x.lang.startsWith('ja')});if(jp)u.voice=jp;speechSynthesis.speak(u);},150);}
 window.speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices()};
 </script></body></html>
