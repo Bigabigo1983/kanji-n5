@@ -68,21 +68,16 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 function speak(t,type){
   if(!t||!window.speechSynthesis)return;
   window.speechSynthesis.cancel();
-  var voices=speechSynthesis.getVoices();
-  var jp=voices.find(function(v){return v.lang.startsWith('ja')});
-  // Prime the engine with silent utterance first
-  var primer=new SpeechSynthesisUtterance('　');
-  primer.lang='ja-JP';primer.volume=0;primer.rate=1;
-  if(jp)primer.voice=jp;
-  primer.onend=function(){
-    var u=new SpeechSynthesisUtterance(t);
+  setTimeout(function(){
+    var voices=speechSynthesis.getVoices();
+    var jp=voices.find(function(v){return v.lang.startsWith('ja')});
+    var u=new SpeechSynthesisUtterance('、'+t);
     u.lang='ja-JP';
     u.rate=type==='sent'?0.82:0.95;
     u.pitch=1.0;
     if(jp)u.voice=jp;
     speechSynthesis.speak(u);
-  };
-  speechSynthesis.speak(primer);
+  },100);
 }
 window.speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices()};
 </script></body></html>
