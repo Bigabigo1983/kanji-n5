@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>百 — JLPT N5</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -18,7 +19,6 @@ body{background:#FFF6E9;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
 video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:block;margin:0 auto}
 .vc{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
 .vb{padding:7px 16px;border:1.5px solid #8892B8;border-radius:20px;background:transparent;color:#FFF6E9;font-size:12px;cursor:pointer;font-weight:500}
-.vb:active{background:#2B3261}
 .cards{padding:12px 12px 0}
 .card{border-radius:12px;padding:12px 14px;margin-bottom:10px;border:1px solid #D1C9BE;background:#FAF3E1}
 .card.on{border-left:4px solid #2B3261}
@@ -29,35 +29,37 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .cr{font-size:12px;color:#806B50;margin-top:2px}
 .bs{padding:8px 14px;border:none;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer}
 .card.on .bs{background:#2B3261;color:#FFF6E9}
-.kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
-.bs:active{opacity:.8}
+.kun-bs{background:#C72E1A;color:#FFF6E9}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:8px;padding:6px 10px;cursor:pointer;min-width:72px}
-.wc:active{background:#EDE5D5}
 .wj{font-size:15px;font-weight:700;color:#1A1F40}
 .wr{font-size:10px;color:#806B50;margin-top:1px}
 .we{font-size:10px;color:#555580}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
-.sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
 .sen{font-size:11px;color:#555580;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
+/* RTL support for Arabic */
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .ch{flex-direction:row-reverse}
-.rtl .sen,.rtl .sj,.rtl .hd-m{font-family:'Segoe UI',Tahoma,Arial,sans-serif;font-size:13px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .sen,.rtl .sj,.rtl .sro,.rtl .we,.rtl .hd-m{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
 .ft{text-align:center;padding:20px 16px 0;font-size:10px;color:#B3ADA5}
 </style></head>
 <body id="body">
+
 <div class="hd">
   <div class="hd-k">百</div>
-  <div><div class="hd-m" id="hd-meaning">hundred</div>
-  <div class="hd-s">6 strokes · JLPT N5</div></div>
+  <div>
+    <div class="hd-m" id="hd-meaning">hundred</div>
+    <div class="hd-s">6 strokes · JLPT N5</div>
+  </div>
 </div>
+
 <div class="lang-bar">
   <span class="lang-label">🌐</span>
   <button class="lb active" onclick="setLang('en',this)">EN</button>
@@ -66,6 +68,7 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
   <button class="lb" onclick="setLang('ko',this)">한국어</button>
   <button class="lb" onclick="setLang('ar',this)">العربية</button>
 </div>
+
 <div class="vs">
   <div class="vs-lbl">✏ Stroke Order</div>
   <video id="vid" src="../kanji_videos/0767e_百_final.mp4" playsinline loop muted autoplay></video>
@@ -75,38 +78,49 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <button class="vb" onclick="var v=document.getElementById('vid');v.currentTime=0;v.play()">↺ Replay</button>
   </div>
 </div>
+
 <div class="cards">
   <div class="card on">
-    <div class="ch"><div>
-      <div class="ct">音読み · On Reading</div>
-      <div class="cv">ヒャク</div>
-      <div class="cr">(hyaku)</div>
-    </div><button class="bs" onclick="speak('ヒャク','on')">🔊 Listen</button></div>
+    <div class="ch">
+      <div><div class="ct">音読み · On Reading</div><div class="cv">ヒャク</div><div class="cr">(hyaku)</div></div>
+      <button class="bs" onclick="speak('ヒャク','on')">🔊 Listen</button>
+    </div>
     <div class="ws"><div class="wc" onclick="speak('百円','word')">
       <div class="wj">百円</div><div class="wr">hyakuen</div><div class="we" id="on-ex">100 yen</div>
     </div></div>
-    <div class="sb" onclick="speak('このペンは百円です。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">このペンは百円です。</div><div class="sro">Kono pen wa hyakuen desu.</div><div class="sen" id="on-sent">This pen costs 100 yen.</div><div class="sh">tap to hear</div></div>
-    <div class="sb" onclick="speak('このペンは百円です。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">このペンは百円です。</div><div class="sro">Kono pen wa hyakuen desu.</div><div class="sen" id="on-sent">This pen costs 100 yen.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('このペンは百円です。','sent')">
+      <div class="sl">📝 Example sentence</div>
+      <div class="sj">このペンは百円です。</div>
+      <div class="sro">Kono pen wa hyakuen desu.</div>
+      <div class="sen" id="on-sent">This pen costs 100 yen.</div>
+      <div class="sh">tap to hear</div>
+    </div>
   </div>
 
 </div>
+
 <div class="ft">JLPT N5 Kanji Writing Practice · Between Line Studio<br>Stroke data: KanjiVG © Ulrich Apel (CC BY-SA 3.0)</div>
+
 <script>
 var T={
   meaning:{en:"hundred",es:"cien",zh:"百",ko:"백",ar:"مئة"},
-  on_ex:  {en:"100 yen",es:"100 yen",zh:"100 yen",ko:"100 yen",ar:"100 yen"},
-  on_sent:{en:"This pen costs 100 yen.",es:"This pen costs 100 yen.",zh:"This pen costs 100 yen.",ko:"This pen costs 100 yen.",ar:"This pen costs 100 yen."},
-  kun_ex: {en:"encyclopedia",es:"encyclopedia",zh:"encyclopedia",ko:"encyclopedia",ar:"encyclopedia"},
-  kun_sent:{en:"I bought it at the 100-yen shop.",es:"I bought it at the 100-yen shop.",zh:"I bought it at the 100-yen shop.",ko:"I bought it at the 100-yen shop.",ar:"I bought it at the 100-yen shop."}
+  on_ex:{en:"100 yen",es:"100 yenes",zh:"100日元",ko:"100엔",ar:"١٠٠ ين"},
+  on_sent:{en:"This pen costs 100 yen.",es:"Este bolígrafo cuesta 100 yenes.",zh:"这支笔100日元。",ko:"이 펜은 100엔입니다.",ar:"هذا القلم بـ١٠٠ ين."},
+  kun_ex:{en:"encyclopedia",es:"",zh:"",ko:"",ar:""},
+  kun_sent:{en:"I bought it at the 100-yen shop.",es:"",zh:"",ko:"",ar:""}
 };
-function setLang(l,btn){
+
+function setLang(l, btn) {
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});
   btn.classList.add('active');
-  document.getElementById('body').className=l==='ar'?'rtl':'';
-  var ids={'hd-meaning':'meaning','on-ex':'on_ex','on-sent':'on_sent','kun-ex':'kun_ex','kun-sent':'kun_sent'};
+  var isAr = l==='ar';
+  document.getElementById('body').className = isAr ? 'rtl' : '';
+  var ids = {'hd-meaning':'meaning','on-ex':'on_ex','on-sent':'on_sent','kun-ex':'kun_ex','kun-sent':'kun_sent'};
   for(var id in ids){
     var el=document.getElementById(id);
-    if(el&&T[ids[id]])el.textContent=T[ids[id]][l]||T[ids[id]]['en'];
+    if(el && T[ids[id]]){
+      el.textContent = T[ids[id]][l] || T[ids[id]]['en'];
+    }
   }
 }
 function speak(t,type){
