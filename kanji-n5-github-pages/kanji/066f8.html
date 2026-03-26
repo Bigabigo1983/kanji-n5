@@ -9,6 +9,10 @@ body{background:#FFF6E9;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
 .hd-k{font-size:52px;color:#FFF6E9;line-height:1}
 .hd-m{font-size:20px;font-weight:700;color:#FFF6E9}
 .hd-s{font-size:11px;color:#8892B8;margin-top:2px}
+.lang-bar{background:#162040;padding:8px 12px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.lang-label{color:#8892B8;font-size:10px;letter-spacing:1px;margin-right:2px}
+.lb{padding:5px 11px;border:1.5px solid #8892B8;border-radius:20px;background:transparent;color:#B8BDD0;font-size:12px;cursor:pointer}
+.lb.active{background:#FFF6E9;color:#2B3261;border-color:#FFF6E9;font-weight:700}
 .vs{background:#1A2850;padding:14px 16px;text-align:center}
 .vs-lbl{color:#8892B8;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
 video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:block;margin:0 auto}
@@ -19,14 +23,13 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .card{border-radius:12px;padding:12px 14px;margin-bottom:10px;border:1px solid #D1C9BE;background:#FAF3E1}
 .card.on{border-left:4px solid #2B3261}
 .card.kun{border-left:4px solid #C72E1A}
-.card.more{border-left:4px solid #806B50}
 .ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .ct{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9B8E7A;margin-bottom:3px}
 .cv{font-size:24px;font-weight:800;color:#1A1F40;line-height:1.1}
 .cr{font-size:12px;color:#806B50;margin-top:2px}
-.bs{padding:8px 14px;border:none;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+.bs{padding:8px 14px;border:none;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer}
 .card.on .bs{background:#2B3261;color:#FFF6E9}
-.card.kun .bs{background:#C72E1A;color:#FFF6E9}
+.kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:8px;padding:6px 10px;cursor:pointer;min-width:72px}
@@ -41,30 +44,80 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
 .sen{font-size:11px;color:#555580;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
+.rtl{direction:rtl;text-align:right}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .hd{flex-direction:row-reverse}
+.rtl .ch{flex-direction:row-reverse}
+.rtl .sen,.rtl .sj,.rtl .hd-m{font-family:'Segoe UI',Tahoma,Arial,sans-serif;font-size:13px}
 .ft{text-align:center;padding:20px 16px 0;font-size:10px;color:#B3ADA5}
-</style></head><body>
-<div class="hd"><div class="hd-k">書</div><div><div class="hd-m">write</div><div class="hd-s">10 strokes &nbsp;&middot;&nbsp; JLPT N5</div></div></div>
-<div class="vs"><div class="vs-lbl">&#9998; Stroke Order</div>
-<video id="vid" src="../kanji_videos/066f8_書_final.mp4" playsinline loop muted autoplay></video>
-<div class="vc">
-<button class="vb" onclick="document.getElementById('vid').play()">&#9654; Play</button>
-<button class="vb" onclick="document.getElementById('vid').pause()">&#9646;&#9646; Pause</button>
-<button class="vb" onclick="var v=document.getElementById('vid');v.currentTime=0;v.play()">&#8635; Replay</button>
-</div></div>
-<div class="cards">
-  <div class="card on">
-    <div class="ch"><div><div class="ct">&#38899;&#35501;&#12415; &middot; On Reading</div><div class="cv">ショ</div><div class="cr">(sho)</div></div><button class="bs" onclick="speak('ショ','on')">&#128266; Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('教科書','word')"><div class="wj">教科書</div><div class="wr">kyoukasho</div><div class="we">textbook</div></div></div>
-    <div class="sb" onclick="speak('作文を書いてください。','sent')"><div class="sl">&#128221; Example sentence</div><div class="sj">作文を書いてください。</div><div class="sro">Sakubun wo kaite kudasai.</div><div class="sen">Please write a composition.</div><div class="sh">tap to hear</div></div>
-  </div>
-  <div class="card kun">
-    <div class="ch"><div><div class="ct">&#35613;&#35501;&#12415; &middot; Kun Reading</div><div class="cv">か</div><div class="cr">(ka)</div></div><button class="bs" onclick="speak('か','kun')">&#128266; Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('書く','word')"><div class="wj">書く</div><div class="wr">kaku</div><div class="we">to write</div></div></div>
-    <div class="sb" onclick="speak('手紙を書きました。','sent')"><div class="sl">&#128221; Example sentence</div><div class="sj">手紙を書きました。</div><div class="sro">Tegami wo kakimashita.</div><div class="sen">I wrote a letter.</div><div class="sh">tap to hear</div></div>
+</style></head>
+<body id="body">
+<div class="hd">
+  <div class="hd-k">書</div>
+  <div><div class="hd-m" id="hd-meaning">write</div>
+  <div class="hd-s">10 strokes · JLPT N5</div></div>
+</div>
+<div class="lang-bar">
+  <span class="lang-label">🌐</span>
+  <button class="lb active" onclick="setLang('en',this)">EN</button>
+  <button class="lb" onclick="setLang('es',this)">ES</button>
+  <button class="lb" onclick="setLang('zh',this)">中文</button>
+  <button class="lb" onclick="setLang('ko',this)">한국어</button>
+  <button class="lb" onclick="setLang('ar',this)">العربية</button>
+</div>
+<div class="vs">
+  <div class="vs-lbl">✏ Stroke Order</div>
+  <video id="vid" src="../kanji_videos/066f8_書_final.mp4" playsinline loop muted autoplay></video>
+  <div class="vc">
+    <button class="vb" onclick="document.getElementById('vid').play()">▶ Play</button>
+    <button class="vb" onclick="document.getElementById('vid').pause()">⏸ Pause</button>
+    <button class="vb" onclick="var v=document.getElementById('vid');v.currentTime=0;v.play()">↺ Replay</button>
   </div>
 </div>
-<div class="ft">JLPT N5 Kanji Writing Practice &nbsp;&middot;&nbsp; Between Line Studio<br>Stroke data: KanjiVG &copy; Ulrich Apel (CC BY-SA 3.0)</div>
+<div class="cards">
+  <div class="card on">
+    <div class="ch"><div>
+      <div class="ct">音読み · On Reading</div>
+      <div class="cv">ショ</div>
+      <div class="cr">(sho)</div>
+    </div><button class="bs" onclick="speak('ショ','on')">🔊 Listen</button></div>
+    <div class="ws"><div class="wc" onclick="speak('教科書','word')">
+      <div class="wj">教科書</div><div class="wr">kyoukasho</div><div class="we" id="on-ex">textbook</div>
+    </div></div>
+    <div class="sb" onclick="speak('作文を書いてください。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">作文を書いてください。</div><div class="sro">Sakubun wo kaite kudasai.</div><div class="sen" id="on-sent">Please write a composition.</div><div class="sh">tap to hear</div></div>
+    
+  </div>
+  <div class="card kun">
+    <div class="ch"><div>
+      <div class="ct">訓読み · Kun Reading</div>
+      <div class="cv">か</div><div class="cr">(ka)</div>
+    </div><button class="bs kun-bs" onclick="speak('か','on')">🔊 Listen</button></div>
+    <div class="ws"><div class="wc" onclick="speak('書く','word')">
+      <div class="wj">書く</div><div class="wr">kaku</div><div class="we" id="kun-ex">to write</div>
+    </div></div>
+    <div class="sb" onclick="speak('手紙を書きました。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">手紙を書きました。</div><div class="sro">Tegami wo kakimashita.</div><div class="sen" id="kun-sent">I wrote a letter.</div><div class="sh">tap to hear</div></div>
+  </div>
+</div>
+<div class="ft">JLPT N5 Kanji Writing Practice · Between Line Studio<br>Stroke data: KanjiVG © Ulrich Apel (CC BY-SA 3.0)</div>
 <script>
+var T={
+  meaning:{en:"write",es:"escribir",zh:"写",ko:"쓰다",ar:"يكتب"},
+  on_ex:  {en:"textbook",es:"textbook",zh:"textbook",ko:"textbook",ar:"textbook"},
+  on_sent:{en:"Please write a composition.",es:"Please write a composition.",zh:"Please write a composition.",ko:"Please write a composition.",ar:"Please write a composition."},
+  kun_ex: {en:"to write",es:"to write",zh:"to write",ko:"to write",ar:"to write"},
+  kun_sent:{en:"I wrote a letter.",es:"I wrote a letter.",zh:"I wrote a letter.",ko:"I wrote a letter.",ar:"I wrote a letter."}
+};
+function setLang(l,btn){
+  document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  document.getElementById('body').className=l==='ar'?'rtl':'';
+  var ids={'hd-meaning':'meaning','on-ex':'on_ex','on-sent':'on_sent','kun-ex':'kun_ex','kun-sent':'kun_sent'};
+  for(var id in ids){
+    var el=document.getElementById(id);
+    if(el&&T[ids[id]])el.textContent=T[ids[id]][l]||T[ids[id]]['en'];
+  }
+}
 function speak(t,type){
   if(!t||!window.speechSynthesis)return;
   window.speechSynthesis.cancel();
@@ -72,12 +125,11 @@ function speak(t,type){
     var voices=speechSynthesis.getVoices();
     var jp=voices.find(function(v){return v.lang.startsWith('ja')});
     var u=new SpeechSynthesisUtterance('、'+t);
-    u.lang='ja-JP';
-    u.rate=type==='sent'?0.82:0.95;
-    u.pitch=1.0;
+    u.lang='ja-JP';u.rate=type==='sent'?0.82:0.95;u.pitch=1.0;
     if(jp)u.voice=jp;
     speechSynthesis.speak(u);
   },100);
 }
 window.speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices()};
-</script></body></html>
+</script>
+</body></html>
