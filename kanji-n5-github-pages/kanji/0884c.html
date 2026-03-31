@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -88,13 +85,13 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <div class="ws"><div class="wc" onclick="speak('旅行','word')">
       <div class="wj">旅行</div><div class="wr">ryokou</div><div class="we" id="on-ex">travel</div>
     </div></div>
-    <div class="sb" onclick="speak('旅行が好きです。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">旅行が好きです。</div><div class="sro">Ryokou ga suki desu.</div><div class="sen" id="on-sent">I like travelling.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('旅行が好きです。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">旅行が好きです。</div><div class="sro">Ryokou ga suki desu.</div><div class="sen" id="on-sent">I like traveling.</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">い</div><div class="cr">(i)</div></div>
     <button class="bs kun-bs" onclick="speak('い','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('行く','word')">
-      <div class="wj">行く</div><div class="wr">iku</div><div class="we" id="kun-ex">to go</div>
+    <div class="ws"><div class="wc" onclick="speak('行き','word')">
+      <div class="wj">行き</div><div class="wr">iku</div><div class="we" id="kun-ex">to go</div>
     </div></div><div class="sb" onclick="speak('どこへ行きますか。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">どこへ行きますか。</div><div class="sro">Doko e ikimasu ka.</div><div class="sen" id="kun-sent">Where are you going?</div><div class="sh">tap to hear</div></div>
   </div>
 </div>
@@ -102,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"go",es:"ir",zh:"去",ko:"가다",ar:"يذهب"},
-  on_ex:  {en:"travel",es:"viaje",zh:"旅行",ko:"여행",ar:"رحلة"},
-  on_sent:{en:"I like travelling.",es:"Me gusta viajar.",zh:"我喜欢旅行。",ko:"여행을 좋아합니다.",ar:"أحب السفر."},
-  kun_ex: {en:"to go",es:"ir",zh:"去",ko:"가다",ar:"يذهب"},
-  kun_sent:{en:"Where are you going?",es:"¿A dónde vas?",zh:"你去哪里？",ko:"어디에 갑니까?",ar:"إلى أين تذهب؟"}
+  on_ex:  {en:"travel",es:"travel",zh:"travel",ko:"travel",ar:"travel"},
+  on_sent:{en:"I like traveling.",es:"I like traveling.",zh:"I like traveling.",ko:"I like traveling.",ar:"I like traveling."},
+  kun_ex: {en:"to go",es:"to go",zh:"to go",ko:"to go",ar:"to go"},
+  kun_sent:{en:"Where are you going?",es:"Where are you going?",zh:"Where are you going?",ko:"Where are you going?",ar:"Where are you going?"}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

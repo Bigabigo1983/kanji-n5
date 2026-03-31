@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -88,7 +85,7 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <div class="ws"><div class="wc" onclick="speak('午前','word')">
       <div class="wj">午前</div><div class="wr">gozen</div><div class="we" id="on-ex">morning</div>
     </div></div>
-    <div class="sb" onclick="speak('名前を教えてください。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">名前を教えてください。</div><div class="sro">Namae wo oshiete kudasai.</div><div class="sen" id="on-sent">Please tell me your name.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('午前中に終わります。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">午前中に終わります。</div><div class="sro">Gozenchuu ni owarimasu.</div><div class="sen" id="on-sent">It will finish in the morning.</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">まえ</div><div class="cr">(mae)</div></div>
@@ -102,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"before",es:"antes",zh:"前",ko:"앞",ar:"أمام"},
-  on_ex:  {en:"morning",es:"mañana",zh:"上午",ko:"오전",ar:"صباح"},
-  on_sent:{en:"Please tell me your name.",es:"Dígame su nombre.",zh:"请告诉我您的名字。",ko:"이름을 알려 주세요.",ar:"أخبرني باسمك."},
-  kun_ex: {en:"in front",es:"enfrente",zh:"前面",ko:"앞",ar:"أمام"},
-  kun_sent:{en:"I\'m waiting in front of the station.",es:"Te espero delante de la estación.",zh:"我在车站前面等。",ko:"역 앞에서 기다리고 있습니다.",ar:"أنتظرك أمام المحطة."}
+  on_ex:  {en:"morning",es:"morning",zh:"morning",ko:"morning",ar:"morning"},
+  on_sent:{en:"It will finish in the morning.",es:"It will finish in the morning.",zh:"It will finish in the morning.",ko:"It will finish in the morning.",ar:"It will finish in the morning."},
+  kun_ex: {en:"in front",es:"in front",zh:"in front",ko:"in front",ar:"in front"},
+  kun_sent:{en:"I\'m waiting in front of the station.",es:"I\'m waiting in front of the station.",zh:"I\'m waiting in front of the station.",ko:"I\'m waiting in front of the station.",ar:"I\'m waiting in front of the station."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

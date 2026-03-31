@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -88,7 +85,7 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <div class="ws"><div class="wc" onclick="speak('母国','word')">
       <div class="wj">母国</div><div class="wr">bokoku</div><div class="we" id="on-ex">home country</div>
     </div></div>
-    <div class="sb" onclick="speak('母親は料理が上手です。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">母親は料理が上手です。</div><div class="sro">Hahaoya wa ryouri ga jouzu desu.</div><div class="sen" id="on-sent">My mother is good at cooking.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('母国語は何ですか。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">母国語は何ですか。</div><div class="sro">Bokokugo wa nan desu ka.</div><div class="sen" id="on-sent">What is your mother tongue?</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">はは</div><div class="cr">(haha)</div></div>
@@ -102,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"mother",es:"madre",zh:"母亲",ko:"어머니",ar:"أم"},
-  on_ex:  {en:"home country",es:"país de origen",zh:"祖国",ko:"모국",ar:"الوطن الأم"},
-  on_sent:{en:"My mother is good at cooking.",es:"Mi madre cocina bien.",zh:"我妈妈做饭很好吃。",ko:"어머니는 요리를 잘합니다.",ar:"أمي تطبخ بشكل جيد."},
-  kun_ex: {en:"mother",es:"madre",zh:"妈妈",ko:"어머니",ar:"أم"},
-  kun_sent:{en:"I called my mom.",es:"Llamé a mamá.",zh:"给妈妈打电话了。",ko:"엄마에게 전화했습니다.",ar:"اتصلت بأمي."}
+  on_ex:  {en:"home country",es:"home country",zh:"home country",ko:"home country",ar:"home country"},
+  on_sent:{en:"What is your mother tongue?",es:"What is your mother tongue?",zh:"What is your mother tongue?",ko:"What is your mother tongue?",ar:"What is your mother tongue?"},
+  kun_ex: {en:"mother",es:"mother",zh:"mother",ko:"mother",ar:"mother"},
+  kun_sent:{en:"I called my mom.",es:"I called my mom.",zh:"I called my mom.",ko:"I called my mom.",ar:"I called my mom."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

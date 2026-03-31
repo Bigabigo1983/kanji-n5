@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -102,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"blue",es:"azul",zh:"蓝",ko:"파랗다",ar:"أزرق"},
-  on_ex:  {en:"youth",es:"juventud",zh:"青春",ko:"청춘",ar:"شباب"},
-  on_sent:{en:"My youth was fun.",es:"La juventud fue divertida.",zh:"青春时代很开心。",ko:"청춘 시절은 즐거웠습니다.",ar:"كان الشباب ممتعاً."},
-  kun_ex: {en:"blue",es:"azul",zh:"蓝色",ko:"파랗다",ar:"أزرق"},
-  kun_sent:{en:"The blue sky is beautiful.",es:"El cielo azul es hermoso.",zh:"蓝天很美。",ko:"파란 하늘이 예쁩니다.",ar:"السماء الزرقاء جميلة."}
+  on_ex:  {en:"youth",es:"youth",zh:"youth",ko:"youth",ar:"youth"},
+  on_sent:{en:"My youth was fun.",es:"My youth was fun.",zh:"My youth was fun.",ko:"My youth was fun.",ar:"My youth was fun."},
+  kun_ex: {en:"blue",es:"blue",zh:"blue",ko:"blue",ar:"blue"},
+  kun_sent:{en:"The blue sky is beautiful.",es:"The blue sky is beautiful.",zh:"The blue sky is beautiful.",ko:"The blue sky is beautiful.",ar:"The blue sky is beautiful."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

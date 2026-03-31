@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -102,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"rest",es:"descansar",zh:"休息",ko:"쉬다",ar:"يستريح"},
-  on_ex:  {en:"day off",es:"día de descanso",zh:"休息日",ko:"휴일",ar:"يوم الراحة"},
-  on_sent:{en:"Tomorrow is a holiday.",es:"Mañana es día libre.",zh:"明天是休息日。",ko:"내일은 휴일입니다.",ar:"غداً يوم راحة."},
-  kun_ex: {en:"to rest",es:"descansar",zh:"休息",ko:"쉬다",ar:"يستريح"},
-  kun_sent:{en:"Let\'s rest for a bit.",es:"Vamos a descansar un poco.",zh:"稍微休息一下吧。",ko:"조금 쉽시다.",ar:"لنستريح قليلاً."}
+  on_ex:  {en:"day off",es:"day off",zh:"day off",ko:"day off",ar:"day off"},
+  on_sent:{en:"Tomorrow is a holiday.",es:"Tomorrow is a holiday.",zh:"Tomorrow is a holiday.",ko:"Tomorrow is a holiday.",ar:"Tomorrow is a holiday."},
+  kun_ex: {en:"to rest",es:"to rest",zh:"to rest",ko:"to rest",ar:"to rest"},
+  kun_sent:{en:"Let\'s rest for a bit.",es:"Let\'s rest for a bit.",zh:"Let\'s rest for a bit.",ko:"Let\'s rest for a bit.",ar:"Let\'s rest for a bit."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

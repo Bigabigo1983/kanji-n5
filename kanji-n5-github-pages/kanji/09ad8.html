@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -88,24 +85,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <div class="ws"><div class="wc" onclick="speak('高校','word')">
       <div class="wj">高校</div><div class="wr">koukou</div><div class="we" id="on-ex">high school</div>
     </div></div>
-    <div class="sb" onclick="speak('この店は高いです。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">この店は高いです。</div><div class="sro">Kono mise wa takai desu.</div><div class="sen" id="on-sent">This shop is expensive.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('高校に通っています。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">高校に通っています。</div><div class="sro">Koukou ni kayotte imasu.</div><div class="sen" id="on-sent">I attend high school.</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">たか</div><div class="cr">(taka)</div></div>
     <button class="bs kun-bs" onclick="speak('たか','on')">🔊 Listen</button></div>
     <div class="ws"><div class="wc" onclick="speak('高い','word')">
       <div class="wj">高い</div><div class="wr">takai</div><div class="we" id="kun-ex">expensive/tall</div>
-    </div></div><div class="sb" onclick="speak('あのビルは高いですね。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">あのビルは高いですね。</div><div class="sro">Ano biru wa takai desu ne.</div><div class="sen" id="kun-sent">That building is tall, isn't it?</div><div class="sh">tap to hear</div></div>
+    </div></div><div class="sb" onclick="speak('あのビルは高いですね。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">あのビルは高いですね。</div><div class="sro">Ano biru wa takai desu ne.</div><div class="sen" id="kun-sent">That building is tall.</div><div class="sh">tap to hear</div></div>
   </div>
 </div>
 <div class="ft">JLPT N5 Kanji Writing Practice · Between Line Studio<br>Stroke data: KanjiVG © Ulrich Apel (CC BY-SA 3.0)</div>
 <script>
 var T={
   meaning:{en:"tall",es:"alto",zh:"高",ko:"높다",ar:"طويل"},
-  on_ex:  {en:"high school",es:"instituto",zh:"高中",ko:"고등학교",ar:"ثانوية"},
-  on_sent:{en:"This shop is expensive.",es:"Esta tienda es cara.",zh:"这家店很贵。",ko:"이 가게는 비쌉니다.",ar:"هذا المتجر غالٍ."},
-  kun_ex: {en:"expensive/tall",es:"alto / caro",zh:"高/贵",ko:"높다/비싸다",ar:"طويل/غالي"},
-  kun_sent:{en:"That building is tall, isn\'t it?",es:"Ese edificio es alto.",zh:"那栋楼很高。",ko:"저 빌딩은 높네요.",ar:"ذلك المبنى طويل."}
+  on_ex:  {en:"high school",es:"high school",zh:"high school",ko:"high school",ar:"high school"},
+  on_sent:{en:"I attend high school.",es:"I attend high school.",zh:"I attend high school.",ko:"I attend high school.",ar:"I attend high school."},
+  kun_ex: {en:"expensive/tall",es:"expensive/tall",zh:"expensive/tall",ko:"expensive/tall",ar:"expensive/tall"},
+  kun_sent:{en:"That building is tall.",es:"That building is tall.",zh:"That building is tall.",ko:"That building is tall.",ar:"That building is tall."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

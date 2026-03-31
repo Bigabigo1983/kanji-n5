@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -102,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"long",es:"largo",zh:"长",ko:"길다",ar:"طويل"},
-  on_ex:  {en:"president",es:"director",zh:"社长",ko:"사장",ar:"مدير"},
-  on_sent:{en:"I met the company president.",es:"Me reuní con el director.",zh:"见到了社长。",ko:"사장님을 만났습니다.",ar:"التقيت بالمدير."},
-  kun_ex: {en:"long",es:"largo",zh:"长",ko:"길다",ar:"طويل"},
-  kun_sent:{en:"This road is long.",es:"Esta carretera es larga.",zh:"这条路很长。",ko:"이 길은 깁니다.",ar:"هذا الطريق طويل."}
+  on_ex:  {en:"president",es:"president",zh:"president",ko:"president",ar:"president"},
+  on_sent:{en:"I met the company president.",es:"I met the company president.",zh:"I met the company president.",ko:"I met the company president.",ar:"I met the company president."},
+  kun_ex: {en:"long",es:"long",zh:"long",ko:"long",ar:"long"},
+  kun_sent:{en:"This road is long.",es:"This road is long.",zh:"This road is long.",ko:"This road is long.",ar:"This road is long."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});
