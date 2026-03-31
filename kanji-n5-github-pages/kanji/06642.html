@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -88,13 +85,13 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <div class="ws"><div class="wc" onclick="speak('時間','word')">
       <div class="wj">時間</div><div class="wr">jikan</div><div class="we" id="on-ex">time</div>
     </div></div>
-    <div class="sb" onclick="speak('今、何時ですか。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">今、何時ですか。</div><div class="sro">Ima, nanji desu ka.</div><div class="sen" id="on-sent">What time is it now?</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('時間がありません。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">時間がありません。</div><div class="sro">Jikan ga arimasen.</div><div class="sen" id="on-sent">I don't have time.</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">とき</div><div class="cr">(toki)</div></div>
     <button class="bs kun-bs" onclick="speak('とき','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('時','word')">
-      <div class="wj">時</div><div class="wr">toki</div><div class="we" id="kun-ex">moment</div>
+    <div class="ws"><div class="wc" onclick="speak('その時','word')">
+      <div class="wj">その時</div><div class="wr">toki</div><div class="we" id="kun-ex">moment</div>
     </div></div><div class="sb" onclick="speak('その時、私はいませんでした。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">その時、私はいませんでした。</div><div class="sro">Sono toki, watashi wa imasen deshita.</div><div class="sen" id="kun-sent">I wasn't there at that time.</div><div class="sh">tap to hear</div></div>
   </div>
 </div>
@@ -102,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"time",es:"hora",zh:"时间",ko:"시간",ar:"وقت"},
-  on_ex:  {en:"time",es:"tiempo",zh:"时间",ko:"시간",ar:"وقت"},
-  on_sent:{en:"What time is it now?",es:"¿Qué hora es ahora?",zh:"现在几点？",ko:"지금 몇 시입니까?",ar:"كم الساعة الآن؟"},
-  kun_ex: {en:"moment",es:"momento",zh:"时候",ko:"때",ar:"لحظة"},
-  kun_sent:{en:"I wasn\'t there at that time.",es:"En ese momento yo no estaba.",zh:"那时候我不在。",ko:"그때 저는 없었습니다.",ar:"في ذلك الوقت لم أكن هناك."}
+  on_ex:  {en:"time",es:"time",zh:"time",ko:"time",ar:"time"},
+  on_sent:{en:"I don\'t have time.",es:"I don\'t have time.",zh:"I don\'t have time.",ko:"I don\'t have time.",ar:"I don\'t have time."},
+  kun_ex: {en:"moment",es:"moment",zh:"moment",ko:"moment",ar:"moment"},
+  kun_sent:{en:"I wasn\'t there at that time.",es:"I wasn\'t there at that time.",zh:"I wasn\'t there at that time.",ko:"I wasn\'t there at that time.",ar:"I wasn\'t there at that time."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

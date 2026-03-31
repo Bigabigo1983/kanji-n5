@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -102,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"eight",es:"ocho",zh:"八",ko:"여덟",ar:"ثمانية"},
-  on_ex:  {en:"August",es:"agosto",zh:"八月",ko:"8월",ar:"أغسطس"},
-  on_sent:{en:"August is summer vacation.",es:"Agosto es vacaciones.",zh:"八月是暑假。",ko:"8월은 여름방학입니다.",ar:"أغسطس إجازة الصيف."},
-  kun_ex: {en:"eight things",es:"ocho cosas",zh:"八个",ko:"여덟",ar:"ثمانية أشياء"},
-  kun_sent:{en:"There are eight boxes.",es:"Hay ocho cajas.",zh:"有八个盒子。",ko:"상자가 여덟 개 있습니다.",ar:"هناك ثمانية صناديق."}
+  on_ex:  {en:"August",es:"August",zh:"August",ko:"August",ar:"August"},
+  on_sent:{en:"August is summer vacation.",es:"August is summer vacation.",zh:"August is summer vacation.",ko:"August is summer vacation.",ar:"August is summer vacation."},
+  kun_ex: {en:"eight things",es:"eight things",zh:"eight things",ko:"eight things",ar:"eight things"},
+  kun_sent:{en:"There are eight boxes.",es:"There are eight boxes.",zh:"There are eight boxes.",ko:"There are eight boxes.",ar:"There are eight boxes."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

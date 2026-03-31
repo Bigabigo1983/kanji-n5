@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -102,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"six",es:"seis",zh:"六",ko:"여섯",ar:"ستة"},
-  on_ex:  {en:"June",es:"junio",zh:"六月",ko:"6월",ar:"يونيو"},
-  on_sent:{en:"It rains a lot in June.",es:"Llueve mucho en junio.",zh:"六月雨水很多。",ko:"6월은 비가 많이 옵니다.",ar:"تكثر الأمطار في يونيو."},
-  kun_ex: {en:"six things",es:"seis cosas",zh:"六个",ko:"여섯",ar:"ستة أشياء"},
-  kun_sent:{en:"There are six eggs.",es:"Hay seis huevos.",zh:"有六个鸡蛋。",ko:"달걀이 여섯 개 있습니다.",ar:"هناك ستة بيضات."}
+  on_ex:  {en:"June",es:"June",zh:"June",ko:"June",ar:"June"},
+  on_sent:{en:"It rains a lot in June.",es:"It rains a lot in June.",zh:"It rains a lot in June.",ko:"It rains a lot in June.",ar:"It rains a lot in June."},
+  kun_ex: {en:"six things",es:"six things",zh:"six things",ko:"six things",ar:"six things"},
+  kun_sent:{en:"There are six eggs.",es:"There are six eggs.",zh:"There are six eggs.",ko:"There are six eggs.",ar:"There are six eggs."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

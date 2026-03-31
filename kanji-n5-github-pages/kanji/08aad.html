@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -93,8 +90,8 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">よ</div><div class="cr">(yo)</div></div>
     <button class="bs kun-bs" onclick="speak('よ','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('読む','word')">
-      <div class="wj">読む</div><div class="wr">yomu</div><div class="we" id="kun-ex">to read</div>
+    <div class="ws"><div class="wc" onclick="speak('読み','word')">
+      <div class="wj">読み</div><div class="wr">yomu</div><div class="we" id="kun-ex">to read</div>
     </div></div><div class="sb" onclick="speak('毎朝新聞を読みます。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">毎朝新聞を読みます。</div><div class="sro">Maiasa shinbun wo yomimasu.</div><div class="sen" id="kun-sent">I read the newspaper every morning.</div><div class="sh">tap to hear</div></div>
   </div>
 </div>
@@ -102,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"read",es:"leer",zh:"读",ko:"읽다",ar:"يقرأ"},
-  on_ex:  {en:"reading",es:"lectura",zh:"阅读",ko:"독서",ar:"قراءة"},
-  on_sent:{en:"Reading is my hobby.",es:"La lectura es mi hobby.",zh:"读书是我的爱好。",ko:"독서가 취미입니다.",ar:"القراءة هوايتي."},
-  kun_ex: {en:"to read",es:"leer",zh:"读",ko:"읽다",ar:"يقرأ"},
-  kun_sent:{en:"I read the newspaper every morning.",es:"Leo el periódico cada mañana.",zh:"每天早上读报纸。",ko:"매일 아침 신문을 읽습니다.",ar:"أقرأ الجريدة كل صباح."}
+  on_ex:  {en:"reading",es:"reading",zh:"reading",ko:"reading",ar:"reading"},
+  on_sent:{en:"Reading is my hobby.",es:"Reading is my hobby.",zh:"Reading is my hobby.",ko:"Reading is my hobby.",ar:"Reading is my hobby."},
+  kun_ex: {en:"to read",es:"to read",zh:"to read",ko:"to read",ar:"to read"},
+  kun_sent:{en:"I read the newspaper every morning.",es:"I read the newspaper every morning.",zh:"I read the newspaper every morning.",ko:"I read the newspaper every morning.",ar:"I read the newspaper every morning."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

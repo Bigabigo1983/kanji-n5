@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -88,24 +85,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <div class="ws"><div class="wc" onclick="speak('飲料','word')">
       <div class="wj">飲料</div><div class="wr">inryou</div><div class="we" id="on-ex">beverage</div>
     </div></div>
-    <div class="sb" onclick="speak('飲み物は何にしますか。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">飲み物は何にしますか。</div><div class="sro">Nomimono wa nani ni shimasu ka.</div><div class="sen" id="on-sent">What would you like to drink?</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('飲料は何にしますか。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">飲料は何にしますか。</div><div class="sro">Inryou wa nani ni shimasu ka.</div><div class="sen" id="on-sent">What would you like to drink?</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">の</div><div class="cr">(no)</div></div>
     <button class="bs kun-bs" onclick="speak('の','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('飲む','word')">
-      <div class="wj">飲む</div><div class="wr">nomu</div><div class="we" id="kun-ex">to drink</div>
-    </div></div><div class="sb" onclick="speak('水を飲んでください。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">水を飲んでください。</div><div class="sro">Mizu wo nonde kudasai.</div><div class="sen" id="kun-sent">Please drink some water.</div><div class="sh">tap to hear</div></div>
+    <div class="ws"><div class="wc" onclick="speak('飲んで','word')">
+      <div class="wj">飲んで</div><div class="wr">nomu</div><div class="we" id="kun-ex">to drink</div>
+    </div></div><div class="sb" onclick="speak('水を飲んでください。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">水を飲んでください。</div><div class="sro">Mizu wo nonde kudasai.</div><div class="sen" id="kun-sent">Please drink water.</div><div class="sh">tap to hear</div></div>
   </div>
 </div>
 <div class="ft">JLPT N5 Kanji Writing Practice · Between Line Studio<br>Stroke data: KanjiVG © Ulrich Apel (CC BY-SA 3.0)</div>
 <script>
 var T={
   meaning:{en:"drink",es:"beber",zh:"喝",ko:"마시다",ar:"يشرب"},
-  on_ex:  {en:"beverage",es:"bebida",zh:"饮料",ko:"음료",ar:"مشروب"},
-  on_sent:{en:"What would you like to drink?",es:"¿Qué quieres beber?",zh:"你要喝什么？",ko:"음료는 무엇으로 하겠습니까?",ar:"ماذا تريد أن تشرب؟"},
-  kun_ex: {en:"to drink",es:"beber",zh:"喝",ko:"마시다",ar:"يشرب"},
-  kun_sent:{en:"Please drink some water.",es:"Por favor bebe agua.",zh:"请喝水。",ko:"물을 마셔 주세요.",ar:"اشرب ماء من فضلك."}
+  on_ex:  {en:"beverage",es:"beverage",zh:"beverage",ko:"beverage",ar:"beverage"},
+  on_sent:{en:"What would you like to drink?",es:"What would you like to drink?",zh:"What would you like to drink?",ko:"What would you like to drink?",ar:"What would you like to drink?"},
+  kun_ex: {en:"to drink",es:"to drink",zh:"to drink",ko:"to drink",ar:"to drink"},
+  kun_sent:{en:"Please drink water.",es:"Please drink water.",zh:"Please drink water.",ko:"Please drink water.",ar:"Please drink water."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

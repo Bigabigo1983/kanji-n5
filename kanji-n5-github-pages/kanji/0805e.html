@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -88,7 +85,7 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <div class="ws"><div class="wc" onclick="speak('新聞','word')">
       <div class="wj">新聞</div><div class="wr">shinbun</div><div class="we" id="on-ex">newspaper</div>
     </div></div>
-    <div class="sb" onclick="speak('ニュースを聞きました。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">ニュースを聞きました。</div><div class="sro">Nyuusu wo kikimashita.</div><div class="sen" id="on-sent">I heard the news.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('新聞を読みましたか。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">新聞を読みましたか。</div><div class="sro">Shinbun wo yomimashita ka.</div><div class="sen" id="on-sent">Did you read the newspaper?</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">き</div><div class="cr">(ki)</div></div>
@@ -102,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"listen",es:"escuchar",zh:"听",ko:"듣다",ar:"يسمع"},
-  on_ex:  {en:"newspaper",es:"periódico",zh:"报纸",ko:"신문",ar:"جريدة"},
-  on_sent:{en:"I heard the news.",es:"Escuché las noticias.",zh:"听了新闻。",ko:"뉴스를 들었습니다.",ar:"سمعت الأخبار."},
-  kun_ex: {en:"to listen",es:"escuchar",zh:"听",ko:"듣다",ar:"يسمع"},
-  kun_sent:{en:"I like listening to music.",es:"Me gusta escuchar música.",zh:"我喜欢听音乐。",ko:"음악 듣는 것을 좋아합니다.",ar:"أحب الاستماع إلى الموسيقى."}
+  on_ex:  {en:"newspaper",es:"newspaper",zh:"newspaper",ko:"newspaper",ar:"newspaper"},
+  on_sent:{en:"Did you read the newspaper?",es:"Did you read the newspaper?",zh:"Did you read the newspaper?",ko:"Did you read the newspaper?",ar:"Did you read the newspaper?"},
+  kun_ex: {en:"to listen",es:"to listen",zh:"to listen",ko:"to listen",ar:"to listen"},
+  kun_sent:{en:"I like listening to music.",es:"I like listening to music.",zh:"I like listening to music.",ko:"I like listening to music.",ar:"I like listening to music."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

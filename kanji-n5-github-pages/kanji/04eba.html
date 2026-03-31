@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -93,8 +90,8 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">ひと</div><div class="cr">(hito)</div></div>
     <button class="bs kun-bs" onclick="speak('ひと','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('一人','word')">
-      <div class="wj">一人</div><div class="wr">hitori</div><div class="we" id="kun-ex">one person</div>
+    <div class="ws"><div class="wc" onclick="speak('あの人','word')">
+      <div class="wj">あの人</div><div class="wr">hitori</div><div class="we" id="kun-ex">one person</div>
     </div></div><div class="sb" onclick="speak('あの人は誰ですか。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">あの人は誰ですか。</div><div class="sro">Ano hito wa dare desu ka.</div><div class="sen" id="kun-sent">Who is that person?</div><div class="sh">tap to hear</div></div>
   </div>
 </div>
@@ -102,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"person",es:"persona",zh:"人",ko:"사람",ar:"شخص"},
-  on_ex:  {en:"Japanese person",es:"persona japonesa",zh:"日本人",ko:"일본인",ar:"شخص ياباني"},
-  on_sent:{en:"Japanese people work hard.",es:"Los japoneses trabajan mucho.",zh:"日本人很努力工作。",ko:"일본인은 열심히 일합니다.",ar:"اليابانيون يعملون بجد."},
-  kun_ex: {en:"one person",es:"una persona",zh:"一个人",ko:"한 사람",ar:"شخص واحد"},
-  kun_sent:{en:"Who is that person?",es:"¿Quién es esa persona?",zh:"那个人是谁？",ko:"저 사람은 누구입니까?",ar:"من هذا الشخص؟"}
+  on_ex:  {en:"Japanese person",es:"Japanese person",zh:"Japanese person",ko:"Japanese person",ar:"Japanese person"},
+  on_sent:{en:"Japanese people work hard.",es:"Japanese people work hard.",zh:"Japanese people work hard.",ko:"Japanese people work hard.",ar:"Japanese people work hard."},
+  kun_ex: {en:"one person",es:"one person",zh:"one person",ko:"one person",ar:"one person"},
+  kun_sent:{en:"Who is that person?",es:"Who is that person?",zh:"Who is that person?",ko:"Who is that person?",ar:"Who is that person?"}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

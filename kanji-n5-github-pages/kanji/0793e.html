@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -102,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"company",es:"empresa",zh:"公司",ko:"회사",ar:"شركة"},
-  on_ex:  {en:"company",es:"empresa",zh:"公司",ko:"회사",ar:"شركة"},
-  on_sent:{en:"I go to the company.",es:"Voy a la empresa.",zh:"去公司。",ko:"회사에 갑니다.",ar:"أذهب إلى الشركة."},
-  kun_ex: {en:"shrine",es:"santuario",zh:"神社",ko:"신사",ar:"ضريح"},
-  kun_sent:{en:"I went to the shrine.",es:"Fui al santuario.",zh:"去了神社。",ko:"신사에 갔습니다.",ar:"ذهبت إلى الضريح."}
+  on_ex:  {en:"company",es:"company",zh:"company",ko:"company",ar:"company"},
+  on_sent:{en:"I go to the company.",es:"I go to the company.",zh:"I go to the company.",ko:"I go to the company.",ar:"I go to the company."},
+  kun_ex: {en:"shrine",es:"shrine",zh:"shrine",ko:"shrine",ar:"shrine"},
+  kun_sent:{en:"I went to the shrine.",es:"I went to the shrine.",zh:"I went to the shrine.",ko:"I went to the shrine.",ar:"I went to the shrine."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

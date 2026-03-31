@@ -32,24 +32,21 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
-/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -85,8 +82,8 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
       <div class="cv">フ</div>
       <div class="cr">(fu)</div>
     </div><button class="bs" onclick="speak('フ','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('父兄','word')">
-      <div class="wj">父兄</div><div class="wr">fukei</div><div class="we" id="on-ex">parents</div>
+    <div class="ws"><div class="wc" onclick="speak('父親','word')">
+      <div class="wj">父親</div><div class="wr">fukei</div><div class="we" id="on-ex">parents</div>
     </div></div>
     <div class="sb" onclick="speak('父親は会社員です。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">父親は会社員です。</div><div class="sro">Chichioya wa kaishain desu.</div><div class="sen" id="on-sent">My father is a company employee.</div><div class="sh">tap to hear</div></div>
   </div>
@@ -95,17 +92,17 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <button class="bs kun-bs" onclick="speak('ちち','on')">🔊 Listen</button></div>
     <div class="ws"><div class="wc" onclick="speak('父','word')">
       <div class="wj">父</div><div class="wr">chichi</div><div class="we" id="kun-ex">father</div>
-    </div></div><div class="sb" onclick="speak('お父さん、ありがとう。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">お父さん、ありがとう。</div><div class="sro">Otousan, arigatou.</div><div class="sen" id="kun-sent">Thank you, Dad.</div><div class="sh">tap to hear</div></div>
+    </div></div><div class="sb" onclick="speak('お父さん、ありがとう。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">お父さん、ありがとう。</div><div class="sro">Otousan, arigatou.</div><div class="sen" id="kun-sent">Thank you, dad.</div><div class="sh">tap to hear</div></div>
   </div>
 </div>
 <div class="ft">JLPT N5 Kanji Writing Practice · Between Line Studio<br>Stroke data: KanjiVG © Ulrich Apel (CC BY-SA 3.0)</div>
 <script>
 var T={
   meaning:{en:"father",es:"padre",zh:"父亲",ko:"아버지",ar:"أب"},
-  on_ex:  {en:"parents",es:"padres",zh:"父兄",ko:"부형",ar:"الآباء"},
-  on_sent:{en:"My father is a company employee.",es:"Mi padre es empleado.",zh:"我父亲是公司职员。",ko:"아버지는 회사원입니다.",ar:"والدي موظف."},
-  kun_ex: {en:"father",es:"padre",zh:"爸爸",ko:"아버지",ar:"أب"},
-  kun_sent:{en:"Thank you, Dad.",es:"Gracias papá.",zh:"爸爸，谢谢你。",ko:"아빠, 감사합니다.",ar:"شكراً يا أبي."}
+  on_ex:  {en:"parents",es:"parents",zh:"parents",ko:"parents",ar:"parents"},
+  on_sent:{en:"My father is a company employee.",es:"My father is a company employee.",zh:"My father is a company employee.",ko:"My father is a company employee.",ar:"My father is a company employee."},
+  kun_ex: {en:"father",es:"father",zh:"father",ko:"father",ar:"father"},
+  kun_sent:{en:"Thank you, dad.",es:"Thank you, dad.",zh:"Thank you, dad.",ko:"Thank you, dad.",ar:"Thank you, dad."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});
