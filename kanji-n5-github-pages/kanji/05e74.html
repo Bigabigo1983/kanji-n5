@@ -32,21 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
+/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
+/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -99,10 +102,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"year",es:"año",zh:"年",ko:"년",ar:"سنة"},
-  on_ex:  {en:"next year",es:"next year",zh:"next year",ko:"next year",ar:"next year"},
-  on_sent:{en:"I\'m going to Japan next year.",es:"I\'m going to Japan next year.",zh:"I\'m going to Japan next year.",ko:"I\'m going to Japan next year.",ar:"I\'m going to Japan next year."},
-  kun_ex: {en:"this year",es:"this year",zh:"this year",ko:"this year",ar:"this year"},
-  kun_sent:{en:"I turn 20 this year.",es:"I turn 20 this year.",zh:"I turn 20 this year.",ko:"I turn 20 this year.",ar:"I turn 20 this year."}
+  on_ex:  {en:"next year",es:"el año que viene",zh:"明年",ko:"내년",ar:"السنة القادمة"},
+  on_sent:{en:"I\'m going to Japan next year.",es:"El año que viene voy a Japón.",zh:"明年去日本。",ko:"내년에 일본에 갑니다.",ar:"سأذهب إلى اليابان السنة القادمة."},
+  kun_ex: {en:"this year",es:"este año",zh:"今年",ko:"올해",ar:"هذه السنة"},
+  kun_sent:{en:"I turn 20 this year.",es:"Este año cumplo 20 años.",zh:"今年满20岁了。",ko:"올해 스무 살이 됩니다.",ar:"هذه السنة أبلغ العشرين."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

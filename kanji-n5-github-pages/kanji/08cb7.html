@@ -32,21 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
+/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
+/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -82,16 +85,16 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
       <div class="cv">バイ</div>
       <div class="cr">(bai)</div>
     </div><button class="bs" onclick="speak('バイ','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('買い物','word')">
-      <div class="wj">買い物</div><div class="wr">baibai</div><div class="we" id="on-ex">buying and selling</div>
+    <div class="ws"><div class="wc" onclick="speak('売買','word')">
+      <div class="wj">売買</div><div class="wr">baibai</div><div class="we" id="on-ex">buying and selling</div>
     </div></div>
-    <div class="sb" onclick="speak('買い物に行きます。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">買い物に行きます。</div><div class="sro">Kaimono ni ikimasu.</div><div class="sen" id="on-sent">I am going shopping.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('買い物に行きます。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">買い物に行きます。</div><div class="sro">Kaimono ni ikimasu.</div><div class="sen" id="on-sent">I'm going shopping.</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">か</div><div class="cr">(ka)</div></div>
     <button class="bs kun-bs" onclick="speak('か','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('買い','word')">
-      <div class="wj">買い</div><div class="wr">kau</div><div class="we" id="kun-ex">to buy</div>
+    <div class="ws"><div class="wc" onclick="speak('買う','word')">
+      <div class="wj">買う</div><div class="wr">kau</div><div class="we" id="kun-ex">to buy</div>
     </div></div><div class="sb" onclick="speak('スーパーで野菜を買いました。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">スーパーで野菜を買いました。</div><div class="sro">Suupaa de yasai wo kaimashita.</div><div class="sen" id="kun-sent">I bought vegetables at the supermarket.</div><div class="sh">tap to hear</div></div>
   </div>
 </div>
@@ -99,10 +102,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"buy",es:"comprar",zh:"买",ko:"사다",ar:"يشتري"},
-  on_ex:  {en:"buying and selling",es:"buying and selling",zh:"buying and selling",ko:"buying and selling",ar:"buying and selling"},
-  on_sent:{en:"I am going shopping.",es:"I am going shopping.",zh:"I am going shopping.",ko:"I am going shopping.",ar:"I am going shopping."},
-  kun_ex: {en:"to buy",es:"to buy",zh:"to buy",ko:"to buy",ar:"to buy"},
-  kun_sent:{en:"I bought vegetables at the supermarket.",es:"I bought vegetables at the supermarket.",zh:"I bought vegetables at the supermarket.",ko:"I bought vegetables at the supermarket.",ar:"I bought vegetables at the supermarket."}
+  on_ex:  {en:"buying and selling",es:"compra y venta",zh:"买卖",ko:"매매",ar:"بيع وشراء"},
+  on_sent:{en:"I\'m going shopping.",es:"Voy de compras.",zh:"我去购物。",ko:"쇼핑하러 갑니다.",ar:"سأذهب للتسوق."},
+  kun_ex: {en:"to buy",es:"comprar",zh:"买",ko:"사다",ar:"يشتري"},
+  kun_sent:{en:"I bought vegetables at the supermarket.",es:"Compré verduras en el supermercado.",zh:"在超市买了蔬菜。",ko:"슈퍼마켓에서 야채를 샀습니다.",ar:"اشتريت خضروات من السوبرماركت."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

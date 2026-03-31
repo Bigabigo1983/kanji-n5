@@ -32,21 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
+/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
+/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -99,10 +102,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"make",es:"hacer",zh:"做",ko:"만들다",ar:"يصنع"},
-  on_ex:  {en:"composition",es:"composition",zh:"composition",ko:"composition",ar:"composition"},
-  on_sent:{en:"Please write a composition.",es:"Please write a composition.",zh:"Please write a composition.",ko:"Please write a composition.",ar:"Please write a composition."},
-  kun_ex: {en:"to make",es:"to make",zh:"to make",ko:"to make",ar:"to make"},
-  kun_sent:{en:"I make food.",es:"I make food.",zh:"I make food.",ko:"I make food.",ar:"I make food."}
+  on_ex:  {en:"composition",es:"composición",zh:"作文",ko:"작문",ar:"إنشاء"},
+  on_sent:{en:"Please write a composition.",es:"Por favor escriba una redacción.",zh:"请写作文。",ko:"작문을 써 주세요.",ar:"اكتب مقالاً."},
+  kun_ex: {en:"to make",es:"hacer",zh:"做",ko:"만들다",ar:"يصنع"},
+  kun_sent:{en:"I make food.",es:"Hago comida.",zh:"我做饭。",ko:"요리를 만듭니다.",ar:"أصنع الطعام."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

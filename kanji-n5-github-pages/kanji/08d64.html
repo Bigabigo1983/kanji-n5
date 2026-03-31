@@ -32,21 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
+/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
+/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -85,7 +88,7 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <div class="ws"><div class="wc" onclick="speak('赤十字','word')">
       <div class="wj">赤十字</div><div class="wr">sekijuuji</div><div class="we" id="on-ex">Red Cross</div>
     </div></div>
-    <div class="sb" onclick="speak('赤十字に寄付しました。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">赤十字に寄付しました。</div><div class="sro">Sekijuuji ni kifu shimashita.</div><div class="sen" id="on-sent">I donated to the Red Cross.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('赤信号で止まってください。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">赤信号で止まってください。</div><div class="sro">Akashingou de tomatte kudasai.</div><div class="sen" id="on-sent">Please stop at the red light.</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">あか</div><div class="cr">(aka)</div></div>
@@ -99,10 +102,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"red",es:"rojo",zh:"红",ko:"빨갛다",ar:"أحمر"},
-  on_ex:  {en:"Red Cross",es:"Red Cross",zh:"Red Cross",ko:"Red Cross",ar:"Red Cross"},
-  on_sent:{en:"I donated to the Red Cross.",es:"I donated to the Red Cross.",zh:"I donated to the Red Cross.",ko:"I donated to the Red Cross.",ar:"I donated to the Red Cross."},
-  kun_ex: {en:"red",es:"red",zh:"red",ko:"red",ar:"red"},
-  kun_sent:{en:"I like red apples.",es:"I like red apples.",zh:"I like red apples.",ko:"I like red apples.",ar:"I like red apples."}
+  on_ex:  {en:"Red Cross",es:"Cruz Roja",zh:"红十字",ko:"적십자",ar:"الصليب الأحمر"},
+  on_sent:{en:"Please stop at the red light.",es:"Detente en el semáforo rojo.",zh:"请在红灯处停下来。",ko:"빨간 신호에서 멈추세요.",ar:"توقف عند الضوء الأحمر."},
+  kun_ex: {en:"red",es:"rojo",zh:"红色",ko:"빨갛다",ar:"أحمر"},
+  kun_sent:{en:"I like red apples.",es:"Me gustan las manzanas rojas.",zh:"我喜欢红苹果。",ko:"빨간 사과를 좋아합니다.",ar:"أحب التفاح الأحمر."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

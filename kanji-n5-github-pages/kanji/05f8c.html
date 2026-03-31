@@ -32,21 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
+/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
+/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -82,10 +85,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
       <div class="cv">ゴ</div>
       <div class="cr">(go)</div>
     </div><button class="bs" onclick="speak('ゴ','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('午後','word')">
-      <div class="wj">午後</div><div class="wr">shougo</div><div class="we" id="on-ex">noon</div>
+    <div class="ws"><div class="wc" onclick="speak('正午','word')">
+      <div class="wj">正午</div><div class="wr">shougo</div><div class="we" id="on-ex">noon</div>
     </div></div>
-    <div class="sb" onclick="speak('午後から雨が降ります。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">午後から雨が降ります。</div><div class="sro">Gogo kara ame ga furimasu.</div><div class="sen" id="on-sent">It will rain from the afternoon.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('午後から雨です。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">午後から雨です。</div><div class="sro">Gogo kara ame desu.</div><div class="sen" id="on-sent">It will rain from the afternoon.</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">あと</div><div class="cr">(ato)</div></div>
@@ -99,10 +102,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"after",es:"después",zh:"后",ko:"뒤",ar:"بعد"},
-  on_ex:  {en:"noon",es:"noon",zh:"noon",ko:"noon",ar:"noon"},
-  on_sent:{en:"It will rain from the afternoon.",es:"It will rain from the afternoon.",zh:"It will rain from the afternoon.",ko:"It will rain from the afternoon.",ar:"It will rain from the afternoon."},
-  kun_ex: {en:"later",es:"later",zh:"later",ko:"later",ar:"later"},
-  kun_sent:{en:"I\'ll contact you later.",es:"I\'ll contact you later.",zh:"I\'ll contact you later.",ko:"I\'ll contact you later.",ar:"I\'ll contact you later."}
+  on_ex:  {en:"noon",es:"tarde",zh:"下午",ko:"오후",ar:"بعد الظهر"},
+  on_sent:{en:"It will rain from the afternoon.",es:"Lloverá desde la tarde.",zh:"从下午开始下雨。",ko:"오후부터 비가 옵니다.",ar:"ستمطر من بعد الظهر."},
+  kun_ex: {en:"later",es:"después",zh:"后来",ko:"나중에",ar:"لاحقاً"},
+  kun_sent:{en:"I\'ll contact you later.",es:"Te contacto después.",zh:"之后联系你。",ko:"나중에 연락합니다.",ar:"سأتواصل معك لاحقاً."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

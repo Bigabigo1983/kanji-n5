@@ -32,21 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
+/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
+/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -99,10 +102,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"one",es:"uno",zh:"一",ko:"하나",ar:"واحد"},
-  on_ex:  {en:"January",es:"January",zh:"January",ko:"January",ar:"January"},
-  on_sent:{en:"January is winter.",es:"January is winter.",zh:"January is winter.",ko:"January is winter.",ar:"January is winter."},
-  kun_ex: {en:"one thing",es:"one thing",zh:"one thing",ko:"one thing",ar:"one thing"},
-  kun_sent:{en:"There is one apple.",es:"There is one apple.",zh:"There is one apple.",ko:"There is one apple.",ar:"There is one apple."}
+  on_ex:  {en:"January",es:"enero",zh:"一月",ko:"1월",ar:"يناير"},
+  on_sent:{en:"January is winter.",es:"Enero es invierno.",zh:"一月是冬天。",ko:"1월은 겨울입니다.",ar:"يناير هو الشتاء."},
+  kun_ex: {en:"one thing",es:"una cosa",zh:"一个",ko:"하나",ar:"شيء واحد"},
+  kun_sent:{en:"There is one apple.",es:"Hay una manzana.",zh:"有一个苹果。",ko:"사과가 하나 있습니다.",ar:"هناك تفاحة واحدة."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

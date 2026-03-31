@@ -32,21 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
+/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
+/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -85,13 +88,13 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <div class="ws"><div class="wc" onclick="speak('教科書','word')">
       <div class="wj">教科書</div><div class="wr">kyoukasho</div><div class="we" id="on-ex">textbook</div>
     </div></div>
-    <div class="sb" onclick="speak('教科書を読んでください。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">教科書を読んでください。</div><div class="sro">Kyoukasho wo yonde kudasai.</div><div class="sen" id="on-sent">Please read the textbook.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('作文を書いてください。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">作文を書いてください。</div><div class="sro">Sakubun wo kaite kudasai.</div><div class="sen" id="on-sent">Please write a composition.</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">か</div><div class="cr">(ka)</div></div>
     <button class="bs kun-bs" onclick="speak('か','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('書き','word')">
-      <div class="wj">書き</div><div class="wr">kaku</div><div class="we" id="kun-ex">to write</div>
+    <div class="ws"><div class="wc" onclick="speak('書く','word')">
+      <div class="wj">書く</div><div class="wr">kaku</div><div class="we" id="kun-ex">to write</div>
     </div></div><div class="sb" onclick="speak('手紙を書きました。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">手紙を書きました。</div><div class="sro">Tegami wo kakimashita.</div><div class="sen" id="kun-sent">I wrote a letter.</div><div class="sh">tap to hear</div></div>
   </div>
 </div>
@@ -99,10 +102,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"write",es:"escribir",zh:"写",ko:"쓰다",ar:"يكتب"},
-  on_ex:  {en:"textbook",es:"textbook",zh:"textbook",ko:"textbook",ar:"textbook"},
-  on_sent:{en:"Please read the textbook.",es:"Please read the textbook.",zh:"Please read the textbook.",ko:"Please read the textbook.",ar:"Please read the textbook."},
-  kun_ex: {en:"to write",es:"to write",zh:"to write",ko:"to write",ar:"to write"},
-  kun_sent:{en:"I wrote a letter.",es:"I wrote a letter.",zh:"I wrote a letter.",ko:"I wrote a letter.",ar:"I wrote a letter."}
+  on_ex:  {en:"textbook",es:"libro de texto",zh:"教科书",ko:"교과서",ar:"كتاب مدرسي"},
+  on_sent:{en:"Please write a composition.",es:"Por favor escriba una redacción.",zh:"请写作文。",ko:"작문을 써 주세요.",ar:"اكتب مقالاً من فضلك."},
+  kun_ex: {en:"to write",es:"escribir",zh:"写",ko:"쓰다",ar:"يكتب"},
+  kun_sent:{en:"I wrote a letter.",es:"Escribí una carta.",zh:"写了信。",ko:"편지를 썼습니다.",ar:"كتبت رسالة."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

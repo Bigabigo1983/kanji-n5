@@ -32,21 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
+/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
+/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -99,10 +102,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"enter",es:"entrar",zh:"进入",ko:"들어가다",ar:"يدخل"},
-  on_ex:  {en:"school entry",es:"school entry",zh:"school entry",ko:"school entry",ar:"school entry"},
-  on_sent:{en:"Congratulations on entering school.",es:"Congratulations on entering school.",zh:"Congratulations on entering school.",ko:"Congratulations on entering school.",ar:"Congratulations on entering school."},
-  kun_ex: {en:"to enter",es:"to enter",zh:"to enter",ko:"to enter",ar:"to enter"},
-  kun_sent:{en:"Please come into the room.",es:"Please come into the room.",zh:"Please come into the room.",ko:"Please come into the room.",ar:"Please come into the room."}
+  on_ex:  {en:"school entry",es:"entrada a la escuela",zh:"入学",ko:"입학",ar:"الالتحاق بالمدرسة"},
+  on_sent:{en:"Congratulations on entering school.",es:"Felicidades por tu ingreso.",zh:"恭喜入学。",ko:"입학을 축하합니다.",ar:"تهانيّ على الالتحاق."},
+  kun_ex: {en:"to enter",es:"entrar",zh:"进入",ko:"들어가다",ar:"يدخل"},
+  kun_sent:{en:"Please come into the room.",es:"Por favor entre a la habitación.",zh:"请进房间。",ko:"방에 들어가 주세요.",ar:"من فضلك ادخل الغرفة."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

@@ -32,21 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
+/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
+/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -99,10 +102,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"stand",es:"estar de pie",zh:"站立",ko:"서다",ar:"يقف"},
-  on_ex:  {en:"position / standpoint",es:"position / standpoint",zh:"position / standpoint",ko:"position / standpoint",ar:"position / standpoint"},
-  on_sent:{en:"Please consider the situation.",es:"Please consider the situation.",zh:"Please consider the situation.",ko:"Please consider the situation.",ar:"Please consider the situation."},
-  kun_ex: {en:"to stand",es:"to stand",zh:"to stand",ko:"to stand",ar:"to stand"},
-  kun_sent:{en:"Please stand here.",es:"Please stand here.",zh:"Please stand here.",ko:"Please stand here.",ar:"Please stand here."}
+  on_ex:  {en:"position / standpoint",es:"posición",zh:"立场",ko:"입장",ar:"موقف"},
+  on_sent:{en:"Please consider the situation.",es:"Por favor considere la situación.",zh:"请考虑立场。",ko:"입장을 생각해 주세요.",ar:"من فضلك فكر في الموقف."},
+  kun_ex: {en:"to stand",es:"estar de pie",zh:"站立",ko:"서다",ar:"يقف"},
+  kun_sent:{en:"Please stand here.",es:"Por favor póngase de pie aquí.",zh:"请站在这里。",ko:"여기에 서 주세요.",ar:"من فضلك قف هنا."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

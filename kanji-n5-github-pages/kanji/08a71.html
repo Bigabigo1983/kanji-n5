@@ -32,21 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
+/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
+/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -85,13 +88,13 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <div class="ws"><div class="wc" onclick="speak('会話','word')">
       <div class="wj">会話</div><div class="wr">kaiwa</div><div class="we" id="on-ex">conversation</div>
     </div></div>
-    <div class="sb" onclick="speak('会話の練習をします。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">会話の練習をします。</div><div class="sro">Kaiwa no renshuu wo shimasu.</div><div class="sen" id="on-sent">I practice conversation.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('電話で話しました。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">電話で話しました。</div><div class="sro">Denwa de hanashimashita.</div><div class="sen" id="on-sent">I talked on the phone.</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">はな</div><div class="cr">(hana)</div></div>
     <button class="bs kun-bs" onclick="speak('はな','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('話して','word')">
-      <div class="wj">話して</div><div class="wr">hanasu</div><div class="we" id="kun-ex">to speak</div>
+    <div class="ws"><div class="wc" onclick="speak('話す','word')">
+      <div class="wj">話す</div><div class="wr">hanasu</div><div class="we" id="kun-ex">to speak</div>
     </div></div><div class="sb" onclick="speak('ゆっくり話してください。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">ゆっくり話してください。</div><div class="sro">Yukkuri hanashite kudasai.</div><div class="sen" id="kun-sent">Please speak slowly.</div><div class="sh">tap to hear</div></div>
   </div>
 </div>
@@ -99,10 +102,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"speak",es:"hablar",zh:"说话",ko:"말하다",ar:"يتكلم"},
-  on_ex:  {en:"conversation",es:"conversation",zh:"conversation",ko:"conversation",ar:"conversation"},
-  on_sent:{en:"I practice conversation.",es:"I practice conversation.",zh:"I practice conversation.",ko:"I practice conversation.",ar:"I practice conversation."},
-  kun_ex: {en:"to speak",es:"to speak",zh:"to speak",ko:"to speak",ar:"to speak"},
-  kun_sent:{en:"Please speak slowly.",es:"Please speak slowly.",zh:"Please speak slowly.",ko:"Please speak slowly.",ar:"Please speak slowly."}
+  on_ex:  {en:"conversation",es:"conversación",zh:"对话",ko:"대화",ar:"محادثة"},
+  on_sent:{en:"I talked on the phone.",es:"Hablé por teléfono.",zh:"打电话聊了。",ko:"전화로 이야기했습니다.",ar:"تحدثت عبر الهاتف."},
+  kun_ex: {en:"to speak",es:"hablar",zh:"说话",ko:"말하다",ar:"يتكلم"},
+  kun_sent:{en:"Please speak slowly.",es:"Por favor habla despacio.",zh:"请慢慢说。",ko:"천천히 말해 주세요.",ar:"تكلم ببطء من فضلك."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

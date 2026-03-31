@@ -32,21 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+/* ── Word card: 125% larger ── */
 .wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
 .wc:active{background:#EDE5D5}
 .wj{font-size:19px;font-weight:700;color:#1A1F40}
 .wr{font-size:13px;color:#806B50;margin-top:2px}
+/* ── Translation text: 125% + bold ── */
 .we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
+/* ── Sentence translation: 125% + bold ── */
 .sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
 .rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
@@ -85,24 +88,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <div class="ws"><div class="wc" onclick="speak('学生','word')">
       <div class="wj">学生</div><div class="wr">gakusei</div><div class="we" id="on-ex">student</div>
     </div></div>
-    <div class="sb" onclick="speak('学生証を見せてください。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">学生証を見せてください。</div><div class="sro">Gakuseishou wo misete kudasai.</div><div class="sen" id="on-sent">Please show your student ID.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('学生証を見せてください。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">学生証を見せてください。</div><div class="sro">Gakuseiсho wo misete kudasai.</div><div class="sen" id="on-sent">Please show your student ID.</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">うまれる</div><div class="cr">(umareru)</div></div>
     <button class="bs kun-bs" onclick="speak('うまれる','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('生まれ','word')">
-      <div class="wj">生まれ</div><div class="wr">umareru</div><div class="we" id="kun-ex">to be born</div>
-    </div></div><div class="sb" onclick="speak('東京で生まれました。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">東京で生まれました。</div><div class="sro">Toukyou de umaremashita.</div><div class="sen" id="kun-sent">I was born in Tokyo.</div><div class="sh">tap to hear</div></div>
+    <div class="ws"><div class="wc" onclick="speak('生まれる','word')">
+      <div class="wj">生まれる</div><div class="wr">umareru</div><div class="we" id="kun-ex">to be born</div>
+    </div></div><div class="sb" onclick="speak('東京で生まれました。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">東京で生まれました。</div><div class="sro">Tokyo de umaremashita.</div><div class="sen" id="kun-sent">I was born in Tokyo.</div><div class="sh">tap to hear</div></div>
   </div>
 </div>
 <div class="ft">JLPT N5 Kanji Writing Practice · Between Line Studio<br>Stroke data: KanjiVG © Ulrich Apel (CC BY-SA 3.0)</div>
 <script>
 var T={
   meaning:{en:"life",es:"vida",zh:"生命",ko:"생명",ar:"حياة"},
-  on_ex:  {en:"student",es:"student",zh:"student",ko:"student",ar:"student"},
-  on_sent:{en:"Please show your student ID.",es:"Please show your student ID.",zh:"Please show your student ID.",ko:"Please show your student ID.",ar:"Please show your student ID."},
-  kun_ex: {en:"to be born",es:"to be born",zh:"to be born",ko:"to be born",ar:"to be born"},
-  kun_sent:{en:"I was born in Tokyo.",es:"I was born in Tokyo.",zh:"I was born in Tokyo.",ko:"I was born in Tokyo.",ar:"I was born in Tokyo."}
+  on_ex:  {en:"student",es:"estudiante",zh:"学生",ko:"학생",ar:"طالب"},
+  on_sent:{en:"Please show your student ID.",es:"Muestre su carnet de estudiante.",zh:"请出示学生证。",ko:"학생증을 보여 주세요.",ar:"أرني بطاقة الطالب."},
+  kun_ex: {en:"to be born",es:"nacer",zh:"出生",ko:"태어나다",ar:"يولد"},
+  kun_sent:{en:"I was born in Tokyo.",es:"Nací en Tokio.",zh:"我在东京出生。",ko:"도쿄에서 태어났습니다.",ar:"وُلدت في طوكيو."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});
