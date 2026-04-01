@@ -32,24 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
+.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:8px;padding:6px 10px;cursor:pointer;min-width:72px}
 .wc:active{background:#EDE5D5}
-.wj{font-size:19px;font-weight:700;color:#1A1F40}
-.wr{font-size:13px;color:#806B50;margin-top:2px}
-.we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.wj{font-size:15px;font-weight:700;color:#1A1F40}
+.wr{font-size:10px;color:#806B50;margin-top:1px}
+.we{font-size:10px;color:#555580}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-.sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.sen{font-size:11px;color:#555580;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
-.rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
+.rtl .sen,.rtl .sj,.rtl .hd-m{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
 .ft{text-align:center;padding:20px 16px 0;font-size:10px;color:#B3ADA5}
 </style></head>
 <body id="body">
@@ -99,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"big",es:"grande",zh:"大",ko:"크다",ar:"كبير"},
-  on_ex:  {en:"university",es:"university",zh:"university",ko:"university",ar:"university"},
-  on_sent:{en:"I\'m studying English at university.",es:"I\'m studying English at university.",zh:"I\'m studying English at university.",ko:"I\'m studying English at university.",ar:"I\'m studying English at university."},
-  kun_ex: {en:"big",es:"big",zh:"big",ko:"big",ar:"big"},
-  kun_sent:{en:"This dog is big, isn\'t it?",es:"This dog is big, isn\'t it?",zh:"This dog is big, isn\'t it?",ko:"This dog is big, isn\'t it?",ar:"This dog is big, isn\'t it?"}
+  on_ex:  {en:"university",es:"universidad",zh:"大学",ko:"대학교",ar:"جامعة"},
+  on_sent:{en:"I\'m studying English at university.",es:"Estudio inglés en la universidad.",zh:"在大学学英语。",ko:"대학에서 영어를 공부합니다.",ar:"أدرس الإنجليزية في الجامعة."},
+  kun_ex: {en:"big",es:"grande",zh:"大",ko:"크다",ar:"كبير"},
+  kun_sent:{en:"This dog is big, isn\'t it?",es:"Este perro es grande.",zh:"这只狗很大。",ko:"이 개는 크네요.",ar:"هذا الكلب كبير."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

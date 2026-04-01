@@ -32,24 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
+.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:8px;padding:6px 10px;cursor:pointer;min-width:72px}
 .wc:active{background:#EDE5D5}
-.wj{font-size:19px;font-weight:700;color:#1A1F40}
-.wr{font-size:13px;color:#806B50;margin-top:2px}
-.we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.wj{font-size:15px;font-weight:700;color:#1A1F40}
+.wr{font-size:10px;color:#806B50;margin-top:1px}
+.we{font-size:10px;color:#555580}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-.sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.sen{font-size:11px;color:#555580;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
-.rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
+.rtl .sen,.rtl .sj,.rtl .hd-m{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
 .ft{text-align:center;padding:20px 16px 0;font-size:10px;color:#B3ADA5}
 </style></head>
 <body id="body">
@@ -93,8 +93,8 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"hundred",es:"cien",zh:"百",ko:"백",ar:"مئة"},
-  on_ex:  {en:"100 yen",es:"100 yen",zh:"100 yen",ko:"100 yen",ar:"100 yen"},
-  on_sent:{en:"This pen costs 100 yen.",es:"This pen costs 100 yen.",zh:"This pen costs 100 yen.",ko:"This pen costs 100 yen.",ar:"This pen costs 100 yen."},
+  on_ex:  {en:"100 yen",es:"100 yenes",zh:"100日元",ko:"100엔",ar:"١٠٠ ين"},
+  on_sent:{en:"This pen costs 100 yen.",es:"Este bolígrafo cuesta 100 yenes.",zh:"这支笔100日元。",ko:"이 펜은 100엔입니다.",ar:"هذا القلم بـ١٠٠ ين."},
   kun_ex: {en:"encyclopedia",es:"encyclopedia",zh:"encyclopedia",ko:"encyclopedia",ar:"encyclopedia"},
   kun_sent:{en:"I bought it at the 100-yen shop.",es:"I bought it at the 100-yen shop.",zh:"I bought it at the 100-yen shop.",ko:"I bought it at the 100-yen shop.",ar:"I bought it at the 100-yen shop."}
 };

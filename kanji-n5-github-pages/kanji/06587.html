@@ -32,24 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
+.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:8px;padding:6px 10px;cursor:pointer;min-width:72px}
 .wc:active{background:#EDE5D5}
-.wj{font-size:19px;font-weight:700;color:#1A1F40}
-.wr{font-size:13px;color:#806B50;margin-top:2px}
-.we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.wj{font-size:15px;font-weight:700;color:#1A1F40}
+.wr{font-size:10px;color:#806B50;margin-top:1px}
+.we{font-size:10px;color:#555580}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-.sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.sen{font-size:11px;color:#555580;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
-.rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
+.rtl .sen,.rtl .sj,.rtl .hd-m{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
 .ft{text-align:center;padding:20px 16px 0;font-size:10px;color:#B3ADA5}
 </style></head>
 <body id="body">
@@ -99,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"writing",es:"escritura",zh:"文字",ko:"글",ar:"كتابة"},
-  on_ex:  {en:"sentence",es:"sentence",zh:"sentence",ko:"sentence",ar:"sentence"},
-  on_sent:{en:"Please read the passage.",es:"Please read the passage.",zh:"Please read the passage.",ko:"Please read the passage.",ar:"Please read the passage."},
-  kun_ex: {en:"letter",es:"letter",zh:"letter",ko:"letter",ar:"letter"},
-  kun_sent:{en:"I wrote a letter.",es:"I wrote a letter.",zh:"I wrote a letter.",ko:"I wrote a letter.",ar:"I wrote a letter."}
+  on_ex:  {en:"sentence",es:"oración",zh:"句子",ko:"문장",ar:"جملة"},
+  on_sent:{en:"Please read the passage.",es:"Por favor lea el texto.",zh:"请阅读文章。",ko:"문장을 읽어 주세요.",ar:"الرجاء قراءة النص."},
+  kun_ex: {en:"letter",es:"carta",zh:"信",ko:"편지",ar:"رسالة"},
+  kun_sent:{en:"I wrote a letter.",es:"Escribí una carta.",zh:"写了一封信。",ko:"편지를 썼습니다.",ar:"كتبت رسالة."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

@@ -32,24 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
+.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:8px;padding:6px 10px;cursor:pointer;min-width:72px}
 .wc:active{background:#EDE5D5}
-.wj{font-size:19px;font-weight:700;color:#1A1F40}
-.wr{font-size:13px;color:#806B50;margin-top:2px}
-.we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.wj{font-size:15px;font-weight:700;color:#1A1F40}
+.wr{font-size:10px;color:#806B50;margin-top:1px}
+.we{font-size:10px;color:#555580}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-.sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.sen{font-size:11px;color:#555580;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
-.rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
+.rtl .sen,.rtl .sj,.rtl .hd-m{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
 .ft{text-align:center;padding:20px 16px 0;font-size:10px;color:#B3ADA5}
 </style></head>
 <body id="body">
@@ -99,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"sky",es:"cielo",zh:"天",ko:"하늘",ar:"سماء"},
-  on_ex:  {en:"weather",es:"weather",zh:"weather",ko:"weather",ar:"weather"},
-  on_sent:{en:"I watched the weather forecast.",es:"I watched the weather forecast.",zh:"I watched the weather forecast.",ko:"I watched the weather forecast.",ar:"I watched the weather forecast."},
-  kun_ex: {en:"Milky Way",es:"Milky Way",zh:"Milky Way",ko:"Milky Way",ar:"Milky Way"},
-  kun_sent:{en:"The Milky Way is beautiful.",es:"The Milky Way is beautiful.",zh:"The Milky Way is beautiful.",ko:"The Milky Way is beautiful.",ar:"The Milky Way is beautiful."}
+  on_ex:  {en:"weather",es:"tiempo",zh:"天气",ko:"날씨",ar:"طقس"},
+  on_sent:{en:"I watched the weather forecast.",es:"Vi el pronóstico del tiempo.",zh:"看了天气预报。",ko:"날씨 예보를 봤습니다.",ar:"شاهدت توقعات الطقس."},
+  kun_ex: {en:"Milky Way",es:"Vía Láctea",zh:"银河",ko:"은하수",ar:"درب التبانة"},
+  kun_sent:{en:"The Milky Way is beautiful.",es:"La Vía Láctea es hermosa.",zh:"银河很美。",ko:"은하수가 예쁩니다.",ar:"درب التبانة جميل."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

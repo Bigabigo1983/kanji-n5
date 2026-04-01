@@ -32,24 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
+.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:8px;padding:6px 10px;cursor:pointer;min-width:72px}
 .wc:active{background:#EDE5D5}
-.wj{font-size:19px;font-weight:700;color:#1A1F40}
-.wr{font-size:13px;color:#806B50;margin-top:2px}
-.we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.wj{font-size:15px;font-weight:700;color:#1A1F40}
+.wr{font-size:10px;color:#806B50;margin-top:1px}
+.we{font-size:10px;color:#555580}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-.sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.sen{font-size:11px;color:#555580;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
-.rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
+.rtl .sen,.rtl .sj,.rtl .hd-m{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
 .ft{text-align:center;padding:20px 16px 0;font-size:10px;color:#B3ADA5}
 </style></head>
 <body id="body">
@@ -99,10 +99,10 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 <script>
 var T={
   meaning:{en:"interval",es:"intervalo",zh:"间隔",ko:"사이",ar:"فاصل"},
-  on_ex:  {en:"time",es:"time",zh:"time",ko:"time",ar:"time"},
-  on_sent:{en:"I don\'t have time.",es:"I don\'t have time.",zh:"I don\'t have time.",ko:"I don\'t have time.",ar:"I don\'t have time."},
-  kun_ex: {en:"between",es:"between",zh:"between",ko:"between",ar:"between"},
-  kun_sent:{en:"There is a park between the station and the school.",es:"There is a park between the station and the school.",zh:"There is a park between the station and the school.",ko:"There is a park between the station and the school.",ar:"There is a park between the station and the school."}
+  on_ex:  {en:"time",es:"tiempo",zh:"时间",ko:"시간",ar:"وقت"},
+  on_sent:{en:"I don\'t have time.",es:"No tengo tiempo.",zh:"我没有时间。",ko:"시간이 없습니다.",ar:"ليس عندي وقت."},
+  kun_ex: {en:"between",es:"entre",zh:"之间",ko:"사이",ar:"بين"},
+  kun_sent:{en:"There is a park between the station and the school.",es:"Hay un parque entre la estación y la escuela.",zh:"车站和学校之间有公园。",ko:"역과 학교 사이에 공원이 있습니다.",ar:"هناك حديقة بين المحطة والمدرسة."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

@@ -32,24 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
+.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:8px;padding:6px 10px;cursor:pointer;min-width:72px}
 .wc:active{background:#EDE5D5}
-.wj{font-size:19px;font-weight:700;color:#1A1F40}
-.wr{font-size:13px;color:#806B50;margin-top:2px}
-.we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.wj{font-size:15px;font-weight:700;color:#1A1F40}
+.wr{font-size:10px;color:#806B50;margin-top:1px}
+.we{font-size:10px;color:#555580}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-.sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.sen{font-size:11px;color:#555580;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
-.rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
+.rtl .sen,.rtl .sj,.rtl .hd-m{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
 .ft{text-align:center;padding:20px 16px 0;font-size:10px;color:#B3ADA5}
 </style></head>
 <body id="body">
@@ -85,24 +85,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <div class="ws"><div class="wc" onclick="speak('今月','word')">
       <div class="wj">今月</div><div class="wr">kongetsu</div><div class="we" id="on-ex">this month</div>
     </div></div>
-    <div class="sb" onclick="speak('今月は忙しいです。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">今月は忙しいです。</div><div class="sro">Kongetsu wa isogashii desu.</div><div class="sen" id="on-sent">This month is busy.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('月曜日は忙しいです。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">月曜日は忙しいです。</div><div class="sro">Getsuyoubi wa isogashii desu.</div><div class="sen" id="on-sent">Monday is busy.</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">つき</div><div class="cr">(tsuki)</div></div>
     <button class="bs kun-bs" onclick="speak('つき','on')">🔊 Listen</button></div>
     <div class="ws"><div class="wc" onclick="speak('月','word')">
       <div class="wj">月</div><div class="wr">tsuki</div><div class="we" id="kun-ex">moon</div>
-    </div></div><div class="sb" onclick="speak('月がきれいですね。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">月がきれいですね。</div><div class="sro">Tsuki ga kirei desu ne.</div><div class="sen" id="kun-sent">The moon is beautiful.</div><div class="sh">tap to hear</div></div>
+    </div></div><div class="sb" onclick="speak('月がきれいですね。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">月がきれいですね。</div><div class="sro">Tsuki ga kirei desu ne.</div><div class="sen" id="kun-sent">The moon is beautiful, isn't it?</div><div class="sh">tap to hear</div></div>
   </div>
 </div>
 <div class="ft">JLPT N5 Kanji Writing Practice · Between Line Studio<br>Stroke data: KanjiVG © Ulrich Apel (CC BY-SA 3.0)</div>
 <script>
 var T={
-  meaning:{en:"moon / month",es:"luna/mes",zh:"月亮/月",ko:"달/월",ar:"قمر/شهر"},
-  on_ex:  {en:"this month",es:"this month",zh:"this month",ko:"this month",ar:"this month"},
-  on_sent:{en:"This month is busy.",es:"This month is busy.",zh:"This month is busy.",ko:"This month is busy.",ar:"This month is busy."},
-  kun_ex: {en:"moon",es:"moon",zh:"moon",ko:"moon",ar:"moon"},
-  kun_sent:{en:"The moon is beautiful.",es:"The moon is beautiful.",zh:"The moon is beautiful.",ko:"The moon is beautiful.",ar:"The moon is beautiful."}
+  meaning:{en:"moon / month",es:"luna / mes",zh:"月亮/月",ko:"달/월",ar:"قمر/شهر"},
+  on_ex:  {en:"this month",es:"este mes",zh:"这个月",ko:"이번 달",ar:"هذا الشهر"},
+  on_sent:{en:"Monday is busy.",es:"Los lunes estoy ocupado.",zh:"星期一很忙。",ko:"월요일은 바쁩니다.",ar:"الاثنين مشغول."},
+  kun_ex: {en:"moon",es:"luna",zh:"月亮",ko:"달",ar:"قمر"},
+  kun_sent:{en:"The moon is beautiful, isn\'t it?",es:"La luna está hermosa.",zh:"月亮很漂亮。",ko:"달이 예쁘네요.",ar:"القمر جميل."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});

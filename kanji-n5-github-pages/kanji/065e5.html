@@ -32,24 +32,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
 .kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
 .bs:active{opacity:.8}
 .ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:10px;padding:9px 14px;cursor:pointer;min-width:90px}
+.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:8px;padding:6px 10px;cursor:pointer;min-width:72px}
 .wc:active{background:#EDE5D5}
-.wj{font-size:19px;font-weight:700;color:#1A1F40}
-.wr{font-size:13px;color:#806B50;margin-top:2px}
-.we{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.wj{font-size:15px;font-weight:700;color:#1A1F40}
+.wr{font-size:10px;color:#806B50;margin-top:1px}
+.we{font-size:10px;color:#555580}
 .sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
 .sb:active{background:#E0D5C2}
 .sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
 .sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
 .sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-.sen{font-size:14px;font-weight:700;color:#2B3261;margin-top:2px}
+.sen{font-size:11px;color:#555580;margin-top:2px}
 .sh{font-size:9px;color:#B3ADA5;margin-top:4px}
 .rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A}
+.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
+.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
 .rtl .ch{flex-direction:row-reverse}
 .rtl .hd{flex-direction:row-reverse}
-.rtl .sen,.rtl .sj,.rtl .hd-m,.rtl .we{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
+.rtl .sen,.rtl .sj,.rtl .hd-m{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
 .ft{text-align:center;padding:20px 16px 0;font-size:10px;color:#B3ADA5}
 </style></head>
 <body id="body">
@@ -85,24 +85,24 @@ video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:b
     <div class="ws"><div class="wc" onclick="speak('毎日','word')">
       <div class="wj">毎日</div><div class="wr">mainichi</div><div class="we" id="on-ex">every day</div>
     </div></div>
-    <div class="sb" onclick="speak('毎日運動しています。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">毎日運動しています。</div><div class="sro">Mainichi undou shite imasu.</div><div class="sen" id="on-sent">I exercise every day.</div><div class="sh">tap to hear</div></div>
+    <div class="sb" onclick="speak('今日は日曜日です。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">今日は日曜日です。</div><div class="sro">Kyou wa nichiyoubi desu.</div><div class="sen" id="on-sent">Today is Sunday.</div><div class="sh">tap to hear</div></div>
   </div>
   <div class="card kun">
     <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">ひ</div><div class="cr">(hi)</div></div>
     <button class="bs kun-bs" onclick="speak('ひ','on')">🔊 Listen</button></div>
     <div class="ws"><div class="wc" onclick="speak('日','word')">
       <div class="wj">日</div><div class="wr">hi</div><div class="we" id="kun-ex">sun / day</div>
-    </div></div><div class="sb" onclick="speak('今日は晴れです。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">今日は晴れです。</div><div class="sro">Kyou wa hare desu.</div><div class="sen" id="kun-sent">Today is sunny.</div><div class="sh">tap to hear</div></div>
+    </div></div><div class="sb" onclick="speak('毎日運動しています。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">毎日運動しています。</div><div class="sro">Mainichi undou shite imasu.</div><div class="sen" id="kun-sent">I exercise every day.</div><div class="sh">tap to hear</div></div>
   </div>
 </div>
 <div class="ft">JLPT N5 Kanji Writing Practice · Between Line Studio<br>Stroke data: KanjiVG © Ulrich Apel (CC BY-SA 3.0)</div>
 <script>
 var T={
-  meaning:{en:"sun / day",es:"sol/día",zh:"太阳/日",ko:"해/날",ar:"شمس/يوم"},
-  on_ex:  {en:"every day",es:"every day",zh:"every day",ko:"every day",ar:"every day"},
-  on_sent:{en:"I exercise every day.",es:"I exercise every day.",zh:"I exercise every day.",ko:"I exercise every day.",ar:"I exercise every day."},
-  kun_ex: {en:"sun / day",es:"sun / day",zh:"sun / day",ko:"sun / day",ar:"sun / day"},
-  kun_sent:{en:"Today is sunny.",es:"Today is sunny.",zh:"Today is sunny.",ko:"Today is sunny.",ar:"Today is sunny."}
+  meaning:{en:"sun / day",es:"sol / día",zh:"太阳/日",ko:"해/날",ar:"شمس/يوم"},
+  on_ex:  {en:"every day",es:"cada día",zh:"每天",ko:"매일",ar:"كل يوم"},
+  on_sent:{en:"Today is Sunday.",es:"Hoy es domingo.",zh:"今天是星期天。",ko:"오늘은 일요일입니다.",ar:"اليوم هو الأحد."},
+  kun_ex: {en:"sun / day",es:"sol / día",zh:"太阳/天",ko:"해/날",ar:"شمس/يوم"},
+  kun_sent:{en:"I exercise every day.",es:"Hago ejercicio todos los días.",zh:"我每天运动。",ko:"매일 운동합니다.",ar:"أمارس الرياضة كل يوم."}
 };
 function setLang(l,btn){
   document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});
