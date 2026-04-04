@@ -1,131 +1,312 @@
 <!DOCTYPE html>
-<html lang="ja"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>食 — JLPT N5</title>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食 — meal | Kanji N5</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#FFF6E9;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;color:#2B3261;padding-bottom:32px}
-.hd{background:#2B3261;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
-.hd-k{font-size:52px;color:#FFF6E9;line-height:1}
-.hd-m{font-size:20px;font-weight:700;color:#FFF6E9}
-.hd-s{font-size:11px;color:#8892B8;margin-top:2px}
-.lang-bar{background:#162040;padding:8px 12px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.lang-label{color:#8892B8;font-size:10px;letter-spacing:1px;margin-right:2px}
-.lb{padding:5px 11px;border:1.5px solid #8892B8;border-radius:20px;background:transparent;color:#B8BDD0;font-size:12px;cursor:pointer}
-.lb.active{background:#FFF6E9;color:#2B3261;border-color:#FFF6E9;font-weight:700}
-.vs{background:#1A2850;padding:14px 16px;text-align:center}
-.vs-lbl{color:#8892B8;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
-video{width:100%;max-width:280px;border-radius:12px;background:#FFF6E9;display:block;margin:0 auto}
-.vc{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
-.vb{padding:7px 16px;border:1.5px solid #8892B8;border-radius:20px;background:transparent;color:#FFF6E9;font-size:12px;cursor:pointer;font-weight:500}
-.vb:active{background:#2B3261}
-.cards{padding:12px 12px 0}
-.card{border-radius:12px;padding:12px 14px;margin-bottom:10px;border:1px solid #D1C9BE;background:#FAF3E1}
-.card.on{border-left:4px solid #2B3261}
-.card.kun{border-left:4px solid #C72E1A}
-.ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.ct{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9B8E7A;margin-bottom:3px}
-.cv{font-size:24px;font-weight:800;color:#1A1F40;line-height:1.1}
-.cr{font-size:12px;color:#806B50;margin-top:2px}
-.bs{padding:8px 14px;border:none;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer}
-.card.on .bs{background:#2B3261;color:#FFF6E9}
-.kun-bs{background:#C72E1A!important;color:#FFF6E9!important}
-.bs:active{opacity:.8}
-.ws{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-.wc{background:#FFF6E9;border:1px solid #D1C9BE;border-radius:8px;padding:6px 10px;cursor:pointer;min-width:72px}
-.wc:active{background:#EDE5D5}
-.wj{font-size:15px;font-weight:700;color:#1A1F40}
-.wr{font-size:10px;color:#806B50;margin-top:1px}
-.we{font-size:10px;color:#555580}
-.sb{background:#EDE5D5;border-radius:8px;padding:10px 12px;cursor:pointer;margin-top:6px}
-.sb:active{background:#E0D5C2}
-.sl{font-size:9px;color:#9B8E7A;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
-.sj{font-size:15px;font-weight:700;color:#1A1F40;line-height:1.5}
-.sro{font-size:11px;color:#806B50;font-style:italic;margin-top:3px}
-.sen{font-size:11px;color:#555580;margin-top:2px}
-.sh{font-size:9px;color:#B3ADA5;margin-top:4px}
-.rtl{direction:rtl;text-align:right}
-.rtl .card.on{border-left:none;border-right:4px solid #2B3261;border-radius:12px}
-.rtl .card.kun{border-left:none;border-right:4px solid #C72E1A;border-radius:12px}
-.rtl .ch{flex-direction:row-reverse}
-.rtl .hd{flex-direction:row-reverse}
-.rtl .sen,.rtl .sj,.rtl .hd-m{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
-.ft{text-align:center;padding:20px 16px 0;font-size:10px;color:#B3ADA5}
-</style></head>
-<body id="body">
-<div class="hd">
-  <div class="hd-k">食</div>
-  <div><div class="hd-m" id="hd-meaning">eat</div>
-  <div class="hd-s">9 strokes · JLPT N5</div></div>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-serif; min-height: 100vh; }
+
+/* ── Header ── */
+.header { background: #2B3261; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
+.header-kanji { font-size: 2.4rem; font-weight: 900; color: #FFF6E9; line-height: 1; }
+.header-meta  { text-align: right; color: #b8bdd0; font-size: 0.85rem; }
+.header-meta strong { color: #FFF6E9; font-size: 1.05rem; display: block; }
+
+/* ── Language bar ── */
+.lang-bar { background: #2B3261; padding: 0 20px 14px; display: flex; gap: 8px; flex-wrap: wrap; }
+.lang-btn {
+    padding: 5px 14px; border-radius: 20px; border: 1.5px solid #b8bdd0;
+    background: transparent; color: #b8bdd0; font-size: 0.82rem; cursor: pointer;
+    transition: all .2s;
+}
+.lang-btn.active { background: #FFF6E9; color: #2B3261; border-color: #FFF6E9; font-weight: 700; }
+.lang-btn:hover:not(.active) { border-color: #FFF6E9; color: #FFF6E9; }
+
+/* ── Content wrapper ── */
+.content { max-width: 480px; margin: 0 auto; padding: 16px; }
+
+/* ── Stroke order video ── */
+.so-section { margin-bottom: 18px; }
+.so-label { font-size: 0.72rem; letter-spacing: 0.08em; color: #b8bdd0; text-align: center; margin-bottom: 8px; text-transform: uppercase; }
+.so-wrap {
+    background: #FFF6E9; border-radius: 14px; padding: 14px;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.so-video-box {
+    width: 100%; aspect-ratio: 1/1; background: #fff;
+    border-radius: 8px; overflow: hidden; position: relative;
+    display: flex; align-items: center; justify-content: center;
+}
+.so-video-box video { width: 100%; height: 100%; object-fit: contain; }
+.so-help {
+    position: absolute; top: 8px; right: 8px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #806B50; color: #fff;
+    font-size: 0.75rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.so-controls { display: flex; gap: 8px; }
+.so-btn {
+    padding: 8px 18px; border-radius: 20px; border: none; cursor: pointer;
+    font-size: 0.82rem; font-weight: 600; transition: all .15s;
+}
+.so-btn.play   { background: #2B3261; color: #FFF6E9; }
+.so-btn.pause  { background: #2B3261; color: #FFF6E9; }
+.so-btn.replay { background: #FFF6E9; color: #2B3261; border: 1.5px solid #2B3261; }
+.so-btn:hover  { opacity: 0.85; }
+
+/* ── Reading cards ── */
+.card {
+    background: #fff; border-radius: 14px; padding: 16px 18px;
+    margin-bottom: 14px; border: 2px solid transparent;
+}
+.card.on-card  { border-color: #2B3261; }
+.card.kun-card { border-color: #C72E1A; }
+
+.card-lang-label { font-size: 0.7rem; color: #888; margin-bottom: 8px; }
+.card-reading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.reading-value { font-size: 2rem; font-weight: 900; }
+.on-card  .reading-value { color: #2B3261; }
+.kun-card .reading-value { color: #C72E1A; }
+.listen-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: #2B3261; color: #fff;
+    border: none; border-radius: 20px; padding: 7px 14px;
+    font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all .15s;
+}
+.kun-card .listen-btn { background: #C72E1A; }
+.listen-btn:hover { opacity: 0.85; }
+
+.section-label { font-size: 0.7rem; color: #888; margin-bottom: 5px; }
+.word-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.word-text { font-size: 1.25rem; font-weight: 800; color: #1A1F40; }
+.word-listen-btn {
+    display: flex; align-items: center; gap: 4px;
+    background: #806B50; color: #fff;
+    border: none; border-radius: 14px; padding: 4px 10px;
+    font-size: 0.75rem; cursor: pointer; transition: all .15s;
+}
+.word-listen-btn:hover { opacity: 0.85; }
+.word-romaji { font-size: 0.82rem; color: #555; font-style: italic; }
+.word-meaning { font-size: 0.88rem; color: #333; }
+
+.example-box {
+    background: #FFF6E9; border-radius: 10px; padding: 12px 14px;
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
+}
+.example-text { flex: 1; }
+.example-ja   { font-size: 1rem; font-weight: 700; color: #1A1F40; margin-bottom: 4px; }
+.example-rom  { font-size: 0.78rem; color: #666; font-style: italic; margin-bottom: 3px; }
+.example-tr   { font-size: 0.82rem; color: #333; }
+.example-listen {
+    background: #806B50; border: none; border-radius: 50%;
+    width: 32px; height: 32px; display: flex; align-items: center;
+    justify-content: center; cursor: pointer; flex-shrink: 0;
+    color: #fff; font-size: 0.85rem; transition: all .15s;
+}
+.example-listen:hover { opacity: 0.85; }
+
+/* ── Arabic RTL overrides ── */
+body.ar .card { direction: rtl; text-align: right; }
+body.ar .card-reading { flex-direction: row-reverse; }
+body.ar .word-row { flex-direction: row-reverse; }
+body.ar .example-box { flex-direction: row-reverse; }
+body.ar .example-text { text-align: right; }
+body.ar .so-label { direction: rtl; }
+body.ar .card-lang-label { text-align: right; }
+body.ar .section-label { text-align: right; }
+body.ar .listen-btn { flex-direction: row-reverse; }
+body.ar .word-listen-btn { flex-direction: row-reverse; }
+
+/* ── Footer ── */
+.footer { text-align: center; color: #b8bdd0; font-size: 0.7rem; padding: 20px 16px; }
+</style>
+</head>
+<body>
+
+<!-- ── Header ────────────────────────────────────────────────── -->
+<div class="header">
+  <div class="header-kanji">食</div>
+  <div class="header-meta">
+    <strong id="hdr-meaning">meal</strong>
+    9 strokes · JLPT N5
+  </div>
 </div>
+
+<!-- ── Language bar ─────────────────────────────────────────── -->
 <div class="lang-bar">
-  <span class="lang-label">🌐</span>
-  <button class="lb active" onclick="setLang('en',this)">EN</button>
-  <button class="lb" onclick="setLang('es',this)">ES</button>
-  <button class="lb" onclick="setLang('zh',this)">中文</button>
-  <button class="lb" onclick="setLang('ko',this)">한국어</button>
-  <button class="lb" onclick="setLang('ar',this)">العربية</button>
+  <button class="lang-btn active" onclick="switchLang('en')">EN</button>
+  <button class="lang-btn"        onclick="switchLang('es')">ES</button>
+  <button class="lang-btn"        onclick="switchLang('zh')">中文</button>
+  <button class="lang-btn"        onclick="switchLang('ko')">한국어</button>
+  <button class="lang-btn"        onclick="switchLang('ar')">العربية</button>
 </div>
-<div class="vs">
-  <div class="vs-lbl">✏ Stroke Order</div>
-  <video id="vid" src="../kanji_videos/098df_食_final.mp4" playsinline loop muted autoplay></video>
-  <div class="vc">
-    <button class="vb" onclick="document.getElementById('vid').play()">▶ Play</button>
-    <button class="vb" onclick="document.getElementById('vid').pause()">⏸ Pause</button>
-    <button class="vb" onclick="var v=document.getElementById('vid');v.currentTime=0;v.play()">↺ Replay</button>
+
+<!-- ── Main content ─────────────────────────────────────────── -->
+<div class="content">
+
+  <!-- Stroke order video -->
+  <div class="so-section">
+    <div class="so-label" id="lbl-so">STROKE ORDER</div>
+    <div class="so-wrap">
+      <div class="so-video-box">
+        <video id="so-video" muted playsinline preload="auto">
+          <source src="../kanji_videos/098df_食_final.mp4" type="video/mp4">
+        </video>
+        <div class="so-help" title="Watch the stroke animation">?</div>
+      </div>
+      <div class="so-controls">
+        <button class="so-btn play"   onclick="soPlay()"  id="btn-play"  >▶ Play</button>
+        <button class="so-btn pause"  onclick="soPause()" id="btn-pause" >⏸ Pause</button>
+        <button class="so-btn replay" onclick="soReplay()"id="btn-replay">↺ Replay</button>
+      </div>
+    </div>
   </div>
-</div>
-<div class="cards">
-  <div class="card on">
-    <div class="ch"><div>
-      <div class="ct">音読み · On Reading</div>
-      <div class="cv">ショク</div>
-      <div class="cr">(shoku)</div>
-    </div><button class="bs" onclick="speak('ショク','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('食事','word')">
-      <div class="wj">食事</div><div class="wr">shokuji</div><div class="we" id="on-ex">meal</div>
-    </div></div>
-    <div class="sb" onclick="speak('食事をしましょう。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">食事をしましょう。</div><div class="sro">Shokuji wo shimashou.</div><div class="sen" id="on-sent">Let's have a meal.</div><div class="sh">tap to hear</div></div>
+
+  <!-- ON reading card -->
+  <div class="card on-card">
+    <div class="card-lang-label" id="lbl-on">音読み · On reading</div>
+    <div class="card-reading">
+      <div class="reading-value">ショク</div>
+      <button class="listen-btn" onclick="speak('ショク')" id="btn-listen-on">
+        🔊 <span id="lbl-listen-on">🔊 Listen</span>
+      </button>
+    </div>
+
+    <div class="section-label" id="lbl-word-on">単語 · Word</div>
+    <div class="word-row">
+      <span class="word-text">食事</span>
+      <button class="word-listen-btn" onclick="speak('食事')">
+        🔊 <span id="lbl-wlisten-on">🔊</span>
+      </button>
+    </div>
+    <div class="word-romaji">shokuji</div>
+    <div class="word-meaning" style="margin-bottom:12px">meal</div>
+
+    <div class="section-label" id="lbl-ex-on">例文 · Example</div>
+    <div class="example-box">
+      <div class="example-text">
+        <div class="example-ja">食事しましょう。</div>
+        <div class="example-rom">Shokuji shimashou.</div>
+        <div class="example-tr" id="sent-on">Let's have a meal.</div>
+      </div>
+      <button class="example-listen" onclick="speak('食事しましょう。')" title="Listen">🔊</button>
+    </div>
   </div>
-  <div class="card kun">
-    <div class="ch"><div><div class="ct">訓読み · Kun Reading</div><div class="cv">た</div><div class="cr">(ta)</div></div>
-    <button class="bs kun-bs" onclick="speak('た','on')">🔊 Listen</button></div>
-    <div class="ws"><div class="wc" onclick="speak('食べる','word')">
-      <div class="wj">食べる</div><div class="wr">taberu</div><div class="we" id="kun-ex">to eat</div>
-    </div></div><div class="sb" onclick="speak('何を食べますか。','sent')"><div class="sl">📝 Example sentence</div><div class="sj">何を食べますか。</div><div class="sro">Nani wo tabemasu ka.</div><div class="sen" id="kun-sent">What will you eat?</div><div class="sh">tap to hear</div></div>
+
+  <!-- KUN reading card -->
+  <div class="card kun-card" >
+    <div class="card-lang-label" id="lbl-kun">訓読み · Kun reading</div>
+    <div class="card-reading">
+      <div class="reading-value">た</div>
+      <button class="listen-btn" onclick="speak('た')" id="btn-listen-kun">
+        🔊 <span id="lbl-listen-kun">🔊 Listen</span>
+      </button>
+    </div>
+
+    <div class="section-label" id="lbl-word-kun">単語 · Word</div>
+    <div class="word-row">
+      <span class="word-text">食べ</span>
+      <button class='word-listen-btn' onclick="speak('食べ')">🔊 <span>🔊</span></button>
+    </div>
+    <div class="word-romaji">taberu</div>
+    <div class="word-meaning" style="margin-bottom:12px">to eat</div>
+
+    
+    <div class='section-label' id='lbl-ex-kun'>例文 · Example</div>
+    <div class='example-box'>
+      <div class='example-text'>
+        <div class='example-ja'>何を食べますか。</div>
+        <div class='example-rom'>Nani wo tabemasu ka.</div>
+        <div class='example-tr' id='sent-kun'>What will you eat?</div>
+      </div>
+      <button class='example-listen' onclick="speak('何を食べますか。')" title='Listen'>🔊</button>
+    </div>
+    
   </div>
-</div>
-<div class="ft">JLPT N5 Kanji Writing Practice · Between Line Studio<br>Stroke data: KanjiVG © Ulrich Apel (CC BY-SA 3.0)</div>
+
+</div><!-- /content -->
+
+<div class="footer" id="footer-txt">Stroke data: KanjiVG © Ulrich Apel (CC BY-SA 3.0) · Made with ❤ by Between Line Studio</div>
+
+<!-- ── Scripts ──────────────────────────────────────────────── -->
 <script>
-var T={
-  meaning:{en:"eat",es:"comer",zh:"吃",ko:"먹다",ar:"يأكل"},
-  on_ex:  {en:"meal",es:"comida",zh:"餐",ko:"식사",ar:"وجبة"},
-  on_sent:{en:"Let\'s have a meal.",es:"Vamos a comer.",zh:"我们吃饭吧。",ko:"식사합시다.",ar:"لنتناول الطعام."},
-  kun_ex: {en:"to eat",es:"comer",zh:"吃",ko:"먹다",ar:"يأكل"},
-  kun_sent:{en:"What will you eat?",es:"¿Qué vas a comer?",zh:"你要吃什么？",ko:"무엇을 먹겠습니까?",ar:"ماذا ستأكل؟"}
+// ── Data ────────────────────────────────────────────────────
+const SENT_ON  = {"en": 'Let\'s have a meal.', "es": 'Vamos a comer.', "zh": '我们一起吃饭吧。', "ko": '식사합시다.', "ar": 'لنتناول طعاماً.'};
+const SENT_KUN = {"en": 'What will you eat?', "es": '¿Qué vas a comer?', "zh": '你要吃什么？', "ko": '무엇을 먹겠습니까?', "ar": 'ماذا ستأكل؟'};
+
+const LABELS = {
+  stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
+  play:         {"en": '▶ Play', "es": '▶ Reproducir', "zh": '▶ 播放', "ko": '▶ 재생', "ar": '▶ تشغيل'},
+  pause:        {"en": '⏸ Pause', "es": '⏸ Pausar', "zh": '⏸ 暂停', "ko": '⏸ 일시정지', "ar": '⏸ إيقاف مؤقت'},
+  replay:       {"en": '↺ Replay', "es": '↺ Repetir', "zh": '↺ 重播', "ko": '↺ 다시보기', "ar": '↺ إعادة'},
+  on_label:     {"en": '音読み · On reading', "es": '音読み · Lectura On', "zh": '音読み · 音读', "ko": '音読み · 온독', "ar": 'قراءة أون · 音読み'},
+  kun_label:    {"en": '訓読み · Kun reading', "es": '訓読み · Lectura Kun', "zh": '訓読み · 训读', "ko": '訓読み · 훈독', "ar": 'قراءة كون · 訓読み'},
+  word:         {"en": '単語 · Word', "es": '単語 · Palabra', "zh": '単語 · 单词', "ko": '単語 · 단어', "ar": 'كلمة · 単語'},
+  example:      {"en": '例文 · Example', "es": '例文 · Oración', "zh": '例文 · 例句', "ko": '例文 · 예문', "ar": 'مثال · 例文'},
+  listen:       {"en": '🔊 Listen', "es": '🔊 Escuchar', "zh": '🔊 听', "ko": '🔊 듣기', "ar": '🔊 استمع'},
+  footer:       {"en": 'Stroke data: KanjiVG © Ulrich Apel (CC BY-SA 3.0) · Made with ❤ by Between Line Studio', "es": 'Datos de trazos: KanjiVG © Ulrich Apel (CC BY-SA 3.0) · Creado con ❤ por Between Line Studio', "zh": '笔画数据：KanjiVG © Ulrich Apel (CC BY-SA 3.0) · Between Line Studio 制作', "ko": '획 데이터: KanjiVG © Ulrich Apel (CC BY-SA 3.0) · Between Line Studio 제작', "ar": 'بيانات الضربات: KanjiVG © Ulrich Apel (CC BY-SA 3.0) · صُنع بـ ❤ من Between Line Studio'},
 };
-function setLang(l,btn){
-  document.querySelectorAll('.lb').forEach(function(b){b.classList.remove('active')});
-  btn.classList.add('active');
-  document.getElementById('body').className=l==='ar'?'rtl':'';
-  var ids={'hd-meaning':'meaning','on-ex':'on_ex','on-sent':'on_sent','kun-ex':'kun_ex','kun-sent':'kun_sent'};
-  for(var id in ids){
-    var el=document.getElementById(id);
-    if(el&&T[ids[id]])el.textContent=T[ids[id]][l]||T[ids[id]]['en'];
-  }
+
+// ── Language switcher ────────────────────────────────────────
+let currentLang = 'en';
+
+function switchLang(lang) {
+  currentLang = lang;
+
+  // Update active button
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  // RTL for Arabic
+  document.body.className = lang;
+
+  // Update UI labels
+  document.getElementById('lbl-so').textContent       = LABELS.stroke_order[lang];
+  document.getElementById('btn-play').textContent     = LABELS.play[lang];
+  document.getElementById('btn-pause').textContent    = LABELS.pause[lang];
+  document.getElementById('btn-replay').textContent   = LABELS.replay[lang];
+  document.getElementById('lbl-on').textContent       = LABELS.on_label[lang];
+  document.getElementById('lbl-kun').textContent      = LABELS.kun_label[lang];
+  document.getElementById('lbl-listen-on').textContent  = LABELS.listen[lang];
+  document.getElementById('lbl-listen-kun').textContent = LABELS.listen[lang];
+  document.getElementById('footer-txt').textContent   = LABELS.footer[lang];
+
+  // Word section labels (may be multiple)
+  ['lbl-word-on','lbl-word-kun'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = LABELS.word[lang];
+  });
+  ['lbl-ex-on','lbl-ex-kun'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = LABELS.example[lang];
+  });
+
+  // Update translated sentences
+  const onEl  = document.getElementById('sent-on');
+  const kunEl = document.getElementById('sent-kun');
+  if (onEl)  onEl.textContent  = SENT_ON[lang]  || SENT_ON['en'];
+  if (kunEl) kunEl.textContent = SENT_KUN[lang] || SENT_KUN['en'];
 }
-function speak(t,type){
-  if(!t||!window.speechSynthesis)return;
-  window.speechSynthesis.cancel();
-  setTimeout(function(){
-    var voices=speechSynthesis.getVoices();
-    var jp=voices.find(function(v){return v.lang.startsWith('ja')});
-    var u=new SpeechSynthesisUtterance('、'+t);
-    u.lang='ja-JP';u.rate=type==='sent'?0.82:0.95;u.pitch=1.0;
-    if(jp)u.voice=jp;
-    speechSynthesis.speak(u);
-  },100);
+
+// ── Video controls ───────────────────────────────────────────
+const vid = document.getElementById('so-video');
+window.addEventListener('load', () => { vid.play().catch(()=>{}); });
+function soPlay()   { vid.play(); }
+function soPause()  { vid.pause(); }
+function soReplay() { vid.currentTime = 0; vid.play(); }
+
+// ── TTS (Web Speech API) ─────────────────────────────────────
+function speak(text) {
+  if (!('speechSynthesis' in window)) return;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP';
+  u.rate = 0.9;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
 }
-window.speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices()};
 </script>
-</body></html>
+</body>
+</html>
