@@ -10,9 +10,10 @@ body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-
 
 /* ── Header ── */
 .header { background: #2B3261; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
+.header-left { display: flex; align-items: baseline; gap: 12px; }
 .header-kanji { font-size: 2.4rem; font-weight: 900; color: #FFF6E9; line-height: 1; }
+.header-meaning { font-size: 1.05rem; font-weight: 700; color: #FFF6E9; }
 .header-meta  { text-align: right; color: #b8bdd0; font-size: 0.85rem; }
-.header-meta strong { color: #FFF6E9; font-size: 1.05rem; display: block; }
 
 /* ── Language bar ── */
 .lang-bar { background: #2B3261; padding: 0 20px 14px; display: flex; gap: 8px; flex-wrap: wrap; }
@@ -33,6 +34,7 @@ body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-
 .so-wrap {
     background: #FFF6E9; border-radius: 14px; padding: 14px;
     display: flex; flex-direction: column; align-items: center; gap: 10px;
+    position: relative;
 }
 .so-video-box {
     width: 100%; aspect-ratio: 1/1; background: #fff;
@@ -40,13 +42,6 @@ body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-
     display: flex; align-items: center; justify-content: center;
 }
 .so-video-box video { width: 100%; height: 100%; object-fit: contain; }
-.so-help {
-    position: absolute; top: 8px; right: 8px;
-    width: 22px; height: 22px; border-radius: 50%;
-    background: #806B50; color: #fff;
-    font-size: 0.75rem; font-weight: 700;
-    display: flex; align-items: center; justify-content: center; cursor: pointer;
-}
 .so-controls { display: flex; gap: 8px; }
 .so-btn {
     padding: 8px 18px; border-radius: 20px; border: none; cursor: pointer;
@@ -68,6 +63,7 @@ body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-
 .card-lang-label { font-size: 0.7rem; color: #888; margin-bottom: 8px; }
 .card-reading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
 .reading-value { font-size: 2rem; font-weight: 900; }
+.reading-rom   { font-size: 0.95rem; font-weight: 500; opacity: 0.7; font-style: italic; }
 .on-card  .reading-value { color: #2B3261; }
 .kun-card .reading-value { color: #C72E1A; }
 .listen-btn {
@@ -82,6 +78,9 @@ body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-
 .section-label { font-size: 0.7rem; color: #888; margin-bottom: 5px; }
 .word-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
 .word-text { font-size: 1.25rem; font-weight: 800; color: #1A1F40; }
+.on-card  .kanji-study { color: #2B3261; font-weight: 800; }
+.kun-card .kanji-study { color: #C72E1A; font-weight: 800; }
+.kanji-other { color: #b8bdd0; font-weight: 400; }
 .word-listen-btn {
     display: flex; align-items: center; gap: 4px;
     background: #806B50; color: #fff;
@@ -89,7 +88,10 @@ body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-
     font-size: 0.75rem; cursor: pointer; transition: all .15s;
 }
 .word-listen-btn:hover { opacity: 0.85; }
-.word-romaji { font-size: 0.82rem; color: #555; font-style: italic; }
+.word-romaji { font-size: 0.82rem; font-style: italic; font-weight: 400; }
+.on-card  .word-romaji { color: #2B3261; }
+.kun-card .word-romaji { color: #C72E1A; }
+.word-romaji strong { font-weight: 800; }
 .word-meaning { font-size: 0.88rem; color: #333; }
 
 .example-box {
@@ -129,10 +131,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <!-- ── Header ────────────────────────────────────────────────── -->
 <div class="header">
   <div class="header-kanji">文</div>
-  <div class="header-meta">
-    <strong id="hdr-meaning">sentence</strong>
-    4 strokes · JLPT N5
-  </div>
+  <div class="header-meta">4 strokes · JLPT N5</div>
 </div>
 
 <!-- ── Language bar ─────────────────────────────────────────── -->
@@ -155,8 +154,8 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
         <video id="so-video" muted playsinline preload="auto">
           <source src="../kanji_videos/06587_文_final.mp4" type="video/mp4">
         </video>
-        <div class="so-help" title="Watch the stroke animation">?</div>
       </div>
+      <div class="so-help" style="display:none"></div>
       <div class="so-controls">
         <button class="so-btn play"   onclick="soPlay()"  id="btn-play"  >▶ Play</button>
         <button class="so-btn pause"  onclick="soPause()" id="btn-pause" >⏸ Pause</button>
@@ -169,21 +168,21 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
   <div class="card on-card">
     <div class="card-lang-label" id="lbl-on">音読み · On reading</div>
     <div class="card-reading">
-      <div class="reading-value">ブン</div>
+      <div>
+        <div class="reading-value">ブン <span class="reading-rom">(bun)</span></div>
+      </div>
       <button class="listen-btn" onclick="speak('ブン')" id="btn-listen-on">
-        🔊 <span id="lbl-listen-on">🔊 Listen</span>
+        <span id="lbl-listen-on">🔊 Listen</span>
       </button>
     </div>
 
     <div class="section-label" id="lbl-word-on">単語 · Word</div>
     <div class="word-row">
-      <span class="word-text">文章</span>
-      <button class="word-listen-btn" onclick="speak('文章')">
-        🔊 <span id="lbl-wlisten-on">🔊</span>
-      </button>
+      <span class="word-text"><span class="kanji-study">文</span><span class="kanji-other">章</span></span>
+      <button class="word-listen-btn" onclick="speak('文章')">🔊</button>
     </div>
-    <div class="word-romaji">bunshou</div>
-    <div class="word-meaning" style="margin-bottom:12px">sentence</div>
+    <div class="word-romaji"><strong>bun</strong>shou</div>
+    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">sentence</div>
 
     <div class="section-label" id="lbl-ex-on">例文 · Example</div>
     <div class="example-box">
@@ -200,19 +199,21 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
   <div class="card kun-card" >
     <div class="card-lang-label" id="lbl-kun">訓読み · Kun reading</div>
     <div class="card-reading">
-      <div class="reading-value">ふみ</div>
+      <div>
+        <div class="reading-value">ふみ <span class="reading-rom">(fumi)</span></div>
+      </div>
       <button class="listen-btn" onclick="speak('ふみ')" id="btn-listen-kun">
-        🔊 <span id="lbl-listen-kun">🔊 Listen</span>
+        <span id="lbl-listen-kun">🔊 Listen</span>
       </button>
     </div>
 
     <div class="section-label" id="lbl-word-kun">単語 · Word</div>
     <div class="word-row">
-      <span class="word-text">文</span>
-      <button class='word-listen-btn' onclick="speak('文')">🔊 <span>🔊</span></button>
+      <span class="word-text"><span class="kanji-study">文</span></span>
+      <button class='word-listen-btn' onclick="speak('文')">🔊</button>
     </div>
-    <div class="word-romaji">fumi</div>
-    <div class="word-meaning" style="margin-bottom:12px">letter</div>
+    <div class="word-romaji"><strong>fumi</strong></div>
+    <div class="word-meaning" id="wm-kun" style="margin-bottom:12px">letter</div>
 
     
     <div class='section-label' id='lbl-ex-kun'>例文 · Example</div>
@@ -234,8 +235,10 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <!-- ── Scripts ──────────────────────────────────────────────── -->
 <script>
 // ── Data ────────────────────────────────────────────────────
-const SENT_ON  = {"en": 'Please read the passage.', "es": 'Lee el párrafo, por favor.', "zh": '请阅读这段文章。', "ko": '글을 읽어주세요.', "ar": 'من فضلك اقرأ الفقرة.'};
-const SENT_KUN = {"en": 'I wrote a letter.', "es": 'Escribí una carta.', "zh": '我写了一封信。', "ko": '편지를 썼습니다.', "ar": 'كتبت رسالة.'};
+const SENT_ON  = {"en": 'Please read the passage.', "es": 'Por favor, lee el texto.', "zh": '请读这篇文章。', "ko": '문장을 읽어 주세요.', "ar": 'الرجاء قراءة النص.'};
+const SENT_KUN = {"en": 'I wrote a letter.', "es": 'Escribí una carta.', "zh": '我写了一封信。', "ko": '편지에 글을 썼습니다.', "ar": 'كتبت رسالة.'};
+const WORD_ON  = {"en": 'sentence', "es": 'frase', "zh": '文章', "ko": '문장', "ar": 'جملة'};
+const WORD_KUN = {"en": 'letter', "es": 'carta', "zh": '信', "ko": '편지', "ar": 'رسالة'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -289,6 +292,12 @@ function switchLang(lang) {
   const kunEl = document.getElementById('sent-kun');
   if (onEl)  onEl.textContent  = SENT_ON[lang]  || SENT_ON['en'];
   if (kunEl) kunEl.textContent = SENT_KUN[lang] || SENT_KUN['en'];
+
+  // Update word meanings
+  const wmOn  = document.getElementById('wm-on');
+  const wmKun = document.getElementById('wm-kun');
+  if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
+  if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────
