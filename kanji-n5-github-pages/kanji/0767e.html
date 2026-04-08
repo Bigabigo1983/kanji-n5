@@ -228,7 +228,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 const SENT_ON  = {"en": 'This pen costs 100 yen.', "es": 'Este bolígrafo cuesta 100 yenes.', "zh": '这支钢笔100日元。', "ko": '이 펜은 100엔입니다.', "ar": 'هذا القلم بمئة ين.'};
 const SENT_KUN = {"en": 'I bought it at the 100-yen shop.', "es": 'Lo compré en la tienda de 100 yenes.', "zh": '我在百元店买的。', "ko": '100엔 샵에서 샀습니다.', "ar": 'اشتريته من متجر المئة ين.'};
 const WORD_ON  = {"en": '100 yen', "es": '100 yenes', "zh": '100日元', "ko": '100엔', "ar": 'مئة ين'};
-const WORD_KUN = {"en": 'encyclopedia', "es": 'enciclopedia', "zh": '百科全书', "ko": '백과사전', "ar": 'موسوعة'};
+const WORD_KUN = {"en": '', "es": 'enciclopedia', "zh": '百科全书', "ko": '백과사전', "ar": 'موسوعة'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -300,11 +300,22 @@ function soReplay() { vid.currentTime = 0; vid.play(); }
 // ── TTS (Web Speech API) ─────────────────────────────────────
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.9;
   speechSynthesis.cancel();
-  speechSynthesis.speak(u);
+  const trySpeak = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = 0.9;
+    const voices = speechSynthesis.getVoices();
+    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    if (jaVoice) u.voice = jaVoice;
+    speechSynthesis.speak(u);
+  };
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    trySpeak();
+  } else {
+    speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
+  }
 }
 </script>
 </body>

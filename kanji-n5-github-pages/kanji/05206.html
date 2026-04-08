@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>分 — one minute | Kanji N5</title>
+<title>分 — fraction | Kanji N5</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-serif; min-height: 100vh; }
@@ -178,11 +178,11 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 
     <div class="section-label" id="lbl-word-on">単語 · Word</div>
     <div class="word-row">
-      <span class="word-text"><span class="kanji-other">一</span><span class="kanji-study">分</span></span>
-      <button class="word-listen-btn" onclick="speak('一分')">🔊</button>
+      <span class="word-text"><span class="kanji-study">分</span><span class="kanji-other">数</span></span>
+      <button class="word-listen-btn" onclick="speak('分数')">🔊</button>
     </div>
-    <div class="word-romaji">ipp<strong>un</strong></div>
-    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">one minute</div>
+    <div class="word-romaji"><strong>bun</strong>suu</div>
+    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">fraction</div>
 
     <div class="section-label" id="lbl-ex-on">例文 · Example</div>
     <div class="example-box">
@@ -212,7 +212,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
       <span class="word-text"><span class="kanji-study">分</span><span class="kanji-other">か</span><span class="kanji-other">る</span></span>
       <button class='word-listen-btn' onclick="speak('分かる')">🔊</button>
     </div>
-    <div class="word-romaji"><strong>wak</strong>aru</div>
+    <div class="word-romaji"><strong>waka</strong>ru</div>
     <div class="word-meaning" id="wm-kun" style="margin-bottom:12px">to understand</div>
 
     
@@ -237,7 +237,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 // ── Data ────────────────────────────────────────────────────
 const SENT_ON  = {"en": 'Please wait one minute.', "es": 'Por favor, espera un minuto.', "zh": '请等一分钟。', "ko": '1분 기다려 주세요.', "ar": 'الرجاء الانتظار دقيقة.'};
 const SENT_KUN = {"en": 'I understand a little Japanese.', "es": 'Entiendo un poco de japonés.', "zh": '我懂一点日语。', "ko": '일본어를 조금 압니다.', "ar": 'أفهم القليل من اليابانية.'};
-const WORD_ON  = {"en": 'one minute', "es": 'un minuto', "zh": '一分钟', "ko": '1분', "ar": 'دقيقة'};
+const WORD_ON  = {"en": 'fraction', "es": 'un minuto', "zh": '一分钟', "ko": '1분', "ar": 'دقيقة'};
 const WORD_KUN = {"en": 'to understand', "es": 'entender', "zh": '理解', "ko": '이해하다', "ar": 'يفهم'};
 
 const LABELS = {
@@ -310,11 +310,22 @@ function soReplay() { vid.currentTime = 0; vid.play(); }
 // ── TTS (Web Speech API) ─────────────────────────────────────
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.9;
   speechSynthesis.cancel();
-  speechSynthesis.speak(u);
+  const trySpeak = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = 0.9;
+    const voices = speechSynthesis.getVoices();
+    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    if (jaVoice) u.voice = jaVoice;
+    speechSynthesis.speak(u);
+  };
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    trySpeak();
+  } else {
+    speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
+  }
 }
 </script>
 </body>

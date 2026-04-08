@@ -228,7 +228,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 const SENT_ON  = {"en": 'The weather is nice today, isn\'t it?', "es": 'El clima está agradable hoy, ¿verdad?', "zh": '今天天气真好。', "ko": '오늘은 날씨가 좋네요.', "ar": 'الطقس لطيف اليوم، أليس كذلك؟'};
 const SENT_KUN = {"en": 'Please go home safely.', "es": 'Por favor, vuelve a casa con cuidado.', "zh": '请小心回家。', "ko": '조심해서 돌아가세요.', "ar": 'عد إلى البيت بأمان.'};
 const WORD_ON  = {"en": 'weather', "es": 'clima', "zh": '天气', "ko": '날씨', "ar": 'طقس'};
-const WORD_KUN = {"en": 'popularity', "es": 'popularidad', "zh": '人气', "ko": '인기', "ar": 'شعبية'};
+const WORD_KUN = {"en": 'healthy', "es": 'popularidad', "zh": '人气', "ko": '인기', "ar": 'شعبية'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -300,11 +300,22 @@ function soReplay() { vid.currentTime = 0; vid.play(); }
 // ── TTS (Web Speech API) ─────────────────────────────────────
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.9;
   speechSynthesis.cancel();
-  speechSynthesis.speak(u);
+  const trySpeak = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = 0.9;
+    const voices = speechSynthesis.getVoices();
+    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    if (jaVoice) u.voice = jaVoice;
+    speechSynthesis.speak(u);
+  };
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    trySpeak();
+  } else {
+    speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
+  }
 }
 </script>
 </body>

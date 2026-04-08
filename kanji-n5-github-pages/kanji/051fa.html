@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>出 — exit | Kanji N5</title>
+<title>出 — departure | Kanji N5</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-serif; min-height: 100vh; }
@@ -178,11 +178,11 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 
     <div class="section-label" id="lbl-word-on">単語 · Word</div>
     <div class="word-row">
-      <span class="word-text"><span class="kanji-study">出</span><span class="kanji-other">口</span></span>
-      <button class="word-listen-btn" onclick="speak('出口')">🔊</button>
+      <span class="word-text"><span class="kanji-study">出</span><span class="kanji-other">発</span></span>
+      <button class="word-listen-btn" onclick="speak('出発')">🔊</button>
     </div>
-    <div class="word-romaji"><strong>de</strong>guchi</div>
-    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">exit</div>
+    <div class="word-romaji"><strong>shuppa</strong>tsu</div>
+    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">departure</div>
 
     <div class="section-label" id="lbl-ex-on">例文 · Example</div>
     <div class="example-box">
@@ -237,7 +237,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 // ── Data ────────────────────────────────────────────────────
 const SENT_ON  = {"en": 'Where is the exit?', "es": '¿Dónde está la salida?', "zh": '出口在哪里？', "ko": '출구는 어디입니까?', "ar": 'أين المخرج؟'};
 const SENT_KUN = {"en": 'I left the house.', "es": 'Salí de casa.', "zh": '我出门了。', "ko": '집을 나왔습니다.', "ar": 'غادرت المنزل.'};
-const WORD_ON  = {"en": 'exit', "es": 'salida', "zh": '出口', "ko": '출구', "ar": 'مخرج'};
+const WORD_ON  = {"en": 'departure', "es": 'salida', "zh": '出口', "ko": '출구', "ar": 'مخرج'};
 const WORD_KUN = {"en": 'to leave', "es": 'salir', "zh": '出去', "ko": '나가다', "ar": 'يخرج'};
 
 const LABELS = {
@@ -310,11 +310,22 @@ function soReplay() { vid.currentTime = 0; vid.play(); }
 // ── TTS (Web Speech API) ─────────────────────────────────────
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.9;
   speechSynthesis.cancel();
-  speechSynthesis.speak(u);
+  const trySpeak = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = 0.9;
+    const voices = speechSynthesis.getVoices();
+    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    if (jaVoice) u.voice = jaVoice;
+    speechSynthesis.speak(u);
+  };
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    trySpeak();
+  } else {
+    speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
+  }
 }
 </script>
 </body>

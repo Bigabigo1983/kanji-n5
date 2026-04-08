@@ -181,7 +181,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
       <span class="word-text"><span class="kanji-other">日</span><span class="kanji-other">本</span><span class="kanji-study">人</span></span>
       <button class="word-listen-btn" onclick="speak('日本人')">🔊</button>
     </div>
-    <div class="word-romaji">nihonj<strong>in</strong></div>
+    <div class="word-romaji">nihon<strong>jin</strong></div>
     <div class="word-meaning" id="wm-on" style="margin-bottom:12px">Japanese person</div>
 
     <div class="section-label" id="lbl-ex-on">例文 · Example</div>
@@ -209,11 +209,11 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 
     <div class="section-label" id="lbl-word-kun">単語 · Word</div>
     <div class="word-row">
-      <span class="word-text"><span class="kanji-other">一</span><span class="kanji-study">人</span></span>
-      <button class='word-listen-btn' onclick="speak('一人')">🔊</button>
+      <span class="word-text"><span class="kanji-study">人</span></span>
+      <button class='word-listen-btn' onclick="speak('人')">🔊</button>
     </div>
-    <div class="word-romaji">hit<strong>ori</strong></div>
-    <div class="word-meaning" id="wm-kun" style="margin-bottom:12px">one person</div>
+    <div class="word-romaji"><strong>hito</strong></div>
+    <div class="word-meaning" id="wm-kun" style="margin-bottom:12px">person</div>
 
     
     <div class='section-label' id='lbl-ex-kun'>例文 · Example</div>
@@ -238,7 +238,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 const SENT_ON  = {"en": 'Japanese people work hard.', "es": 'Los japoneses trabajan mucho.', "zh": '日本人很勤劳。', "ko": '일본인은 열심히 일합니다.', "ar": 'اليابانيون يعملون بجد.'};
 const SENT_KUN = {"en": 'Who is that person?', "es": '¿Quién es esa persona?', "zh": '那个人是谁？', "ko": '저 사람은 누구입니까?', "ar": 'من هو ذلك الشخص؟'};
 const WORD_ON  = {"en": 'Japanese person', "es": 'japonés', "zh": '日本人', "ko": '일본인', "ar": 'ياباني'};
-const WORD_KUN = {"en": 'one person', "es": 'una persona', "zh": '一个人', "ko": '한 명', "ar": 'شخص واحد'};
+const WORD_KUN = {"en": 'person', "es": 'una persona', "zh": '一个人', "ko": '한 명', "ar": 'شخص واحد'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -310,11 +310,22 @@ function soReplay() { vid.currentTime = 0; vid.play(); }
 // ── TTS (Web Speech API) ─────────────────────────────────────
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.9;
   speechSynthesis.cancel();
-  speechSynthesis.speak(u);
+  const trySpeak = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = 0.9;
+    const voices = speechSynthesis.getVoices();
+    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    if (jaVoice) u.voice = jaVoice;
+    speechSynthesis.speak(u);
+  };
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    trySpeak();
+  } else {
+    speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
+  }
 }
 </script>
 </body>

@@ -181,7 +181,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
       <span class="word-text"><span class="kanji-other">学</span><span class="kanji-study">生</span></span>
       <button class="word-listen-btn" onclick="speak('学生')">🔊</button>
     </div>
-    <div class="word-romaji">gak<strong>usei</strong></div>
+    <div class="word-romaji">gaku<strong>sei</strong></div>
     <div class="word-meaning" id="wm-on" style="margin-bottom:12px">student</div>
 
     <div class="section-label" id="lbl-ex-on">例文 · Example</div>
@@ -200,19 +200,19 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
     <div class="card-lang-label" id="lbl-kun">訓読み · Kun reading</div>
     <div class="card-reading">
       <div>
-        <div class="reading-value">うまれる <span class="reading-rom">(umareru)</span></div>
+        <div class="reading-value">うまれ <span class="reading-rom">(umare)</span></div>
       </div>
-      <button class="listen-btn" onclick="speak('うまれる')" id="btn-listen-kun">
+      <button class="listen-btn" onclick="speak('うまれ')" id="btn-listen-kun">
         <span id="lbl-listen-kun">🔊 Listen</span>
       </button>
     </div>
 
     <div class="section-label" id="lbl-word-kun">単語 · Word</div>
     <div class="word-row">
-      <span class="word-text"><span class="kanji-study">生</span><span class="kanji-other">ま</span><span class="kanji-other">れ</span></span>
-      <button class='word-listen-btn' onclick="speak('生まれ')">🔊</button>
+      <span class="word-text"><span class="kanji-study">生</span><span class="kanji-other">ま</span><span class="kanji-other">れ</span><span class="kanji-other">る</span></span>
+      <button class='word-listen-btn' onclick="speak('生まれる')">🔊</button>
     </div>
-    <div class="word-romaji"><strong>u</strong>mareru</div>
+    <div class="word-romaji"><strong>umare</strong>ru</div>
     <div class="word-meaning" id="wm-kun" style="margin-bottom:12px">to be born</div>
 
     
@@ -310,11 +310,22 @@ function soReplay() { vid.currentTime = 0; vid.play(); }
 // ── TTS (Web Speech API) ─────────────────────────────────────
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.9;
   speechSynthesis.cancel();
-  speechSynthesis.speak(u);
+  const trySpeak = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = 0.9;
+    const voices = speechSynthesis.getVoices();
+    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    if (jaVoice) u.voice = jaVoice;
+    speechSynthesis.speak(u);
+  };
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    trySpeak();
+  } else {
+    speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
+  }
 }
 </script>
 </body>

@@ -181,7 +181,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
       <span class="word-text"><span class="kanji-study">少</span><span class="kanji-other">数</span></span>
       <button class="word-listen-btn" onclick="speak('少数')">🔊</button>
     </div>
-    <div class="word-romaji"><strong>sho</strong>usuu</div>
+    <div class="word-romaji"><strong>shou</strong>suu</div>
     <div class="word-meaning" id="wm-on" style="margin-bottom:12px">few</div>
 
     <div class="section-label" id="lbl-ex-on">例文 · Example</div>
@@ -200,9 +200,9 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
     <div class="card-lang-label" id="lbl-kun">訓読み · Kun reading</div>
     <div class="card-reading">
       <div>
-        <div class="reading-value">すこ <span class="reading-rom">(suko)</span></div>
+        <div class="reading-value">すく <span class="reading-rom">(suku)</span></div>
       </div>
-      <button class="listen-btn" onclick="speak('すこ')" id="btn-listen-kun">
+      <button class="listen-btn" onclick="speak('すく')" id="btn-listen-kun">
         <span id="lbl-listen-kun">🔊 Listen</span>
       </button>
     </div>
@@ -212,7 +212,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
       <span class="word-text"><span class="kanji-study">少</span><span class="kanji-other">な</span><span class="kanji-other">い</span></span>
       <button class='word-listen-btn' onclick="speak('少ない')">🔊</button>
     </div>
-    <div class="word-romaji"><strong>suk</strong>unai</div>
+    <div class="word-romaji"><strong>suku</strong>nai</div>
     <div class="word-meaning" id="wm-kun" style="margin-bottom:12px">few / little</div>
 
     
@@ -310,11 +310,22 @@ function soReplay() { vid.currentTime = 0; vid.play(); }
 // ── TTS (Web Speech API) ─────────────────────────────────────
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.9;
   speechSynthesis.cancel();
-  speechSynthesis.speak(u);
+  const trySpeak = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = 0.9;
+    const voices = speechSynthesis.getVoices();
+    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    if (jaVoice) u.voice = jaVoice;
+    speechSynthesis.speak(u);
+  };
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    trySpeak();
+  } else {
+    speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
+  }
 }
 </script>
 </body>

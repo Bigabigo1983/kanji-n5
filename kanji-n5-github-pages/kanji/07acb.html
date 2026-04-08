@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>立 — position | Kanji N5</title>
+<title>立 — national | Kanji N5</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-serif; min-height: 100vh; }
@@ -178,11 +178,11 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 
     <div class="section-label" id="lbl-word-on">単語 · Word</div>
     <div class="word-row">
-      <span class="word-text"><span class="kanji-study">立</span><span class="kanji-other">場</span></span>
-      <button class="word-listen-btn" onclick="speak('立場')">🔊</button>
+      <span class="word-text"><span class="kanji-other">国</span><span class="kanji-study">立</span></span>
+      <button class="word-listen-btn" onclick="speak('国立')">🔊</button>
     </div>
-    <div class="word-romaji"><strong>tach</strong>iba</div>
-    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">position / standpoint</div>
+    <div class="word-romaji">koku<strong>ritsu</strong></div>
+    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">national</div>
 
     <div class="section-label" id="lbl-ex-on">例文 · Example</div>
     <div class="example-box">
@@ -237,7 +237,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 // ── Data ────────────────────────────────────────────────────
 const SENT_ON  = {"en": 'Please consider the situation.', "es": 'Por favor, considera la situación.', "zh": '请考虑一下立场。', "ko": '상황을 생각해 주세요.', "ar": 'الرجاء مراعاة الموقف.'};
 const SENT_KUN = {"en": 'Please stand here.', "es": 'Por favor, párate aquí.', "zh": '请站在这里。', "ko": '여기에 서 주세요.', "ar": 'من فضلك قف هنا.'};
-const WORD_ON  = {"en": 'position / standpoint', "es": 'posición', "zh": '立场', "ko": '입장', "ar": 'موقف'};
+const WORD_ON  = {"en": 'national', "es": 'posición', "zh": '立场', "ko": '입장', "ar": 'موقف'};
 const WORD_KUN = {"en": 'to stand', "es": 'estar de pie', "zh": '站', "ko": '서다', "ar": 'يقف'};
 
 const LABELS = {
@@ -310,11 +310,22 @@ function soReplay() { vid.currentTime = 0; vid.play(); }
 // ── TTS (Web Speech API) ─────────────────────────────────────
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.9;
   speechSynthesis.cancel();
-  speechSynthesis.speak(u);
+  const trySpeak = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = 0.9;
+    const voices = speechSynthesis.getVoices();
+    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    if (jaVoice) u.voice = jaVoice;
+    speechSynthesis.speak(u);
+  };
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    trySpeak();
+  } else {
+    speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
+  }
 }
 </script>
 </body>

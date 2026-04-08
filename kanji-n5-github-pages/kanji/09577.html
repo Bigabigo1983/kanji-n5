@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>長 — president | Kanji N5</title>
+<title>長 — school principal | Kanji N5</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-serif; min-height: 100vh; }
@@ -178,11 +178,11 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 
     <div class="section-label" id="lbl-word-on">単語 · Word</div>
     <div class="word-row">
-      <span class="word-text"><span class="kanji-other">社</span><span class="kanji-study">長</span></span>
-      <button class="word-listen-btn" onclick="speak('社長')">🔊</button>
+      <span class="word-text"><span class="kanji-other">校</span><span class="kanji-study">長</span></span>
+      <button class="word-listen-btn" onclick="speak('校長')">🔊</button>
     </div>
-    <div class="word-romaji">sha<strong>chou</strong></div>
-    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">president</div>
+    <div class="word-romaji">k<strong>ouch</strong>o</div>
+    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">school principal</div>
 
     <div class="section-label" id="lbl-ex-on">例文 · Example</div>
     <div class="example-box">
@@ -212,7 +212,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
       <span class="word-text"><span class="kanji-study">長</span><span class="kanji-other">い</span></span>
       <button class='word-listen-btn' onclick="speak('長い')">🔊</button>
     </div>
-    <div class="word-romaji"><strong>nag</strong>ai</div>
+    <div class="word-romaji"><strong>naga</strong>i</div>
     <div class="word-meaning" id="wm-kun" style="margin-bottom:12px">long</div>
 
     
@@ -237,7 +237,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 // ── Data ────────────────────────────────────────────────────
 const SENT_ON  = {"en": 'I met the company president.', "es": 'Me reuní con el presidente de la empresa.', "zh": '我见到了公司总裁。', "ko": '사장님을 만났습니다.', "ar": 'التقيت برئيس الشركة.'};
 const SENT_KUN = {"en": 'This road is long.', "es": 'Este camino es largo.', "zh": '这条路很长。', "ko": '이 길은 깁니다.', "ar": 'هذا الطريق طويل.'};
-const WORD_ON  = {"en": 'president', "es": 'presidente', "zh": '社长', "ko": '사장', "ar": 'رئيس'};
+const WORD_ON  = {"en": 'school principal', "es": 'presidente', "zh": '社长', "ko": '사장', "ar": 'رئيس'};
 const WORD_KUN = {"en": 'long', "es": 'largo', "zh": '长', "ko": '길다', "ar": 'طويل'};
 
 const LABELS = {
@@ -310,11 +310,22 @@ function soReplay() { vid.currentTime = 0; vid.play(); }
 // ── TTS (Web Speech API) ─────────────────────────────────────
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.9;
   speechSynthesis.cancel();
-  speechSynthesis.speak(u);
+  const trySpeak = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = 0.9;
+    const voices = speechSynthesis.getVoices();
+    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    if (jaVoice) u.voice = jaVoice;
+    speechSynthesis.speak(u);
+  };
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    trySpeak();
+  } else {
+    speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
+  }
 }
 </script>
 </body>

@@ -209,11 +209,11 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 
     <div class="section-label" id="lbl-word-kun">単語 · Word</div>
     <div class="word-row">
-      <span class="word-text"><span class="kanji-study">本</span><span class="kanji-other">当</span></span>
-      <button class='word-listen-btn' onclick="speak('本当')">🔊</button>
+      <span class="word-text"><span class="kanji-study">本</span></span>
+      <button class='word-listen-btn' onclick="speak('本')">🔊</button>
     </div>
-    <div class="word-romaji"><strong>oo</strong>moto</div>
-    <div class="word-meaning" id="wm-kun" style="margin-bottom:12px">foundation</div>
+    <div class="word-romaji"><strong>moto</strong></div>
+    <div class="word-meaning" id="wm-kun" style="margin-bottom:12px">origin / root</div>
 
     
     <div class='section-label' id='lbl-ex-kun'>例文 · Example</div>
@@ -238,7 +238,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 const SENT_ON  = {"en": 'I bought a book at the bookstore.', "es": 'Compré un libro en la librería.', "zh": '我在书店买了书。', "ko": '서점에서 책을 샀습니다.', "ar": 'اشتريت كتاباً من المكتبة.'};
 const SENT_KUN = {"en": 'This is the root of the problem.', "es": 'Este es el origen del problema.', "zh": '这是问题的根源。', "ko": '이것이 문제의 근본입니다.', "ar": 'هذا هو أصل المشكلة.'};
 const WORD_ON  = {"en": 'book', "es": 'libro', "zh": '书', "ko": '책', "ar": 'كتاب'};
-const WORD_KUN = {"en": 'foundation', "es": 'base', "zh": '根本', "ko": '근본', "ar": 'أساس'};
+const WORD_KUN = {"en": 'origin / root', "es": 'base', "zh": '根本', "ko": '근본', "ar": 'أساس'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -310,11 +310,22 @@ function soReplay() { vid.currentTime = 0; vid.play(); }
 // ── TTS (Web Speech API) ─────────────────────────────────────
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.9;
   speechSynthesis.cancel();
-  speechSynthesis.speak(u);
+  const trySpeak = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = 0.9;
+    const voices = speechSynthesis.getVoices();
+    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    if (jaVoice) u.voice = jaVoice;
+    speechSynthesis.speak(u);
+  };
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    trySpeak();
+  } else {
+    speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
+  }
 }
 </script>
 </body>

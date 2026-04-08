@@ -209,8 +209,8 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 
     <div class="section-label" id="lbl-word-kun">単語 · Word</div>
     <div class="word-row">
-      <span class="word-text"><span class="kanji-study">食</span><span class="kanji-other">べ</span></span>
-      <button class='word-listen-btn' onclick="speak('食べ')">🔊</button>
+      <span class="word-text"><span class="kanji-study">食</span><span class="kanji-other">べ</span><span class="kanji-other">る</span></span>
+      <button class='word-listen-btn' onclick="speak('食べる')">🔊</button>
     </div>
     <div class="word-romaji"><strong>ta</strong>beru</div>
     <div class="word-meaning" id="wm-kun" style="margin-bottom:12px">to eat</div>
@@ -310,11 +310,22 @@ function soReplay() { vid.currentTime = 0; vid.play(); }
 // ── TTS (Web Speech API) ─────────────────────────────────────
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.9;
   speechSynthesis.cancel();
-  speechSynthesis.speak(u);
+  const trySpeak = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = 0.9;
+    const voices = speechSynthesis.getVoices();
+    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    if (jaVoice) u.voice = jaVoice;
+    speechSynthesis.speak(u);
+  };
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    trySpeak();
+  } else {
+    speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
+  }
 }
 </script>
 </body>

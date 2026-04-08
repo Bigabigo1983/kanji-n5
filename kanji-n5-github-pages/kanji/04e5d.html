@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>九 — September | Kanji N5</title>
+<title>九 — 9 o'clock | Kanji N5</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-serif; min-height: 100vh; }
@@ -178,11 +178,11 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 
     <div class="section-label" id="lbl-word-on">単語 · Word</div>
     <div class="word-row">
-      <span class="word-text"><span class="kanji-study">九</span><span class="kanji-other">月</span></span>
-      <button class="word-listen-btn" onclick="speak('九月')">🔊</button>
+      <span class="word-text"><span class="kanji-study">九</span><span class="kanji-other">時</span></span>
+      <button class="word-listen-btn" onclick="speak('九時')">🔊</button>
     </div>
-    <div class="word-romaji"><strong>ku</strong>gatsu</div>
-    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">September</div>
+    <div class="word-romaji"><strong>kuji</strong></div>
+    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">9 o'clock</div>
 
     <div class="section-label" id="lbl-ex-on">例文 · Example</div>
     <div class="example-box">
@@ -212,7 +212,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
       <span class="word-text"><span class="kanji-study">九</span><span class="kanji-other">つ</span></span>
       <button class='word-listen-btn' onclick="speak('九つ')">🔊</button>
     </div>
-    <div class="word-romaji"><strong>kokon</strong>otsu</div>
+    <div class="word-romaji"><strong>kokono</strong>tsu</div>
     <div class="word-meaning" id="wm-kun" style="margin-bottom:12px">nine things</div>
 
     
@@ -237,7 +237,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 // ── Data ────────────────────────────────────────────────────
 const SENT_ON  = {"en": 'Autumn begins in September.', "es": 'El otoño comienza en septiembre.', "zh": '九月开始秋天。', "ko": '9월부터 가을이 됩니다.', "ar": 'يبدأ الخريف في سبتمبر.'};
 const SENT_KUN = {"en": 'There are nine balls.', "es": 'Hay nueve pelotas.', "zh": '有九个球。', "ko": '공이 아홉 개 있습니다.', "ar": 'هناك تسع كرات.'};
-const WORD_ON  = {"en": 'September', "es": 'septiembre', "zh": '九月', "ko": '9월', "ar": 'سبتمبر'};
+const WORD_ON  = {"en": '9 o\'clock', "es": 'septiembre', "zh": '九月', "ko": '9월', "ar": 'سبتمبر'};
 const WORD_KUN = {"en": 'nine things', "es": 'nueve cosas', "zh": '九个', "ko": '아홉 가지', "ar": 'تسعة أشياء'};
 
 const LABELS = {
@@ -310,11 +310,22 @@ function soReplay() { vid.currentTime = 0; vid.play(); }
 // ── TTS (Web Speech API) ─────────────────────────────────────
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.9;
   speechSynthesis.cancel();
-  speechSynthesis.speak(u);
+  const trySpeak = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = 0.9;
+    const voices = speechSynthesis.getVoices();
+    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    if (jaVoice) u.voice = jaVoice;
+    speechSynthesis.speak(u);
+  };
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    trySpeak();
+  } else {
+    speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
+  }
 }
 </script>
 </body>
