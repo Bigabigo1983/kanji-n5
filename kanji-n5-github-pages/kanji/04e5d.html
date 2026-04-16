@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>九 — 9 o'clock | Kanji N5</title>
+<title>九 — September | Kanji N5</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-serif; min-height: 100vh; }
@@ -27,6 +27,13 @@ body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-
 
 /* ── Content wrapper ── */
 .content { max-width: 480px; margin: 0 auto; padding: 16px; }
+
+/* ── Core Meaning ── */
+.core-meaning {
+    text-align: center; font-size: 1.2rem; font-weight: 900;
+    color: #2B3261; margin-bottom: 14px; letter-spacing: 0.02em;
+}
+.core-meaning .cm-quote { font-weight: 400; opacity: 0.5; font-size: 1rem; }
 
 /* ── Stroke order video ── */
 .so-section { margin-bottom: 18px; }
@@ -146,6 +153,9 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <!-- ── Main content ─────────────────────────────────────────── -->
 <div class="content">
 
+  <!-- Core Meaning -->
+  <div class="core-meaning"><span class="cm-quote">“</span>nine<span class="cm-quote">”</span></div>
+
   <!-- Stroke order video -->
   <div class="so-section">
     <div class="so-label" id="lbl-so">STROKE ORDER</div>
@@ -178,11 +188,11 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 
     <div class="section-label" id="lbl-word-on">単語 · Word</div>
     <div class="word-row">
-      <span class="word-text"><span class="kanji-study">九</span><span class="kanji-other">時</span></span>
-      <button class="word-listen-btn" onclick="speak('九時')">🔊</button>
+      <span class="word-text"><span class="kanji-study">九</span><span class="kanji-other">月</span></span>
+      <button class="word-listen-btn" onclick="speak('九月')">🔊</button>
     </div>
-    <div class="word-romaji"><strong>kuji</strong></div>
-    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">9 o'clock</div>
+    <div class="word-romaji"><strong>kuga</strong>tsu</div>
+    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">September</div>
 
     <div class="section-label" id="lbl-ex-on">例文 · Example</div>
     <div class="example-box">
@@ -237,7 +247,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 // ── Data ────────────────────────────────────────────────────
 const SENT_ON  = {"en": 'Autumn begins in September.', "es": 'El otoño comienza en septiembre.', "zh": '九月开始秋天。', "ko": '9월부터 가을이 됩니다.', "ar": 'يبدأ الخريف في سبتمبر.'};
 const SENT_KUN = {"en": 'There are nine balls.', "es": 'Hay nueve pelotas.', "zh": '有九个球。', "ko": '공이 아홉 개 있습니다.', "ar": 'هناك تسع كرات.'};
-const WORD_ON  = {"en": '9 o\'clock', "es": 'septiembre', "zh": '九月', "ko": '9월', "ar": 'سبتمبر'};
+const WORD_ON  = {"en": 'September', "es": 'septiembre', "zh": '九月', "ko": '9월', "ar": 'سبتمبر'};
 const WORD_KUN = {"en": 'nine things', "es": 'nueve cosas', "zh": '九个', "ko": '아홉 가지', "ar": 'تسعة أشياء'};
 
 const LABELS = {
