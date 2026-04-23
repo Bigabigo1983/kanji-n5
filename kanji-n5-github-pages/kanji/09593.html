@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>interval / between<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">interval / between</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'I don\'t have time.', "es": 'No tengo tiempo.', "zh": '
 const SENT_KUN = {"en": 'There is a park between the station and the school.', "es": 'Hay un parque entre la estación y la escuela.', "zh": '车站和学校之间有个公园。', "ko": '역과 학교 사이에 공원이 있습니다.', "ar": 'هناك حديقة بين المحطة والمدرسة.'};
 const WORD_ON  = {"en": 'time', "es": 'tiempo', "zh": '时间', "ko": '시간', "ar": 'وقت'};
 const WORD_KUN = {"en": 'between', "es": 'entre', "zh": '之间', "ko": '사이', "ar": 'بين'};
+const CORE_MEANING = {"en": 'interval / between', "es": 'intervalo / entre', "zh": '间隔 / 之间', "ko": '사이', "ar": 'فاصل / بين'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

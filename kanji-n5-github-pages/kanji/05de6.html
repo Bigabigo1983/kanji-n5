@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>left<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">left</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'Please turn left.', "es": 'Gira a la izquierda, por fav
 const SENT_KUN = {"en": 'I write with my left hand.', "es": 'Escribo con la mano izquierda.', "zh": '我用左手写字。', "ko": '왼손으로 씁니다.', "ar": 'أكتب بيدي اليسرى.'};
 const WORD_ON  = {"en": 'turn left', "es": 'girar izquierda', "zh": '左转', "ko": '좌회전', "ar": 'تحول يساراً'};
 const WORD_KUN = {"en": 'left', "es": 'izquierda', "zh": '左', "ko": '왼쪽', "ar": 'يسار'};
+const CORE_MEANING = {"en": 'left', "es": 'izquierda', "zh": '左', "ko": '왼쪽', "ar": 'يسار'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

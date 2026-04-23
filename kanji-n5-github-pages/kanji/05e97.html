@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>shop / store<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">shop / store</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'Please call a staff member.', "es": 'Por favor, llama a
 const SENT_KUN = {"en": 'This store is cheap.', "es": 'Esta tienda es barata.', "zh": '这家店很便宜。', "ko": '이 가게는 쌉니다.', "ar": 'هذا المتجر رخيص.'};
 const WORD_ON  = {"en": 'shop staff', "es": 'empleado', "zh": '店员', "ko": '직원', "ar": 'موظف'};
 const WORD_KUN = {"en": 'shop / store', "es": 'tienda', "zh": '店', "ko": '가게', "ar": 'متجر'};
+const CORE_MEANING = {"en": 'shop / store', "es": 'tienda', "zh": '店', "ko": '가게', "ar": 'متجر'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

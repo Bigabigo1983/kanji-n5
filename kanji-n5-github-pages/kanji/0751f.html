@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>life / birth<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">life / live / be born</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'Please show your student ID.', "es": 'Por favor, muestr
 const SENT_KUN = {"en": 'I was born in Tokyo.', "es": 'Nací en Tokio.', "zh": '我在东京出生。', "ko": '도쿄에서 태어났습니다.', "ar": 'وُلدت في طوكيو.'};
 const WORD_ON  = {"en": 'student', "es": 'estudiante', "zh": '学生', "ko": '학생', "ar": 'طالب'};
 const WORD_KUN = {"en": 'to be born', "es": 'nacer', "zh": '出生', "ko": '태어나다', "ar": 'يولد'};
+const CORE_MEANING = {"en": 'life / live / be born', "es": 'vida', "zh": '生', "ko": '살다 / 생', "ar": 'حياة'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

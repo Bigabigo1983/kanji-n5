@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>outside<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">outside</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'I live in a foreign country.', "es": 'Vivo en un país 
 const SENT_KUN = {"en": 'Please play outside.', "es": 'Por favor, juega afuera.', "zh": '请去外面玩。', "ko": '밖에서 놀아 주세요.', "ar": 'من فضلك العب في الخارج.'};
 const WORD_ON  = {"en": 'foreign country', "es": 'extranjero', "zh": '外国', "ko": '외국', "ar": 'بلد أجنبي'};
 const WORD_KUN = {"en": 'outside', "es": 'afuera', "zh": '外面', "ko": '밖', "ar": 'خارج'};
+const CORE_MEANING = {"en": 'outside', "es": 'afuera / extranjero', "zh": '外', "ko": '밖 / 외국', "ar": 'خارج'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>ten thousand<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">ten thousand</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -239,6 +239,7 @@ const SENT_ON  = {"en": 'This bag costs 10,000 yen.', "es": 'Esta bolsa cuesta 1
 const SENT_KUN = {"en": 'Just in case I\'m late, I\'ll contact you.', "es": 'Por si llego tarde, te aviso.', "zh": '万一我迟到了我会联系你。', "ko": '만약 늦으면 연락할게요.', "ar": 'إذا تأخرت سأتصل بك.'};
 const WORD_ON  = {"en": '10,000', "es": '10.000', "zh": '一万', "ko": '10,000', "ar": 'عشرة آلاف'};
 const WORD_KUN = {"en": '10,000 yen', "es": 'perfecto', "zh": '万全', "ko": '완벽', "ar": 'كامل'};
+const CORE_MEANING = {"en": 'ten thousand', "es": 'diez mil', "zh": '万', "ko": '만', "ar": 'عشرة آلاف'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -298,6 +299,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>child<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">child</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'Where is the women\'s restroom?', "es": '¿Dónde está
 const SENT_KUN = {"en": 'The kitten is cute.', "es": 'El gatito es tierno.', "zh": '小猫很可爱。', "ko": '새끼 고양이가 귀엽습니다.', "ar": 'القطة الصغيرة لطيفة.'};
 const WORD_ON  = {"en": 'girl / female', "es": 'chica', "zh": '女生', "ko": '여자', "ar": 'فتاة'};
 const WORD_KUN = {"en": 'child', "es": 'padres e hijo', "zh": '亲子', "ko": '부모와 자식', "ar": 'أهل وطفل'};
+const CORE_MEANING = {"en": 'child', "es": 'niño', "zh": '孩子', "ko": '아이', "ar": 'طفل'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

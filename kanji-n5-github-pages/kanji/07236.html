@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>father<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">father</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'Please contact the parents.', "es": 'Por favor, contact
 const SENT_KUN = {"en": 'Thank you, dad.', "es": 'Gracias, papá.', "zh": '谢谢你，爸爸。', "ko": '고마워요, 아빠.', "ar": 'شكراً لك، أبي.'};
 const WORD_ON  = {"en": 'parents', "es": 'padres', "zh": '家长', "ko": '부모', "ar": 'أولياء أمور'};
 const WORD_KUN = {"en": 'father', "es": 'padre', "zh": '父亲', "ko": '아버지', "ar": 'أب'};
+const CORE_MEANING = {"en": 'father', "es": 'padre', "zh": '父亲', "ko": '아버지', "ar": 'أب'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

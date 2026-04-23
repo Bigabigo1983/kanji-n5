@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>exit / leave<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">exit / leave</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'Where is the exit?', "es": '¿Dónde está la salida?',
 const SENT_KUN = {"en": 'I left the house.', "es": 'Salí de casa.', "zh": '我出门了。', "ko": '집을 나왔습니다.', "ar": 'غادرت المنزل.'};
 const WORD_ON  = {"en": 'departure', "es": 'salida', "zh": '出口', "ko": '출구', "ar": 'مخرج'};
 const WORD_KUN = {"en": 'to leave', "es": 'salir', "zh": '出去', "ko": '나가다', "ar": 'يخرج'};
+const CORE_MEANING = {"en": 'exit / leave', "es": 'salir', "zh": '出', "ko": '나가다', "ar": 'يخرج'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

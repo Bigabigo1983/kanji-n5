@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>behind / after<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">after / behind</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'It will rain from the afternoon.', "es": 'Lloverá desd
 const SENT_KUN = {"en": 'I\'ll contact you later.', "es": 'Te contactaré después.', "zh": '我待会儿联系你。', "ko": '나중에 연락할게요.', "ar": 'سأتصل بك لاحقاً.'};
 const WORD_ON  = {"en": 'afternoon', "es": 'mediodía', "zh": '中午', "ko": '오후', "ar": 'الظهر'};
 const WORD_KUN = {"en": 'later', "es": 'después', "zh": '之后', "ko": '나중에', "ar": 'لاحقاً'};
+const CORE_MEANING = {"en": 'after / behind', "es": 'después / detrás', "zh": '后', "ko": '뒤 / 후', "ar": 'بعد / خلف'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

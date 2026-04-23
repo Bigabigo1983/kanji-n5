@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>day<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">day</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'I study every day.', "es": 'Estudio todos los días.', 
 const SENT_KUN = {"en": 'Today is a good day.', "es": 'Hoy es un buen día.', "zh": '今天是美好的一天。', "ko": '오늘은 좋은 날입니다.', "ar": 'اليوم يوم جميل.'};
 const WORD_ON  = {"en": 'every day', "es": 'todos los días', "zh": '每天', "ko": '매일', "ar": 'كل يوم'};
 const WORD_KUN = {"en": 'sun / day', "es": 'sol / día', "zh": '太阳/天', "ko": '태양/날', "ar": 'شمس / يوم'};
+const CORE_MEANING = {"en": 'day', "es": 'día', "zh": '天', "ko": '날', "ar": 'يوم'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

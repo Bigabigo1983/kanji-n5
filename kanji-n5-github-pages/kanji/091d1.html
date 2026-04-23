@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>money / gold<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">money / gold</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'Friday evenings are fun.', "es": 'Las noches del vierne
 const SENT_KUN = {"en": 'I don\'t have money.', "es": 'No tengo dinero.', "zh": '我没有钱。', "ko": '돈이 없습니다.', "ar": 'ليس لدي مال.'};
 const WORD_ON  = {"en": 'Friday', "es": 'viernes', "zh": '星期五', "ko": '금요일', "ar": 'الجمعة'};
 const WORD_KUN = {"en": 'money', "es": 'dinero', "zh": '钱', "ko": '돈', "ar": 'مال'};
+const CORE_MEANING = {"en": 'money / gold', "es": 'dinero / oro', "zh": '钱 / 金', "ko": '돈 / 금', "ar": 'مال / ذهب'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

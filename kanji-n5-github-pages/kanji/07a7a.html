@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>sky / empty<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">sky / empty</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'I\'ll take you to the airport.', "es": 'Te llevaré al 
 const SENT_KUN = {"en": 'The sky is blue, isn\'t it?', "es": 'El cielo es azul, ¿verdad?', "zh": '天空真蓝。', "ko": '하늘이 파랗네요.', "ar": 'السماء زرقاء، أليس كذلك؟'};
 const WORD_ON  = {"en": 'airport', "es": 'aeropuerto', "zh": '机场', "ko": '공항', "ar": 'مطار'};
 const WORD_KUN = {"en": 'sky', "es": 'cielo', "zh": '天空', "ko": '하늘', "ar": 'سماء'};
+const CORE_MEANING = {"en": 'sky / empty', "es": 'cielo / vacío', "zh": '天空 / 空', "ko": '하늘 / 비다', "ar": 'سماء / فارغ'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

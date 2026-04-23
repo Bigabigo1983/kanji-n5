@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>rain<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">rain</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'It will be cancelled in case of rain.', "es": 'Se cance
 const SENT_KUN = {"en": 'It started to rain.', "es": 'Empezó a llover.', "zh": '开始下雨了。', "ko": '비가 내리기 시작했습니다.', "ar": 'بدأ المطر يهطل.'};
 const WORD_ON  = {"en": 'rainy weather', "es": 'lluvia', "zh": '雨天', "ko": '비', "ar": 'مطر'};
 const WORD_KUN = {"en": 'rain', "es": 'lluvia', "zh": '雨', "ko": '비', "ar": 'مطر'};
+const CORE_MEANING = {"en": 'rain', "es": 'lluvia', "zh": '雨', "ko": '비', "ar": 'مطر'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────

@@ -154,7 +154,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 <div class="content">
 
   <!-- Core Meaning -->
-  <div class="core-meaning"><span class="cm-quote">“</span>man / male<span class="cm-quote">”</span></div>
+  <div class="core-meaning" id="core-meaning"><span class="cm-quote">“</span><span id="cm-text">man / male</span><span class="cm-quote">”</span></div>
 
   <!-- Stroke order video -->
   <div class="so-section">
@@ -249,6 +249,7 @@ const SENT_ON  = {"en": 'Where is the men\'s restroom?', "es": '¿Dónde está e
 const SENT_KUN = {"en": 'That man is tall.', "es": 'Ese hombre es alto.', "zh": '那个男人个子很高。', "ko": '저 남자는 키가 큽니다.', "ar": 'ذلك الرجل طويل.'};
 const WORD_ON  = {"en": 'man', "es": 'hombre', "zh": '男性', "ko": '남성', "ar": 'رجل'};
 const WORD_KUN = {"en": 'man / male', "es": 'hombre', "zh": '男人', "ko": '남자', "ar": 'رجل'};
+const CORE_MEANING = {"en": 'man / male', "es": 'hombre', "zh": '男', "ko": '남자', "ar": 'رجل'};
 
 const LABELS = {
   stroke_order: {"en": 'STROKE ORDER', "es": 'ORDEN DE TRAZOS', "zh": '笔画顺序', "ko": '획순', "ar": 'ترتيب الضربات'},
@@ -308,6 +309,10 @@ function switchLang(lang) {
   const wmKun = document.getElementById('wm-kun');
   if (wmOn)  wmOn.textContent  = WORD_ON[lang]  || WORD_ON['en'];
   if (wmKun) wmKun.textContent = WORD_KUN[lang] || WORD_KUN['en'];
+
+  // Update core meaning
+  const cmEl = document.getElementById('cm-text');
+  if (cmEl) cmEl.textContent = CORE_MEANING[lang] || CORE_MEANING['en'];
 }
 
 // ── Video controls ───────────────────────────────────────────
