@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>分 — fraction | Kanji N5</title>
+<title>分 — one minute | Kanji N5</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #1A1F40; font-family: "Noto Sans JP", "Helvetica Neue", sans-serif; min-height: 100vh; }
@@ -188,11 +188,11 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 
     <div class="section-label" id="lbl-word-on">単語 · Word</div>
     <div class="word-row">
-      <span class="word-text"><span class="kanji-study">分</span><span class="kanji-other">数</span></span>
-      <button class="word-listen-btn" onclick="speak('分数')">🔊</button>
+      <span class="word-text"><span class="kanji-other">一</span><span class="kanji-study">分</span></span>
+      <button class="word-listen-btn" onclick="speak('一分')">🔊</button>
     </div>
-    <div class="word-romaji"><strong>bun</strong>suu</div>
-    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">fraction</div>
+    <div class="word-romaji"><strong>ipp</strong>un</div>
+    <div class="word-meaning" id="wm-on" style="margin-bottom:12px">one minute</div>
 
     <div class="section-label" id="lbl-ex-on">例文 · Example</div>
     <div class="example-box">
@@ -207,15 +207,18 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 
   <!-- KUN reading card -->
   <div class="card kun-card" >
-    <div class="card-lang-label" id="lbl-kun">訓読み · Kun reading</div>
-    <div class="card-reading">
+    <div class="card-lang-label" id="lbl-kun" >訓読み · Kun reading</div>
+    <div class="card-lang-label" id="lbl-more" style='display:none'>More Examples</div>
+    
+    <div class='card-reading'>
       <div>
-        <div class="reading-value">わか <span class="reading-rom">(waka)</span></div>
+        <div class='reading-value'>わか <span class='reading-rom'>(waka)</span></div>
       </div>
-      <button class="listen-btn" onclick="speak('わか')" id="btn-listen-kun">
-        <span id="lbl-listen-kun">🔊 Listen</span>
+      <button class='listen-btn' onclick="speak('わか')" id='btn-listen-kun'>
+        <span id='lbl-listen-kun'>🔊 Listen</span>
       </button>
     </div>
+    
 
     <div class="section-label" id="lbl-word-kun">単語 · Word</div>
     <div class="word-row">
@@ -247,7 +250,7 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 // ── Data ────────────────────────────────────────────────────
 const SENT_ON  = {"en": 'Please wait one minute.', "es": 'Por favor, espera un minuto.', "zh": '请等一分钟。', "ko": '1분 기다려 주세요.', "ar": 'الرجاء الانتظار دقيقة.'};
 const SENT_KUN = {"en": 'I understand a little Japanese.', "es": 'Entiendo un poco de japonés.', "zh": '我懂一点日语。', "ko": '일본어를 조금 압니다.', "ar": 'أفهم القليل من اليابانية.'};
-const WORD_ON  = {"en": 'fraction', "es": 'un minuto', "zh": '一分钟', "ko": '1분', "ar": 'دقيقة'};
+const WORD_ON  = {"en": 'one minute', "es": 'un minuto', "zh": '一分钟', "ko": '1분', "ar": 'دقيقة'};
 const WORD_KUN = {"en": 'to understand', "es": 'entender', "zh": '理解', "ko": '이해하다', "ar": 'يفهم'};
 const CORE_MEANING = {"en": 'part / divide', "es": 'parte / dividir', "zh": '部分 / 分开', "ko": '부분 / 나누다', "ar": 'جزء / يقسم'};
 
@@ -258,6 +261,7 @@ const LABELS = {
   replay:       {"en": '↺ Replay', "es": '↺ Repetir', "zh": '↺ 重播', "ko": '↺ 다시보기', "ar": '↺ إعادة'},
   on_label:     {"en": '音読み · On reading', "es": '音読み · Lectura On', "zh": '音読み · 音读', "ko": '音読み · 온독', "ar": 'قراءة أون · 音読み'},
   kun_label:    {"en": '訓読み · Kun reading', "es": '訓読み · Lectura Kun', "zh": '訓読み · 训读', "ko": '訓読み · 훈독', "ar": 'قراءة كون · 訓読み'},
+  more_examples:{"en": 'More Examples', "es": 'Más Ejemplos', "zh": '更多例子', "ko": '더 많은 예문', "ar": 'المزيد من الأمثلة'},
   word:         {"en": '単語 · Word', "es": '単語 · Palabra', "zh": '単語 · 单词', "ko": '単語 · 단어', "ar": 'كلمة · 単語'},
   example:      {"en": '例文 · Example', "es": '例文 · Oración', "zh": '例文 · 例句', "ko": '例文 · 예문', "ar": 'مثال · 例文'},
   listen:       {"en": '🔊 Listen', "es": '🔊 Escuchar', "zh": '🔊 听', "ko": '🔊 듣기', "ar": '🔊 استمع'},
@@ -284,6 +288,8 @@ function switchLang(lang) {
   document.getElementById('btn-replay').textContent   = LABELS.replay[lang];
   document.getElementById('lbl-on').textContent       = LABELS.on_label[lang];
   document.getElementById('lbl-kun').textContent      = LABELS.kun_label[lang];
+  const lblMore = document.getElementById('lbl-more');
+  if (lblMore) lblMore.textContent = LABELS.more_examples[lang];
   document.getElementById('lbl-listen-on').textContent  = LABELS.listen[lang];
   document.getElementById('lbl-listen-kun').textContent = LABELS.listen[lang];
   document.getElementById('footer-txt').textContent   = LABELS.footer[lang];

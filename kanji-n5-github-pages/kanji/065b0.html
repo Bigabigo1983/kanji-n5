@@ -207,15 +207,18 @@ body.ar .word-listen-btn { flex-direction: row-reverse; }
 
   <!-- KUN reading card -->
   <div class="card kun-card" >
-    <div class="card-lang-label" id="lbl-kun">訓読み · Kun reading</div>
-    <div class="card-reading">
+    <div class="card-lang-label" id="lbl-kun" >訓読み · Kun reading</div>
+    <div class="card-lang-label" id="lbl-more" style='display:none'>More Examples</div>
+    
+    <div class='card-reading'>
       <div>
-        <div class="reading-value">あたら <span class="reading-rom">(atara)</span></div>
+        <div class='reading-value'>あたら <span class='reading-rom'>(atara)</span></div>
       </div>
-      <button class="listen-btn" onclick="speak('あたら')" id="btn-listen-kun">
-        <span id="lbl-listen-kun">🔊 Listen</span>
+      <button class='listen-btn' onclick="speak('あたら')" id='btn-listen-kun'>
+        <span id='lbl-listen-kun'>🔊 Listen</span>
       </button>
     </div>
+    
 
     <div class="section-label" id="lbl-word-kun">単語 · Word</div>
     <div class="word-row">
@@ -258,6 +261,7 @@ const LABELS = {
   replay:       {"en": '↺ Replay', "es": '↺ Repetir', "zh": '↺ 重播', "ko": '↺ 다시보기', "ar": '↺ إعادة'},
   on_label:     {"en": '音読み · On reading', "es": '音読み · Lectura On', "zh": '音読み · 音读', "ko": '音読み · 온독', "ar": 'قراءة أون · 音読み'},
   kun_label:    {"en": '訓読み · Kun reading', "es": '訓読み · Lectura Kun', "zh": '訓読み · 训读', "ko": '訓読み · 훈독', "ar": 'قراءة كون · 訓読み'},
+  more_examples:{"en": 'More Examples', "es": 'Más Ejemplos', "zh": '更多例子', "ko": '더 많은 예문', "ar": 'المزيد من الأمثلة'},
   word:         {"en": '単語 · Word', "es": '単語 · Palabra', "zh": '単語 · 单词', "ko": '単語 · 단어', "ar": 'كلمة · 単語'},
   example:      {"en": '例文 · Example', "es": '例文 · Oración', "zh": '例文 · 例句', "ko": '例文 · 예문', "ar": 'مثال · 例文'},
   listen:       {"en": '🔊 Listen', "es": '🔊 Escuchar', "zh": '🔊 听', "ko": '🔊 듣기', "ar": '🔊 استمع'},
@@ -284,6 +288,8 @@ function switchLang(lang) {
   document.getElementById('btn-replay').textContent   = LABELS.replay[lang];
   document.getElementById('lbl-on').textContent       = LABELS.on_label[lang];
   document.getElementById('lbl-kun').textContent      = LABELS.kun_label[lang];
+  const lblMore = document.getElementById('lbl-more');
+  if (lblMore) lblMore.textContent = LABELS.more_examples[lang];
   document.getElementById('lbl-listen-on').textContent  = LABELS.listen[lang];
   document.getElementById('lbl-listen-kun').textContent = LABELS.listen[lang];
   document.getElementById('footer-txt').textContent   = LABELS.footer[lang];
